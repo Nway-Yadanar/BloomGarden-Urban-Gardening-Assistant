@@ -1,0 +1,281 @@
+[
+  {
+    "plant": "Snake Plant",
+    "indoor": true,
+    "edible": false,
+    "benefits": ["Air purification (benzene, formaldehyde)", "Low‑light tolerance"],
+    "symbolism": ["Luck", "Protection"],
+    
+    "faq": {
+      "sunlight": "2–4 hrs indirect",
+      "watering": "Every 2–4 weeks",
+      "soil": "Sandy, well‑draining"
+    }
+  },
+  {
+    "plant": "Peace Lily",
+    "indoor": true,
+    "edible": false,
+    "benefits": ["Air purification (benzene, ammonia)", "Aesthetic bloom"],
+    "symbolism": ["Peace", "Healing"],
+    "faq": {
+      "sunlight": "4–6 hrs indirect",
+      "watering": "Keep soil moist, water when top inch is dry",
+      "soil": "Rich, well‑draining"
+    }
+  },
+  {
+    "plant": "English Ivy",
+    "indoor": true,
+    "edible": false,
+    "benefits": ["Air purification (formaldehyde)", "Mold reduction"],
+    "symbolism": ["Friendship", "Fidelity"],
+    "faq": {
+      "sunlight": "4–6 hrs indirect",
+      "watering": "Every 7 days",
+      "soil": "Moist, well‑draining"
+    }
+  },
+  {
+    "plant": "Spider Plant",
+    "indoor": true,
+    "edible": false,
+    "benefits": ["Air purification (formaldehyde, xylene)", "Non‑toxic to pets"],
+    "symbolism": ["Positivity", "Protection"],
+    "faq": {
+      "sunlight": "4–6 hrs indirect",
+      "watering": "Every 7–10 days",
+      "soil": "Well‑draining potting mix"
+    }
+  },
+  {
+    "plant": "Bamboo Palm",
+    "indoor": true,
+    "edible": false,
+    "benefits": ["Air purification", "Humidity booster"],
+    "symbolism": ["Feng Shui luck", "Prosperity"],
+    "faq": {
+      "sunlight": "4–6 hrs indirect",
+      "watering": "Every 5–7 days",
+      "soil": "Moist, well‑draining"
+    }
+  },
+  {
+    "plant": "Gerbera Daisy",
+    "indoor": true,
+    "edible": false,
+    "benefits": ["Air purification", "Brightens décor"],
+    "symbolism": ["Cheer", "Innocence"],
+    "faq": {
+      "sunlight": "6–8 hrs direct",
+      "watering": "Every 3–4 days",
+      "soil": "Rich, moist, well‑draining"
+    }
+  },
+  {
+    "plant": "Aloe Vera",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Skin healing", "Air purification","Anti‑inflammatory"],
+    "symbolism": ["Healing", "Protection"],
+    "faq": {
+      "sunlight": "4–6 hrs",
+      "watering": "Every 3 weeks",
+      "soil": "Cactus/succulent mix"
+    }
+  },
+  {
+    "plant": "Rosemary",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Memory boost", "Anti‑inflammatory", "Cooking", "Hair-Growth"],
+    "symbolism": ["Remembrance", "Protection"],
+    "faq": {
+      "sunlight": "6–8 hrs",
+      "watering": "Every 7–10 days",
+      "soil": "Well‑draining, pH 6–7",
+      "avoid": "Overwatering, low-light conditions"
+    }
+  },
+  {
+    "plant": "Basil",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Anti‑inflammatory", "Antioxidant", "Cooking"],
+    "symbolism": ["Love", "Prosperity"],
+    "faq": {
+      "sunlight": "6–8 hrs",
+      "watering": "Every 3–4 days",
+      "soil": "Rich, moist, well‑draining",
+      "avoid": "Overwatering, low-light areas"
+    }
+  },
+  {
+    "plant": "Thyme",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Antiseptic", "Cooking", "Aroma"],
+    "symbolism": ["Courage", "Purification"],
+    "faq": {
+      "sunlight": "6 hrs",
+      "watering": "Every 7–10 days, Pruning",
+      "soil": "Well‑draining, sandy loam",
+      "avoid": "Overwatering, Shade areas"
+    }
+  },
+  
+  {
+    "plant": "Mint",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Digestion aid", "Insect repellent", "Aroma", "Cooking"],
+    "symbolism": ["Hospitality", "Vitality"],
+    "faq": {
+      "sunlight": "4–6 hrs",
+      "watering": "Every 2–3 days, regular pruning",
+      "soil": "Moist, well‑draining",
+      "avoid": "Overwatering, Invasive Nature"
+    }
+  },
+  {
+    "plant": "Lavender",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Relaxation", "Fragrance", "Beauty uses"],
+    "symbolism": ["Peace", "Calm"],
+    "faq": {
+      "sunlight": "6–8 hrs",
+      "watering": "Every 7–10 days",
+      "soil": "Sandy, well‑draining",
+      "avoid": "Overwatering, Poor Air Circulation, Extreme Cold"
+    }
+  },
+  {
+    "plant": "Chives",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Cooking", "Pest repellent"],
+    "symbolism": ["Protection"],
+    "faq": {
+      "sunlight": "6 hrs",
+      "watering": "Every 4–7 days",
+      "soil": "Moist, well‑draining",
+      "avoid": "Overwatering, Overcrowding, Low-light condition"
+    }
+  },
+  {
+    "plant": "Oregano",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Antioxidant", "Cooking"],
+    "symbolism": ["Joy", "Happiness"],
+    "faq": {
+      "sunlight": "6–8 hrs",
+      "watering": "Every 7 days",
+      "soil": "Well‑draining",
+      "avoid": "Overwatering, Poor Air Circulation, Overly Shaded Areas"
+    }
+  },
+  {
+    "plant": "Parsley",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Digestive aid", "Culinary"],
+    "symbolism": ["Cleanse", "Protection"],
+    "faq": {
+      "sunlight": "6 hrs",
+      "watering": "Every 3–5 days",
+      "soil": "Rich, well‑draining",
+      "avoid":"Completely dry soil, Overcrowding, Poor Drainage"
+    }
+  },
+  {
+    "plant": "Cilantro",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Detox", "Flavor", "Culinary"],
+    "symbolism": ["Friendship"],
+    "faq": {
+      "sunlight": "4–6 hrs",
+      "watering": "Every 3–4 days",
+      "soil": "Loamy, well‑draining"
+    }
+  },
+  
+  {
+    "plant": "Jasmine (indoor variety)",
+    "indoor": true,
+    "edible": false,
+    "benefits": ["Relaxation", "Fragrance"],
+    "symbolism": ["Love", "Purity"],
+    "faq": {
+      "sunlight": "4–6 hrs",
+      "watering": "Every 5 days",
+      "soil": "Rich, slightly acidic, well‑draining"
+    }
+  },
+  {
+    "plant": "Mini Rose",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Beauty", "Fragrance", "Tea"],
+    "symbolism": ["Love", "Beauty"],
+    "faq": {
+      "sunlight": "6 hrs",
+      "watering": "Every 4–5 days",
+      "soil": "Rich, well‑draining"
+    }
+  },
+  {
+    "plant": "Lucky Bamboo",
+    "indoor": true,
+    "edible": false,
+    "benefits": ["Aesthetic", "Humidity"],
+    "symbolism": ["Luck", "Prosperity"],
+    "faq": {
+      "sunlight": "2–4 hrs indirect",
+      "watering": "Keep roots covered; change water weekly",
+      "soil": "Water (hydroponic) or well‑draining mix"
+    }
+  },
+    
+
+
+  {
+    "plant": "Sage",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Culinary", "Aroma", "Cleansing"],
+    "symbolism": ["Cleansing", "Purification"],
+    "faq": {
+      "sunlight": "6–8 hrs daily direct sunlight, full sun exposure",
+      "watering": "Moderate watering; well-drained soil",
+      "soil": "well-drained soil,slightly acidic, Pruning",
+      "avoid": "Overwatering, Insufficient sunlight"
+    }
+  },
+  {
+    "plant": "Lemon Balm",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Culinary", "Aroma"],
+    "symbolism": ["Luck", "Prosperity"],
+    "faq": {
+      "sunlight": "6–8 hrs direct sunlight",
+      "watering": "Regular Watering",
+      "soil": "Rich Moist Soil"
+    }
+  },
+  {
+    "plant": "Lemongrass",
+    "indoor": true,
+    "edible": true,
+    "benefits": ["Culinary", "Aroma"],
+    "symbolism": ["Cleansing", "Purification","Chakra Balancing"],
+    "faq": {
+      "sunlight": "6–8 hrs direct sunlight, warm humid environment",
+      "watering": "Regular Watering",
+      "soil": "Dry Soil, Extreme Cold"
+    }
+  }
+]
