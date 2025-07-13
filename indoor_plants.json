@@ -4,12 +4,13 @@
     "indoor": true,
     "edible": false,
     "benefits": ["Air purification (benzene, formaldehyde)", "Low‑light tolerance"],
-    "symbolism": ["Luck", "Protection"],
-    
+    "symbolism": ["Luck", "Protection"],  
     "faq": {
       "sunlight": "2–4 hrs indirect",
       "watering": "Every 2–4 weeks",
-      "soil": "Sandy, well‑draining"
+      "soil": "Sandy, well‑draining",
+      "avoid": "Overwatering, Direct sunlight",
+      "notes": "Toxic to pets"
     }
   },
   {
@@ -21,7 +22,9 @@
     "faq": {
       "sunlight": "4–6 hrs indirect",
       "watering": "Keep soil moist, water when top inch is dry",
-      "soil": "Rich, well‑draining"
+      "soil": "Rich, well‑draining",
+      "avoid":"Overwatering, Direct sunlight",
+      "notes": "Toxic to pets, Regular Pruning"
     }
   },
   {
@@ -33,19 +36,23 @@
     "faq": {
       "sunlight": "4–6 hrs indirect",
       "watering": "Every 7 days",
-      "soil": "Moist, well‑draining"
+      "soil": "Moist, well‑draining",
+      "avoid":"Overwatering",
+      "notes":"Toxic to pets"
     }
   },
   {
     "plant": "Spider Plant",
     "indoor": true,
     "edible": false,
-    "benefits": ["Air purification (formaldehyde, xylene)", "Non‑toxic to pets"],
+    "benefits": ["Air purification (formaldehyde, xylene)"],
     "symbolism": ["Positivity", "Protection"],
     "faq": {
       "sunlight": "4–6 hrs indirect",
       "watering": "Every 7–10 days",
-      "soil": "Well‑draining potting mix"
+      "soil": "Well‑draining potting mix",
+      "avoid": "Overwatering",
+      "notes": "Non‑toxic to pets"
     }
   },
   {
@@ -57,7 +64,9 @@
     "faq": {
       "sunlight": "4–6 hrs indirect",
       "watering": "Every 5–7 days",
-      "soil": "Moist, well‑draining"
+      "soil": "Moist, well‑draining",
+      "avoid": "Cold drafts, Sudden Temperature Drops",
+      "notes": "Non‑toxic to pets"
     }
   },
   {
@@ -69,7 +78,9 @@
     "faq": {
       "sunlight": "6–8 hrs direct",
       "watering": "Every 3–4 days",
-      "soil": "Rich, moist, well‑draining"
+      "soil": "Rich, moist, well‑draining",
+      "avoid":"Extreme Hot Temperature",
+      "notes":"Non‑toxic to pets"
     }
   },
   {
@@ -81,7 +92,9 @@
     "faq": {
       "sunlight": "4–6 hrs",
       "watering": "Every 3 weeks",
-      "soil": "Cactus/succulent mix"
+      "soil": "Cactus/succulent mix",
+      "avoid":"Overwatering",
+      "notes":"Toxic to pets"
     }
   },
   {
@@ -94,23 +107,82 @@
       "sunlight": "6–8 hrs",
       "watering": "Every 7–10 days",
       "soil": "Well‑draining, pH 6–7",
-      "avoid": "Overwatering, low-light conditions"
+      "avoid": "Overwatering, Shade areas",
+      "notes":"Non‑toxic to pets"
     }
   },
   {
-    "plant": "Basil",
-    "indoor": true,
-    "edible": true,
-    "benefits": ["Anti‑inflammatory", "Antioxidant", "Cooking"],
-    "symbolism": ["Love", "Prosperity"],
-    "faq": {
-      "sunlight": "6–8 hrs",
-      "watering": "Every 3–4 days",
-      "soil": "Rich, moist, well‑draining",
-      "avoid": "Overwatering, low-light areas"
+  "plant": "Thai Basil",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Digestive aid", "Culinary (Asian dishes)", "Aromatic"],
+  "symbolism": ["Balance", "Vitality"],
+  "faq": {
+    "sunlight": "6+ hrs of full sun",
+    "watering": "Moderate; water when top inch of soil is dry",
+    "soil": "Fertile, moist, well‑drained",
+    "avoid": "Shade areas, Dry soil",
+    "notes": "Non‑toxic to pets"
+  }
+},
+{
+  "plant": "Sweet Basil",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Anti‑inflammatory", "Antioxidant", "Cooking"],
+  "symbolism": ["Love", "Prosperity"],
+  "faq": {
+    "sunlight": "6–8 hrs of direct sunlight",
+    "watering": "Every 3–4 days; keep soil moist but not soggy",
+    "soil": "Rich, moist, well‑draining",
+    "avoid": "Overwatering, Cold drafts",
+    "notes": "Non‑toxic to pets"
+  }
+},
+{
+  "plant": "Tulsi (Holy Basil)",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Immunity boost", "Medicinal herb", "Air purification"],
+  "symbolism": ["Spiritual protection", "Purity"],
+  "faq": {
+    "sunlight": "6+ hrs of full sunlight, preferably morning sun",
+    "watering": "Water daily in summer, reduce in winter",
+    "soil": "Loamy, well‑draining with compost",
+    "avoid": "Cold weather, Overwatering",
+    "notes": "Non‑toxic and sacred in many cultures"
+  }
+},
+{
+  "plant": "Greek Oregano",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Antibacterial", "Flavoring", "Anti-inflammatory"],
+  "symbolism": ["Joy", "Health"],
+  "faq": {
+    "sunlight": "6+ hrs of full sun",
+    "watering": "Water when soil is dry; drought tolerant",
+    "soil": "Well-drained, sandy or loamy",
+    "avoid": "Overwatering, Poor drainage",
+    "notes": "Non-toxic to pets"
+  }
+},
+
+{
+  "plant": "Italian Oregano",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Culinary", "Digestive support", "Anti-inflammatory"],
+  "symbolism": ["Joy", "Warmth"],
+  "faq": {
+    "sunlight": "6–8 hrs of full sun",
+    "watering": "When top inch of soil is dry",
+    "soil": "Well-draining, fertile",
+    "avoid": "Soggy soil, Low light",
+    "notes": "Non-toxic to pets"
     }
-  },
-  {
+   },
+   {
     "plant": "Thyme",
     "indoor": true,
     "edible": true,
@@ -120,23 +192,39 @@
       "sunlight": "6 hrs",
       "watering": "Every 7–10 days, Pruning",
       "soil": "Well‑draining, sandy loam",
-      "avoid": "Overwatering, Shade areas"
+      "avoid": "Overwatering, Shade areas",
+      "notes": "Non‑toxic to pets"
     }
-  },
-  
+   },
   {
-    "plant": "Mint",
-    "indoor": true,
-    "edible": true,
-    "benefits": ["Digestion aid", "Insect repellent", "Aroma", "Cooking"],
-    "symbolism": ["Hospitality", "Vitality"],
-    "faq": {
-      "sunlight": "4–6 hrs",
-      "watering": "Every 2–3 days, regular pruning",
-      "soil": "Moist, well‑draining",
-      "avoid": "Overwatering, Invasive Nature"
-    }
-  },
+  "plant": "Spearmint",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Digestive aid", "Aroma", "Culinary"],
+  "symbolism": ["Hospitality", "Clarity"],
+  "faq": {
+    "sunlight": "Partial sun (4–6 hrs); avoid harsh afternoon sun",
+    "watering": "Keep soil moist; water regularly",
+    "soil": "Rich, moist, well-drained",
+    "avoid": "Drying out, Poor drainage",
+    "notes": "Mildly toxic to pets in large quantities,Regular Pruning"
+  }
+},
+  {
+  "plant": "Peppermint",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Headache relief", "Fresh breath", "Digestion"],
+  "symbolism": ["Vitality", "Healing"],
+  "faq": {
+    "sunlight": "Indirect light or partial sun (4–6 hrs)",
+    "watering": "Consistent moisture; don’t let dry out",
+    "soil": "Moist, fertile, well-drained",
+    "avoid": "Dry soil, Direct harsh sun",
+    "notes": "Mildly toxic to pets in large quantities"
+  }
+},
+
   {
     "plant": "Lavender",
     "indoor": true,
@@ -147,7 +235,8 @@
       "sunlight": "6–8 hrs",
       "watering": "Every 7–10 days",
       "soil": "Sandy, well‑draining",
-      "avoid": "Overwatering, Poor Air Circulation, Extreme Cold"
+      "avoid": "Overwatering, Poor Air Circulation, Extreme Cold",
+      "notes":"Mildy-toxic to pets in large quantities"
     }
   },
   {
@@ -160,35 +249,40 @@
       "sunlight": "6 hrs",
       "watering": "Every 4–7 days",
       "soil": "Moist, well‑draining",
-      "avoid": "Overwatering, Overcrowding, Low-light condition"
+      "avoid": "Overwatering, Overcrowding, Shade areas",
+      "notes": "Toxic to pets"
     }
   },
   {
-    "plant": "Oregano",
-    "indoor": true,
-    "edible": true,
-    "benefits": ["Antioxidant", "Cooking"],
-    "symbolism": ["Joy", "Happiness"],
-    "faq": {
-      "sunlight": "6–8 hrs",
-      "watering": "Every 7 days",
-      "soil": "Well‑draining",
-      "avoid": "Overwatering, Poor Air Circulation, Overly Shaded Areas"
-    }
-  },
-  {
-    "plant": "Parsley",
-    "indoor": true,
-    "edible": true,
-    "benefits": ["Digestive aid", "Culinary"],
-    "symbolism": ["Cleanse", "Protection"],
-    "faq": {
-      "sunlight": "6 hrs",
-      "watering": "Every 3–5 days",
-      "soil": "Rich, well‑draining",
-      "avoid":"Completely dry soil, Overcrowding, Poor Drainage"
-    }
-  },
+  "plant": "Curly Parsley",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Vitamin K", "Breath freshener", "Culinary use"],
+  "symbolism": ["Celebration", "Good luck"],
+  "faq": {
+    "sunlight": "4–6 hrs of direct or strong indirect light",
+    "watering": "Keep evenly moist; don’t let dry out",
+    "soil": "Nutrient-rich, well-draining",
+    "avoid": "Waterlogging, Harsh sunlight",
+    "notes": "Safe in small quantities; mildly toxic to pets in large quantities"
+  }
+},
+{
+  "plant": "Flat-Leaf Parsley",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Flavor enhancer", "Rich in Vitamin C & K", "Cleansing"],
+  "symbolism": ["Strength", "Protection"],
+  "faq": {
+    "sunlight": "6 hrs of bright sunlight",
+    "watering": "Moist but not soggy; water when topsoil dries",
+    "soil": "Well-drained, fertile",
+    "avoid": "Neglecting moisture, Shade",
+    "notes": "Mildly toxic to pets in large quantities"
+  }
+},
+
+
   {
     "plant": "Cilantro",
     "indoor": true,
@@ -198,12 +292,14 @@
     "faq": {
       "sunlight": "4–6 hrs",
       "watering": "Every 3–4 days",
-      "soil": "Loamy, well‑draining"
+      "soil": "Loamy, well‑draining",
+      "avoid":"Overwatering, Direct sunlight,high humidity",
+      "notes":"Non-toxic to pets"
     }
   },
   
   {
-    "plant": "Jasmine (indoor variety)",
+    "plant": "Jasminum polyanthum (Indoor Jasmine)",
     "indoor": true,
     "edible": false,
     "benefits": ["Relaxation", "Fragrance"],
@@ -211,7 +307,9 @@
     "faq": {
       "sunlight": "4–6 hrs",
       "watering": "Every 5 days",
-      "soil": "Rich, slightly acidic, well‑draining"
+      "soil": "Rich, slightly acidic, well‑draining",
+      "avoid":"Overwatering,Dry Air",
+      "notes":"Non-toxic to pets if true jasmine,Prune after flowering"
     }
   },
   {
@@ -223,7 +321,9 @@
     "faq": {
       "sunlight": "6 hrs",
       "watering": "Every 4–5 days",
-      "soil": "Rich, well‑draining"
+      "soil": "Rich, well‑draining",
+      "avoid":"Overwatering, Drying out",
+      "notes": "Non-toxic to pets,Prune before new growth"
     }
   },
   {
@@ -231,11 +331,13 @@
     "indoor": true,
     "edible": false,
     "benefits": ["Aesthetic", "Humidity"],
-    "symbolism": ["Luck", "Prosperity"],
+    "symbolism": ["Luck", "Prosperity","Blessings","Long Life"],
     "faq": {
       "sunlight": "2–4 hrs indirect",
       "watering": "Keep roots covered; change water weekly",
-      "soil": "Water (hydroponic) or well‑draining mix"
+      "soil": "Water (hydroponic) or well‑draining mix",
+      "avoid":"Chlorine in water, Drafts both hot and cold",
+      "notes":"Toxic to pets, Chinese Tradition and meaning varies with bamboo arrangements"
     }
   },
     
@@ -251,7 +353,9 @@
       "sunlight": "6–8 hrs daily direct sunlight, full sun exposure",
       "watering": "Moderate watering; well-drained soil",
       "soil": "well-drained soil,slightly acidic, Pruning",
-      "avoid": "Overwatering, Insufficient sunlight"
+      "avoid": "Overwatering, Insufficient sunlight",
+      "notes": "Toxic to pets in large amounts, Prune before new growth"
+      
     }
   },
   {
@@ -263,7 +367,9 @@
     "faq": {
       "sunlight": "6–8 hrs direct sunlight",
       "watering": "Regular Watering",
-      "soil": "Rich Moist Soil"
+      "soil": "Rich Moist Soil",
+      "avoid":"Extreme Hot Temperature, Overwattering",
+      "notes": "Non-toxic to pets"
     }
   },
   {
@@ -275,7 +381,487 @@
     "faq": {
       "sunlight": "6–8 hrs direct sunlight, warm humid environment",
       "watering": "Regular Watering",
-      "soil": "Dry Soil, Extreme Cold"
+      "soil": "Dry Soil, Extreme Cold",
+      "avoid":"Shade areas, Dry soil, Extreme Cold Temperature",
+      "notes":"Toxic to pets"
     }
+  },
+  {
+  "plant": "Tarragon",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Culinary", "Digestive aid"],
+  "symbolism": ["Endurance", "Healing"],
+  "faq": {
+    "sunlight": "6+ hrs full sun or bright indirect light",
+    "watering": "Allow topsoil to dry between waterings",
+    "soil": "Well-draining, slightly sandy soil",
+    "avoid": "Overwatering, poor drainage",
+    "notes": "Non-toxic to pets, Best suited for growing in balcony or backyard"
   }
+},
+{
+  "plant": "Bay Leaf(Bay Laurel)",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Culinary", "Aromatic", "Air purification"],
+  "symbolism": ["Victory", "Protection"],
+  "faq": {
+    "sunlight": "6–8 hrs full sun or bright light indoors",
+    "watering": "Keep soil lightly moist; do not overwater",
+    "soil": "Well-draining, fertile soil",
+    "avoid": "Frost, soggy roots",
+    "notes": "Toxic to pets in large amounts,Best suited for growing in balcony or backyard "
+  }
+},
+{
+  "plant": "Calendula",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Skin healing", "Culinary", "Anti-inflammatory"],
+  "symbolism": ["Joy", "Healing"],
+  "faq": {
+    "sunlight": "Full sun preferred; can tolerate partial shade",
+    "watering": "Moderate watering",
+    "soil": "Well-draining, moderately rich soil",
+    "avoid": "Overwatering, poor light",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "plant": "Chamomile(German or Roman)",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Calming", "Digestive", "Tea"],
+  "symbolism": ["Peace", "Relaxation"],
+  "faq": {
+    "sunlight": "4–6 hrs direct or bright light",
+    "watering": "Keep soil lightly moist",
+    "soil": "Well-drained, sandy or loamy",
+    "avoid": "Excessive heat or water",
+    "notes": "Mildly toxic to pets in large quantities"
+  }
+},
+{
+  "plant": "Licorice Root",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Sore throat relief", "Digestive health"],
+  "symbolism": ["Sweetness", "Protection"],
+  "faq": {
+    "sunlight": "Full sun, 6–8 hrs",
+    "watering": "Consistent watering during growing season",
+    "soil": "Deep, loose, sandy soil",
+    "avoid": "Frost, compact soil",
+    "notes": "Avoid for pets and people with hypertension, Best suited for growing in balcony or backyard"
+  }
+},
+{
+  "plant": "Witch Hazel",
+  "indoor": false,
+  "edible": false,
+  "benefits": ["Skincare", "Anti-inflammatory", "Astringent"],
+  "symbolism": ["Healing", "Magic"],
+  "faq": {
+    "sunlight": "Full sun to partial shade",
+    "watering": "Moist but well-drained soil",
+    "soil": "Acidic to neutral, loamy soil",
+    "avoid": "Hot, dry environments",
+    "notes": "Non-toxic but not edible; best in backyard or large container outdoors"
+  }
+},
+{
+  "plant": "Cucumber",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Hydration", "Cooling", "Culinary"],
+  "symbolism": ["Vitality", "Fertility"],
+  "faq": {
+    "sunlight": "6–8 hrs of full sun",
+    "watering": "Consistent watering, especially during fruiting",
+    "soil": "Rich, well-drained soil",
+    "avoid": "Dry soil, poor drainage",
+    "notes": "Best grown in balcony or small garden with support; non-toxic"
+  }
+},
+{
+  "plant": "Orchid (Phalaenopsis)",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Beauty", "Mood boosting"],
+  "symbolism": ["Love", "Luxury", "Strength"],
+  "faq": {
+    "sunlight": "Indirect light; avoid direct sun",
+    "watering": "Water every 7–10 days; allow drying between",
+    "soil": "Special orchid bark mix; well-aerated",
+    "avoid": "Overwatering, cold drafts",
+    "notes": "Non-toxic to pets (Phalaenopsis species)"
+  }
+},
+{
+  "plant": "Philodendrons",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Aesthetic"],
+  "symbolism": ["Health", "Abundance"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Water when top inch of soil is dry",
+    "soil": "Well-draining, airy potting mix",
+    "avoid": "Direct sunlight, soggy soil",
+    "notes": "Toxic to pets"
+  }
+},
+{
+  "plant": "Areca Palm",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Humidity control", "Allergy relief"],
+  "symbolism": ["Peace", "Elegance"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Keep soil evenly moist; not soggy",
+    "soil": "Rich, well-drained potting mix",
+    "avoid": "Dry soil, direct sunlight",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "plant": "Boston Fern",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Humidity regulation"],
+  "symbolism": ["Sincerity", "Shelter"],
+  "faq": {
+    "sunlight": "Indirect sunlight or filtered light",
+    "watering": "Keep soil moist; do not let dry out completely",
+    "soil": "Peaty, well-draining mix",
+    "avoid": "Dry air, direct sunlight",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "plant": "Gardenia",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Aroma", "Stress relief", "Tea", "Traditional medicine"],
+  "symbolism": ["Purity", "Secret love"],
+  "faq": {
+    "sunlight": "Bright, indirect light to partial sun",
+    "watering": "Keep soil moist but not soggy",
+    "soil": "Acidic, well-drained soil",
+    "avoid": "Cold drafts, alkaline soil",
+    "notes": "Mildly toxic to pets"
+  }
+},
+{
+  "plant": "ZZ Plant",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Low maintenance"],
+  "symbolism": ["Prosperity", "Growth"],
+  "faq": {
+    "sunlight": "Low to bright indirect light",
+    "watering": "Let soil dry completely between waterings",
+    "soil": "Well-draining potting mix",
+    "avoid": "Overwatering, direct sunlight",
+    "notes": "Toxic to pets"
+  }
+},
+{
+  "plant": "Pachira Aquatica",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Feng Shui energy"],
+  "symbolism": ["Prosperity", "Good luck"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Water when top 2–3 inches of soil are dry",
+    "soil": "Well-draining, peat-based soil",
+    "avoid": "Overwatering, full sun",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "plant": "Jade Plant",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Feng Shui", "Stress reduction"],
+  "symbolism": ["Wealth", "Longevity"],
+  "faq": {
+    "sunlight": "At least 4 hrs of direct sunlight",
+    "watering": "Water when soil is dry",
+    "soil": "Sandy, well-draining cactus mix",
+    "avoid": "Overwatering, low light",
+    "notes": "Toxic to pets"
+  }
+},
+{
+  "plant": "Corn Plant(Dracaena fragrans)",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Low maintenance"],
+  "symbolism": ["Good fortune", "Energy flow"],
+  "faq": {
+    "sunlight": "Filtered or indirect sunlight",
+    "watering": "Water when soil is partly dry",
+    "soil": "Well-draining potting mix",
+    "avoid": "Overwatering, direct sun",
+    "notes": "Toxic to pets"
+  }
+},
+{
+  "plant": "Lotus",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Spiritual", "Edible parts (root, seed)", "Beauty"],
+  "symbolism": ["Rebirth", "Purity", "Enlightenment"],
+  "faq": {
+    "sunlight": "Full sun, 6+ hrs daily",
+    "watering": "Grows in still water or container pond",
+    "soil": "Heavy clay soil for aquatic plants",
+    "avoid": "Cold temperatures, moving water",
+    "notes": "Not suitable for small pots; needs outdoor container or pond"
+  }
+},
+{
+  "plant": "Pitcher Plant",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Pest control", "Unique appearance"],
+  "symbolism": ["Curiosity", "Adaptation"],
+  "faq": {
+    "sunlight": "Bright, indirect sunlight",
+    "watering": "Distilled or rainwater; keep soil moist",
+    "soil": "Sphagnum moss or peat mix, low-nutrient",
+    "avoid": "Tap water, fertilizing, low humidity",
+    "notes": "Non-toxic to pets, but not for consumption"
+  }
+},
+{
+  "plant": "Pothos",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Low maintenance"],
+  "symbolism": ["Perseverance", "Growth"],
+  "faq": {
+    "sunlight": "Low to bright indirect light",
+    "watering": "Water when top 1–2 inches of soil are dry",
+    "soil": "Well-draining potting soil",
+    "avoid": "Overwatering, direct sun",
+    "notes": "Toxic to pets"
+  }
+},
+{
+  "plant": "Purple Passion Plant",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Aesthetic", "Fuzzy purple foliage"],
+  "symbolism": ["Creativity", "Individuality"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Keep soil lightly moist",
+    "soil": "Well-draining potting mix",
+    "avoid": "Waterlogged soil, intense direct sun",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "plant": "Moonshine Snake Plant",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Low maintenance", "Night oxygen release"],
+  "symbolism": ["Resilience", "Protection"],
+  "faq": {
+    "sunlight": "Low to bright indirect light",
+    "watering": "Water when soil is fully dry",
+    "soil": "Well-draining cactus or succulent mix",
+    "avoid": "Overwatering, freezing temps",
+    "notes": "Toxic to pets"
+  }
+},
+{
+  "plant": "Wintergreen Berries",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Edible berries", "Aromatic leaves", "Medicinal use"],
+  "symbolism": ["Healing", "Endurance"],
+  "faq": {
+    "sunlight": "Partial shade to full sun",
+    "watering": "Moist, consistently watered soil",
+    "soil": "Acidic, well-draining soil",
+    "avoid": "Alkaline soil, overwatering",
+    "notes": "Safe in small quantities; essential oil can be toxic in large doses"
+  }
+},
+{
+  "plant": "Zebra Plant",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Ornamental foliage", "Bright yellow blooms"],
+  "symbolism": ["Boldness", "Tropical beauty"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Keep soil consistently moist",
+    "soil": "Peat-based, well-draining soil",
+    "avoid": "Dry soil, direct sun, cold drafts",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "plant": "Prayer Plant 'Beauty Kim'",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Decorative foliage"],
+  "symbolism": ["Gratitude", "Reflection"],
+  "faq": {
+    "sunlight": "Low to medium indirect light",
+    "watering": "Keep soil moist but not soggy",
+    "soil": "Peaty, well-draining soil",
+    "avoid": "Cold drafts, direct sunlight",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "plant": "Blue Star Fern",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Unique foliage"],
+  "symbolism": ["Freshness", "Calmness"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Keep soil slightly moist",
+    "soil": "Rich, well-draining soil",
+    "avoid": "Dry air, direct sunlight",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "plant": "Tricolor Hoya 'Krimson Queen'",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Trailing foliage"],
+  "symbolism": ["Love", "Connection"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Allow soil to dry between waterings",
+    "soil": "Well-draining cactus mix or orchid mix",
+    "avoid": "Overwatering, dark spaces",
+    "notes": "Mildly toxic to pets if ingested"
+  }
+},
+{
+  "plant": "Corkscrew Rush",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Decorative", "Unusual structure"],
+  "symbolism": ["Whimsy", "Individuality"],
+  "faq": {
+    "sunlight": "Full sun to partial shade",
+    "watering": "Loves wet soil; keep constantly moist",
+    "soil": "Heavy, moisture-retaining soil",
+    "avoid": "Dry soil, low humidity",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "plant": "String of Pearls",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Aesthetic trailing plant", "Drought-tolerant"],
+  "symbolism": ["Elegance", "Minimalism"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Allow soil to dry completely between waterings",
+    "soil": "Well-draining succulent mix",
+    "avoid": "Overwatering, low light",
+    "notes": "Toxic to pets and humans if ingested"
+  }
+},
+{
+  "plant": "Pilea Peperomioides",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Aesthetic", "Symbol of prosperity"],
+  "symbolism": ["Friendship", "Luck"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Water when top inch of soil is dry",
+    "soil": "Light, well-draining soil",
+    "avoid": "Direct sun, soggy soil",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "plant": "Anthurium",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Bright tropical flowers", "Air purification"],
+  "symbolism": ["Hospitality", "Abundance"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Water every 7–10 days",
+    "soil": "Peat-based, well-draining soil",
+    "avoid": "Overwatering, direct sunlight",
+    "notes": "Toxic to pets and humans"
+  }
+},
+{
+  "plant": "Begonia ",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Aesthetic foliage", "Indoor decoration"],
+  "symbolism": ["Creativity", "Balance"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Water when top inch is dry",
+    "soil": "Light, airy, well-draining mix",
+    "avoid": "Overwatering, direct sun",
+    "notes": "Toxic to pets"
+  }
+},
+{
+  "plant": "Split Leaf Philodendron",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Air purification", "Large tropical foliage"],
+  "symbolism": ["Expansion", "Boldness"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Water every 1–2 weeks",
+    "soil": "Well-draining peat-based soil",
+    "avoid": "Direct sunlight, soggy soil",
+    "notes": "Toxic to pets and humans"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]
