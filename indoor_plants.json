@@ -1,5 +1,6 @@
 [
   {
+    "id": "plant_001",
     "plant": "Snake Plant",
     "indoor": true,
     "edible": false,
@@ -14,6 +15,7 @@
     }
   },
   {
+    "id": "plant_002",
     "plant": "Peace Lily",
     "indoor": true,
     "edible": false,
@@ -28,6 +30,7 @@
     }
   },
   {
+    "id": "plant_003",
     "plant": "English Ivy",
     "indoor": true,
     "edible": false,
@@ -42,6 +45,7 @@
     }
   },
   {
+    "id": "plant_004",
     "plant": "Spider Plant",
     "indoor": true,
     "edible": false,
@@ -56,6 +60,7 @@
     }
   },
   {
+    "id": "plant_005",
     "plant": "Bamboo Palm",
     "indoor": true,
     "edible": false,
@@ -70,6 +75,7 @@
     }
   },
   {
+    "id": "plant_006",
     "plant": "Gerbera Daisy",
     "indoor": true,
     "edible": false,
@@ -84,6 +90,7 @@
     }
   },
   {
+    "id": "plant_007",
     "plant": "Aloe Vera",
     "indoor": true,
     "edible": true,
@@ -98,6 +105,7 @@
     }
   },
   {
+    "id": "plant_008",
     "plant": "Rosemary",
     "indoor": true,
     "edible": true,
@@ -112,6 +120,7 @@
     }
   },
   {
+  "id": "plant_009",
   "plant": "Thai Basil",
   "indoor": true,
   "edible": true,
@@ -126,6 +135,7 @@
   }
 },
 {
+  "id": "plant_010",
   "plant": "Sweet Basil",
   "indoor": true,
   "edible": true,
@@ -140,6 +150,7 @@
   }
 },
 {
+  "id": "plant_011",
   "plant": "Tulsi (Holy Basil)",
   "indoor": true,
   "edible": true,
@@ -154,6 +165,7 @@
   }
 },
 {
+  "id": "plant_012",
   "plant": "Greek Oregano",
   "indoor": true,
   "edible": true,
@@ -169,6 +181,7 @@
 },
 
 {
+  "id": "plant_013",
   "plant": "Italian Oregano",
   "indoor": true,
   "edible": true,
@@ -183,6 +196,7 @@
     }
    },
    {
+    "id": "plant_014",
     "plant": "Thyme",
     "indoor": true,
     "edible": true,
@@ -197,6 +211,7 @@
     }
    },
   {
+  "id": "plant_015",
   "plant": "Spearmint",
   "indoor": true,
   "edible": true,
@@ -211,6 +226,7 @@
   }
 },
   {
+  "id": "plant_016",
   "plant": "Peppermint",
   "indoor": true,
   "edible": true,
@@ -226,6 +242,7 @@
 },
 
   {
+    "id": "plant_017",
     "plant": "Lavender",
     "indoor": true,
     "edible": true,
@@ -240,6 +257,7 @@
     }
   },
   {
+    "id": "plant_018",
     "plant": "Chives",
     "indoor": true,
     "edible": true,
@@ -254,6 +272,7 @@
     }
   },
   {
+  "id": "plant_019",
   "plant": "Curly Parsley",
   "indoor": true,
   "edible": true,
@@ -268,6 +287,7 @@
   }
 },
 {
+  "id": "plant_020",
   "plant": "Flat-Leaf Parsley",
   "indoor": true,
   "edible": true,
@@ -284,6 +304,7 @@
 
 
   {
+    "id": "plant_021",
     "plant": "Cilantro",
     "indoor": true,
     "edible": true,
@@ -299,6 +320,7 @@
   },
   
   {
+    "id": "plant_022",
     "plant": "Jasminum polyanthum (Indoor Jasmine)",
     "indoor": true,
     "edible": false,
@@ -313,6 +335,7 @@
     }
   },
   {
+    "id": "plant_023",
     "plant": "Mini Rose",
     "indoor": true,
     "edible": true,
@@ -327,6 +350,7 @@
     }
   },
   {
+    "id": "plant_024",
     "plant": "Lucky Bamboo",
     "indoor": true,
     "edible": false,
@@ -344,6 +368,7 @@
 
 
   {
+    "id": "plant_025",
     "plant": "Sage",
     "indoor": true,
     "edible": true,
@@ -359,6 +384,7 @@
     }
   },
   {
+    "id": "plant_026",
     "plant": "Lemon Balm",
     "indoor": true,
     "edible": true,
@@ -373,6 +399,7 @@
     }
   },
   {
+    "id": "plant_027",
     "plant": "Lemongrass",
     "indoor": true,
     "edible": true,
@@ -387,6 +414,7 @@
     }
   },
   {
+    "id": "plant_028",
   "plant": "Tarragon",
   "indoor": true,
   "edible": true,
@@ -401,6 +429,7 @@
   }
 },
 {
+  "id": "plant_029",
   "plant": "Bay Leaf(Bay Laurel)",
   "indoor": true,
   "edible": true,
@@ -415,6 +444,7 @@
   }
 },
 {
+  "id": "plant_030",
   "plant": "Calendula",
   "indoor": true,
   "edible": true,
