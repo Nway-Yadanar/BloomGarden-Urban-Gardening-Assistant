@@ -459,6 +459,7 @@
   }
 },
 {
+  "id": "plant_031",
   "plant": "Chamomile(German or Roman)",
   "indoor": true,
   "edible": true,
@@ -473,6 +474,7 @@
   }
 },
 {
+  "id": "plant_032",
   "plant": "Licorice Root",
   "indoor": false,
   "edible": true,
@@ -487,6 +489,7 @@
   }
 },
 {
+  "id": "plant_033",
   "plant": "Witch Hazel",
   "indoor": false,
   "edible": false,
@@ -501,6 +504,7 @@
   }
 },
 {
+  "id": "plant_034",
   "plant": "Cucumber",
   "indoor": false,
   "edible": true,
@@ -515,6 +519,7 @@
   }
 },
 {
+  "id": "plant_035",
   "plant": "Orchid (Phalaenopsis)",
   "indoor": true,
   "edible": false,
@@ -529,6 +534,7 @@
   }
 },
 {
+  "id": "plant_036",
   "plant": "Philodendrons",
   "indoor": true,
   "edible": false,
@@ -543,6 +549,7 @@
   }
 },
 {
+  "id": "plant_037",
   "plant": "Areca Palm",
   "indoor": true,
   "edible": false,
@@ -557,6 +564,7 @@
   }
 },
 {
+  "id": "plant_038",
   "plant": "Boston Fern",
   "indoor": true,
   "edible": false,
@@ -571,6 +579,7 @@
   }
 },
 {
+  "id": "plant_039",
   "plant": "Gardenia",
   "indoor": true,
   "edible": true,
@@ -585,6 +594,7 @@
   }
 },
 {
+  "id": "plant_040",
   "plant": "ZZ Plant",
   "indoor": true,
   "edible": false,
@@ -599,6 +609,7 @@
   }
 },
 {
+  "id": "plant_041",
   "plant": "Pachira Aquatica",
   "indoor": true,
   "edible": false,
@@ -613,6 +624,7 @@
   }
 },
 {
+  "id": "plant_042",
   "plant": "Jade Plant",
   "indoor": true,
   "edible": false,
@@ -627,6 +639,7 @@
   }
 },
 {
+  "id": "plant_043",
   "plant": "Corn Plant(Dracaena fragrans)",
   "indoor": true,
   "edible": false,
@@ -641,6 +654,7 @@
   }
 },
 {
+  "id": "plant_044",
   "plant": "Lotus",
   "indoor": false,
   "edible": true,
@@ -655,6 +669,7 @@
   }
 },
 {
+  "id": "plant_045",
   "plant": "Pitcher Plant",
   "indoor": true,
   "edible": false,
@@ -669,6 +684,7 @@
   }
 },
 {
+  "id": "plant_046",
   "plant": "Pothos",
   "indoor": true,
   "edible": false,
@@ -683,6 +699,7 @@
   }
 },
 {
+  "id": "plant_047",
   "plant": "Purple Passion Plant",
   "indoor": true,
   "edible": false,
@@ -697,6 +714,7 @@
   }
 },
 {
+  "id": "plant_048",
   "plant": "Moonshine Snake Plant",
   "indoor": true,
   "edible": false,
@@ -711,6 +729,7 @@
   }
 },
 {
+  "id": "plant_049",
   "plant": "Wintergreen Berries",
   "indoor": false,
   "edible": true,
@@ -725,6 +744,7 @@
   }
 },
 {
+  "id": "plant_050",
   "plant": "Zebra Plant",
   "indoor": true,
   "edible": false,
@@ -739,6 +759,7 @@
   }
 },
 {
+  "id": "plant_051",
   "plant": "Prayer Plant 'Beauty Kim'",
   "indoor": true,
   "edible": false,
@@ -753,6 +774,7 @@
   }
 },
 {
+  "id": "plant_052",
   "plant": "Blue Star Fern",
   "indoor": true,
   "edible": false,
@@ -767,6 +789,7 @@
   }
 },
 {
+  "id": "plant_053",
   "plant": "Tricolor Hoya 'Krimson Queen'",
   "indoor": true,
   "edible": false,
@@ -781,6 +804,7 @@
   }
 },
 {
+  "id": "plant_054",
   "plant": "Corkscrew Rush",
   "indoor": true,
   "edible": false,
@@ -795,6 +819,7 @@
   }
 },
 {
+  "id": "plant_055",
   "plant": "String of Pearls",
   "indoor": true,
   "edible": false,
@@ -809,6 +834,7 @@
   }
 },
 {
+  "id": "plant_056",
   "plant": "Pilea Peperomioides",
   "indoor": true,
   "edible": false,
@@ -823,6 +849,7 @@
   }
 },
 {
+  "id": "plant_057",
   "plant": "Anthurium",
   "indoor": true,
   "edible": false,
@@ -837,6 +864,7 @@
   }
 },
 {
+  "id": "plant_058",
   "plant": "Begonia ",
   "indoor": true,
   "edible": false,
@@ -851,6 +879,7 @@
   }
 },
 {
+  "id": "plant_059",
   "plant": "Split Leaf Philodendron",
   "indoor": true,
   "edible": false,
@@ -863,7 +892,295 @@
     "avoid": "Direct sunlight, soggy soil",
     "notes": "Toxic to pets and humans"
   }
+},
+{
+  
+  "id": "plant_060",
+  "plant": "Beetroot",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Root vegetable", "Rich in antioxidants", "Heart health"],
+  "symbolism": ["Vitality", "Strength"],
+  "faq": {
+    "sunlight": "6–8 hrs full sun",
+    "watering": "Moderate, keep soil consistently moist",
+    "soil": "Loose, well-draining, rich soil",
+    "avoid": "Waterlogging, compact soil",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_061",
+  "plant": "Malaga Spinach",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Leafy green", "Heat-tolerant", "High in vitamins A & C"],
+  "symbolism": ["Resilience", "Nourishment"],
+  "faq": {
+    "sunlight": "Full sun to part shade",
+    "watering": "Keep soil evenly moist",
+    "soil": "Rich, well-draining soil",
+    "avoid": "Drought conditions",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_062",
+  "plant": "Carrot",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Root vegetable", "Rich in beta-carotene", "Good for vision"],
+  "symbolism": ["Clarity", "Growth"],
+  "faq": {
+    "sunlight": "Full sun",
+    "watering": "Regular watering; keep soil moist",
+    "soil": "Loose, sandy, well-drained",
+    "avoid": "Heavy clay soil, dry periods",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_063",
+  "plant": "Kale",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Superfood", "High in fiber & nutrients", "Cold-hardy"],
+  "symbolism": ["Healing", "Endurance"],
+  "faq": {
+    "sunlight": "6+ hrs full sun",
+    "watering": "Consistent moisture",
+    "soil": "Fertile, well-drained, loamy",
+    "avoid": "Dry soil, shade",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_064",
+  "plant": "Tomatoes",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Culinary staple", "Rich in lycopene", "Heart health"],
+  "symbolism": ["Love", "Fertility"],
+  "faq": {
+    "sunlight": "6–8 hrs full sun",
+    "watering": "Regular watering at base; avoid leaves",
+    "soil": "Well-drained, fertile",
+    "avoid": "Water on foliage, overwatering",
+    "notes": "Non-toxic to humans, mildly toxic to pets"
+  }
+},
+{
+  "id": "plant_065",
+  "plant": "Radish",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Fast-growing", "Good for digestion", "Cleansing"],
+  "symbolism": ["Simplicity", "Quick rewards"],
+  "faq": {
+    "sunlight": "Full sun",
+    "watering": "Keep soil consistently moist",
+    "soil": "Loose, well-drained, fertile",
+    "avoid": "Drought, overcrowding",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_066",
+  "plant": "Okra",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Fiber-rich", "Supports digestion", "Antioxidants"],
+  "symbolism": ["Growth", "Healing"],
+  "faq": {
+    "sunlight": "Full sun",
+    "watering": "Regular watering, avoid waterlogging",
+    "soil": "Well-draining, loamy",
+    "avoid": "Cold temps, poor drainage",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_067",
+  "plant": "Zucchini",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Low-calorie", "Good for digestion", "High in fiber"],
+  "symbolism": ["Abundance", "Growth"],
+  "faq": {
+    "sunlight": "Full sun",
+    "watering": "Frequent and deep watering",
+    "soil": "Rich, well-draining",
+    "avoid": "Crowded spacing, soggy roots",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_068",
+  "plant": "Capsicum",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Vitamin C-rich", "Colorful", "Boosts immunity"],
+  "symbolism": ["Energy", "Vitality"],
+  "faq": {
+    "sunlight": "6+ hrs direct sun",
+    "watering": "Moderate, keep soil moist",
+    "soil": "Well-drained, fertile",
+    "avoid": "Waterlogging, shade",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_069",
+  "plant": "Lettuce",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Hydrating", "Low-calorie", "Fresh greens"],
+  "symbolism": ["Simplicity", "Renewal"],
+  "faq": {
+    "sunlight": "Full sun to partial shade",
+    "watering": "Frequent, shallow watering",
+    "soil": "Moist, fertile, well-drained",
+    "avoid": "Heat, dry spells",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_070",
+  "plant": "Potatoes",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Staple crop", "Rich in potassium", "Versatile"],
+  "symbolism": ["Sustenance", "Grounding"],
+  "faq": {
+    "sunlight": "6+ hrs full sun",
+    "watering": "Moderate, keep soil moist",
+    "soil": "Loose, well-drained, slightly acidic",
+    "avoid": "Wet soil, frost",
+    "notes": "Non-toxic to humans; green parts toxic"
+  }
+},
+{
+  "id": "plant_071",
+  "plant": "Green Onions",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Easy to regrow", "Rich in vitamin K & C", "Flavor enhancer"],
+  "symbolism": ["Regrowth", "Vitality"],
+  "faq": {
+    "sunlight": "Bright light or sunny window",
+    "watering": "Keep soil lightly moist",
+    "soil": "Well-draining potting mix",
+    "avoid": "Dry soil, overcrowding",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_072",
+  "plant": "African Violet",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Aesthetic", "Air quality", "Compact size"],
+  "symbolism": ["Loyalty", "Faithfulness"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Bottom watering preferred; avoid leaf contact",
+    "soil": "African violet mix or light potting mix",
+    "avoid": "Cold drafts, direct sun",
+    "notes": "Non-toxic to pets"
+  }
+},
+{
+  "id": "plant_073",
+  "plant": "Begonia",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Blooming decor", "Air purifying"],
+  "symbolism": ["Gratitude", "Caution"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Keep soil moist, not soggy",
+    "soil": "Well-drained peat-based mix",
+    "avoid": "Water on leaves, overwatering",
+    "notes": "Toxic to pets"
+  }
+},
+{
+  "id": "plant_074",
+  "plant": "Kalanchoe",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Succulent", "Low-maintenance", "Air quality"],
+  "symbolism": ["Endurance", "Healing"],
+  "faq": {
+    "sunlight": "Bright light to full sun",
+    "watering": "Let soil dry between waterings",
+    "soil": "Cactus/succulent mix",
+    "avoid": "Overwatering",
+    "notes": "Toxic to pets"
+  }
+},
+{
+  "id": "plant_075",
+  "plant": "Amaryllis",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["Showy blooms", "Winter flowering"],
+  "symbolism": ["Pride", "Determination"],
+  "faq": {
+    "sunlight": "Bright indirect light",
+    "watering": "Water when soil is dry to touch",
+    "soil": "Well-draining potting mix",
+    "avoid": "Watering bulb directly",
+    "notes": "Toxic to pets and humans"
+  }
+},
+{
+  "id": "plant_076",
+  "plant": "Zinnias",
+  "indoor": false,
+  "edible": false,
+  "benefits": ["Pollinator-friendly", "Colorful display"],
+  "symbolism": ["Lasting affection", "Joy"],
+  "faq": {
+    "sunlight": "Full sun",
+    "watering": "Water when topsoil dries",
+    "soil": "Well-drained garden soil",
+    "avoid": "Poor drainage",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_077",
+  "plant": "Fennel",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Digestive aid", "Aromatic", "Anti-inflammatory"],
+  "symbolism": ["Courage", "Longevity"],
+  "faq": {
+    "sunlight": "6+ hrs full sun",
+    "watering": "Moderate, consistent moisture",
+    "soil": "Rich, well-drained",
+    "avoid": "Water stress",
+    "notes": "Non-toxic"
+  }
+},
+{
+  "id": "plant_078",
+  "plant": "Tillandsia (Air plants)",
+  "indoor": true,
+  "edible": false,
+  "benefits": ["No soil needed", "Creative décor"],
+  "symbolism": ["Freedom", "Adaptability"],
+  "faq": {
+    "sunlight": "Bright, indirect light",
+    "watering": "Soak in water 20–30 minutes weekly",
+    "soil": "No soil required",
+    "avoid": "Dark rooms, standing water",
+    "notes": "Non-toxic"
+  }
 }
+
+
 
 
 
