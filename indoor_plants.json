@@ -120,6 +120,11 @@
     "edible": true,
     "benefits": ["Skin healing", "Air purification","Anti‑inflammatory"],
     "symbolism": ["Healing", "Protection"],
+    "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "4–6 hrs",
       "watering": "Every 3 weeks",
@@ -135,6 +140,11 @@
     "edible": true,
     "benefits": ["Memory boost", "Anti‑inflammatory", "Cooking", "Hair-Growth"],
     "symbolism": ["Remembrance", "Protection"],
+     "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "6–8 hrs",
       "watering": "Every 7–10 days",
@@ -150,6 +160,11 @@
   "edible": true,
   "benefits": ["Digestive aid", "Culinary (Asian dishes)", "Aromatic"],
   "symbolism": ["Balance", "Vitality"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6+ hrs of full sun",
     "watering": "Moderate; water when top inch of soil is dry",
@@ -165,6 +180,11 @@
   "edible": true,
   "benefits": ["Anti‑inflammatory", "Antioxidant", "Cooking"],
   "symbolism": ["Love", "Prosperity"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6–8 hrs of direct sunlight",
     "watering": "Every 3–4 days; keep soil moist but not soggy",
@@ -180,6 +200,11 @@
   "edible": true,
   "benefits": ["Immunity boost", "Medicinal herb", "Air purification"],
   "symbolism": ["Spiritual protection", "Purity"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6+ hrs of full sunlight, preferably morning sun",
     "watering": "Water daily in summer, reduce in winter",
@@ -195,6 +220,11 @@
   "edible": true,
   "benefits": ["Antibacterial", "Flavoring", "Anti-inflammatory"],
   "symbolism": ["Joy", "Health"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6+ hrs of full sun",
     "watering": "Water when soil is dry; drought tolerant",
@@ -211,6 +241,11 @@
   "edible": true,
   "benefits": ["Culinary", "Digestive support", "Anti-inflammatory"],
   "symbolism": ["Joy", "Warmth"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6–8 hrs of full sun",
     "watering": "When top inch of soil is dry",
@@ -226,6 +261,11 @@
     "edible": true,
     "benefits": ["Antiseptic", "Cooking", "Aroma"],
     "symbolism": ["Courage", "Purification"],
+     "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "6 hrs",
       "watering": "Every 7–10 days, Pruning",
@@ -241,6 +281,11 @@
   "edible": true,
   "benefits": ["Digestive aid", "Aroma", "Culinary"],
   "symbolism": ["Hospitality", "Clarity"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Partial sun (4–6 hrs); avoid harsh afternoon sun",
     "watering": "Keep soil moist; water regularly",
@@ -256,6 +301,11 @@
   "edible": true,
   "benefits": ["Headache relief", "Fresh breath", "Digestion"],
   "symbolism": ["Vitality", "Healing"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Indirect light or partial sun (4–6 hrs)",
     "watering": "Consistent moisture; don’t let dry out",
@@ -287,6 +337,11 @@
     "edible": true,
     "benefits": ["Cooking", "Pest repellent"],
     "symbolism": ["Protection"],
+     "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "6 hrs",
       "watering": "Every 4–7 days",
@@ -302,6 +357,11 @@
   "edible": true,
   "benefits": ["Vitamin K", "Breath freshener", "Culinary use"],
   "symbolism": ["Celebration", "Good luck"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "4–6 hrs of direct or strong indirect light",
     "watering": "Keep evenly moist; don’t let dry out",
@@ -317,6 +377,11 @@
   "edible": true,
   "benefits": ["Flavor enhancer", "Rich in Vitamin C & K", "Cleansing"],
   "symbolism": ["Strength", "Protection"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6 hrs of bright sunlight",
     "watering": "Moist but not soggy; water when topsoil dries",
@@ -334,6 +399,11 @@
     "edible": true,
     "benefits": ["Detox", "Flavor", "Culinary"],
     "symbolism": ["Friendship"],
+     "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "4–6 hrs",
       "watering": "Every 3–4 days",
@@ -410,6 +480,11 @@
     "edible": true,
     "benefits": ["Culinary", "Aroma", "Cleansing"],
     "symbolism": ["Cleansing", "Purification"],
+     "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "6–8 hrs daily direct sunlight, full sun exposure",
       "watering": "Moderate watering; well-drained soil",
@@ -426,6 +501,11 @@
     "edible": true,
     "benefits": ["Culinary", "Aroma"],
     "symbolism": ["Luck", "Prosperity"],
+     "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "6–8 hrs direct sunlight",
       "watering": "Regular Watering",
@@ -441,6 +521,11 @@
     "edible": true,
     "benefits": ["Culinary", "Aroma"],
     "symbolism": ["Cleansing", "Purification","Chakra Balancing"],
+     "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "6–8 hrs direct sunlight, warm humid environment",
       "watering": "Regular Watering",
@@ -456,6 +541,11 @@
   "edible": true,
   "benefits": ["Culinary", "Digestive aid"],
   "symbolism": ["Endurance", "Healing"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6+ hrs full sun or bright indirect light",
     "watering": "Allow topsoil to dry between waterings",
@@ -471,6 +561,11 @@
   "edible": true,
   "benefits": ["Culinary", "Aromatic", "Air purification"],
   "symbolism": ["Victory", "Protection"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6–8 hrs full sun or bright light indoors",
     "watering": "Keep soil lightly moist; do not overwater",
@@ -486,8 +581,9 @@
   "edible": true,
   "benefits": ["Skin healing", "Culinary", "Anti-inflammatory"],
   "symbolism": ["Joy", "Healing"],
-  "moon_phase": {
-  "growing": "Waxing Crescent Moon",
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
   "resting": "Waning Crescent Moon"
 },
   "faq": {
@@ -506,7 +602,8 @@
   "benefits": ["Calming", "Digestive", "Tea"],
   "symbolism": ["Peace", "Relaxation"],
   "moon_phase": {
-  "growing": "Waxing Crescent Moon",
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
   "resting": "Waning Crescent Moon"
 },
   "faq": {
@@ -558,6 +655,11 @@
   "edible": true,
   "benefits": ["Hydration", "Cooling", "Culinary"],
   "symbolism": ["Vitality", "Fertility"],
+   "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6–8 hrs of full sun",
     "watering": "Consistent watering, especially during fruiting",
@@ -1038,6 +1140,11 @@
   "edible": true,
   "benefits": ["Root vegetable", "Rich in antioxidants", "Heart health"],
   "symbolism": ["Vitality", "Strength"],
+  "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6–8 hrs full sun",
     "watering": "Moderate, keep soil consistently moist",
@@ -1053,6 +1160,11 @@
   "edible": true,
   "benefits": ["Leafy green", "Heat-tolerant", "High in vitamins A & C"],
   "symbolism": ["Resilience", "Nourishment"],
+  "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Full sun to part shade",
     "watering": "Keep soil evenly moist",
@@ -1068,6 +1180,11 @@
   "edible": true,
   "benefits": ["Root vegetable", "Rich in beta-carotene", "Good for vision"],
   "symbolism": ["Clarity", "Growth"],
+  "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Full sun",
     "watering": "Regular watering; keep soil moist",
@@ -1083,6 +1200,11 @@
   "edible": true,
   "benefits": ["Superfood", "High in fiber & nutrients", "Cold-hardy"],
   "symbolism": ["Healing", "Endurance"],
+  "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6+ hrs full sun",
     "watering": "Consistent moisture",
@@ -1098,6 +1220,11 @@
   "edible": true,
   "benefits": ["Culinary staple", "Rich in lycopene", "Heart health"],
   "symbolism": ["Love", "Fertility"],
+  "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6–8 hrs full sun",
     "watering": "Regular watering at base; avoid leaves",
@@ -1113,6 +1240,11 @@
   "edible": true,
   "benefits": ["Fast-growing", "Good for digestion", "Cleansing"],
   "symbolism": ["Simplicity", "Quick rewards"],
+  "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Full sun",
     "watering": "Keep soil consistently moist",
@@ -1128,6 +1260,11 @@
   "edible": true,
   "benefits": ["Fiber-rich", "Supports digestion", "Antioxidants"],
   "symbolism": ["Growth", "Healing"],
+  "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Full sun",
     "watering": "Regular watering, avoid waterlogging",
@@ -1143,6 +1280,11 @@
   "edible": true,
   "benefits": ["Low-calorie", "Good for digestion", "High in fiber"],
   "symbolism": ["Abundance", "Growth"],
+  "moon_phase": {
+  "growing": "New Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Full sun",
     "watering": "Frequent and deep watering",
