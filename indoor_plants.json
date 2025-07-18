@@ -6,6 +6,10 @@
     "edible": false,
     "benefits": ["Air purification (benzene, formaldehyde)", "Low‑light tolerance"],
     "symbolism": ["Luck", "Protection"],  
+    "moon_phase":{
+      "growing":"New Moon, Waxing Crescent Moon",
+      "resting":"Waning Crescent Moon"
+    },
     "faq": {
       "sunlight": "2–4 hrs indirect",
       "watering": "Every 2–4 weeks",
@@ -21,6 +25,10 @@
     "edible": false,
     "benefits": ["Air purification (benzene, ammonia)", "Aesthetic bloom"],
     "symbolism": ["Peace", "Healing"],
+    "moon_phase":{
+      "growing":"Waxing Crescent Moon",
+      "resting":"Waning Crescent Moon"
+    },
     "faq": {
       "sunlight": "4–6 hrs indirect",
       "watering": "Keep soil moist, water when top inch is dry",
@@ -36,6 +44,10 @@
     "edible": false,
     "benefits": ["Air purification (formaldehyde)", "Mold reduction"],
     "symbolism": ["Friendship", "Fidelity"],
+    "moon_phase":{
+      "growing":"Waxing Crescent Moon",
+      "resting":"Waning Crescent Moon"
+    },
     "faq": {
       "sunlight": "4–6 hrs indirect",
       "watering": "Every 7 days",
@@ -51,6 +63,10 @@
     "edible": false,
     "benefits": ["Air purification (formaldehyde, xylene)"],
     "symbolism": ["Positivity", "Protection"],
+    "moon_phase": {
+     "growing": "Waxing Crescent Moon",
+     "resting": "Waning Crescent Moon"
+    },
     "faq": {
       "sunlight": "4–6 hrs indirect",
       "watering": "Every 7–10 days",
@@ -66,6 +82,10 @@
     "edible": false,
     "benefits": ["Air purification", "Humidity booster"],
     "symbolism": ["Feng Shui luck", "Prosperity"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "4–6 hrs indirect",
       "watering": "Every 5–7 days",
@@ -81,6 +101,10 @@
     "edible": false,
     "benefits": ["Air purification", "Brightens décor"],
     "symbolism": ["Cheer", "Innocence"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "6–8 hrs direct",
       "watering": "Every 3–4 days",
@@ -326,6 +350,10 @@
     "edible": false,
     "benefits": ["Relaxation", "Fragrance"],
     "symbolism": ["Love", "Purity"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "4–6 hrs",
       "watering": "Every 5 days",
@@ -341,6 +369,10 @@
     "edible": true,
     "benefits": ["Beauty", "Fragrance", "Tea"],
     "symbolism": ["Love", "Beauty"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "6 hrs",
       "watering": "Every 4–5 days",
@@ -356,6 +388,10 @@
     "edible": false,
     "benefits": ["Aesthetic", "Humidity"],
     "symbolism": ["Luck", "Prosperity","Blessings","Long Life"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
     "faq": {
       "sunlight": "2–4 hrs indirect",
       "watering": "Keep roots covered; change water weekly",
@@ -450,6 +486,10 @@
   "edible": true,
   "benefits": ["Skin healing", "Culinary", "Anti-inflammatory"],
   "symbolism": ["Joy", "Healing"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Full sun preferred; can tolerate partial shade",
     "watering": "Moderate watering",
@@ -465,6 +505,10 @@
   "edible": true,
   "benefits": ["Calming", "Digestive", "Tea"],
   "symbolism": ["Peace", "Relaxation"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "4–6 hrs direct or bright light",
     "watering": "Keep soil lightly moist",
@@ -480,6 +524,10 @@
   "edible": true,
   "benefits": ["Sore throat relief", "Digestive health"],
   "symbolism": ["Sweetness", "Protection"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Full sun, 6–8 hrs",
     "watering": "Consistent watering during growing season",
@@ -525,6 +573,10 @@
   "edible": false,
   "benefits": ["Air purification", "Beauty", "Mood boosting"],
   "symbolism": ["Love", "Luxury", "Strength"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Indirect light; avoid direct sun",
     "watering": "Water every 7–10 days; allow drying between",
@@ -540,6 +592,10 @@
   "edible": false,
   "benefits": ["Air purification", "Aesthetic"],
   "symbolism": ["Health", "Abundance"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Water when top inch of soil is dry",
@@ -555,6 +611,10 @@
   "edible": false,
   "benefits": ["Air purification", "Humidity control", "Allergy relief"],
   "symbolism": ["Peace", "Elegance"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Keep soil evenly moist; not soggy",
@@ -570,6 +630,10 @@
   "edible": false,
   "benefits": ["Air purification", "Humidity regulation"],
   "symbolism": ["Sincerity", "Shelter"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Indirect sunlight or filtered light",
     "watering": "Keep soil moist; do not let dry out completely",
@@ -580,11 +644,15 @@
 },
 {
   "id": "plant_039",
-  "plant": "Gardenia",
+  "plant": "Gardenia Flowers",
   "indoor": true,
   "edible": true,
   "benefits": ["Aroma", "Stress relief", "Tea", "Traditional medicine"],
   "symbolism": ["Purity", "Secret love"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light to partial sun",
     "watering": "Keep soil moist but not soggy",
@@ -600,6 +668,10 @@
   "edible": false,
   "benefits": ["Air purification", "Low maintenance"],
   "symbolism": ["Prosperity", "Growth"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Low to bright indirect light",
     "watering": "Let soil dry completely between waterings",
@@ -610,11 +682,15 @@
 },
 {
   "id": "plant_041",
-  "plant": "Pachira Aquatica",
+  "plant": "Pachira Aquatica (Money Tree)",
   "indoor": true,
   "edible": false,
   "benefits": ["Air purification", "Feng Shui energy"],
   "symbolism": ["Prosperity", "Good luck"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Water when top 2–3 inches of soil are dry",
@@ -630,6 +706,10 @@
   "edible": false,
   "benefits": ["Feng Shui", "Stress reduction"],
   "symbolism": ["Wealth", "Longevity"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "At least 4 hrs of direct sunlight",
     "watering": "Water when soil is dry",
@@ -645,6 +725,10 @@
   "edible": false,
   "benefits": ["Air purification", "Low maintenance"],
   "symbolism": ["Good fortune", "Energy flow"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Filtered or indirect sunlight",
     "watering": "Water when soil is partly dry",
@@ -690,6 +774,10 @@
   "edible": false,
   "benefits": ["Air purification", "Low maintenance"],
   "symbolism": ["Perseverance", "Growth"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Low to bright indirect light",
     "watering": "Water when top 1–2 inches of soil are dry",
@@ -705,6 +793,11 @@
   "edible": false,
   "benefits": ["Aesthetic", "Fuzzy purple foliage"],
   "symbolism": ["Creativity", "Individuality"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
+
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Keep soil lightly moist",
@@ -720,6 +813,10 @@
   "edible": false,
   "benefits": ["Air purification", "Low maintenance", "Night oxygen release"],
   "symbolism": ["Resilience", "Protection"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Low to bright indirect light",
     "watering": "Water when soil is fully dry",
@@ -750,6 +847,10 @@
   "edible": false,
   "benefits": ["Ornamental foliage", "Bright yellow blooms"],
   "symbolism": ["Boldness", "Tropical beauty"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Keep soil consistently moist",
@@ -765,6 +866,10 @@
   "edible": false,
   "benefits": ["Air purification", "Decorative foliage"],
   "symbolism": ["Gratitude", "Reflection"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Low to medium indirect light",
     "watering": "Keep soil moist but not soggy",
@@ -780,6 +885,10 @@
   "edible": false,
   "benefits": ["Air purification", "Unique foliage"],
   "symbolism": ["Freshness", "Calmness"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Keep soil slightly moist",
