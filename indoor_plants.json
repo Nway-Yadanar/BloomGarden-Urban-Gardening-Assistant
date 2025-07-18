@@ -904,6 +904,10 @@
   "edible": false,
   "benefits": ["Air purification", "Trailing foliage"],
   "symbolism": ["Love", "Connection"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Allow soil to dry between waterings",
@@ -919,6 +923,10 @@
   "edible": false,
   "benefits": ["Decorative", "Unusual structure"],
   "symbolism": ["Whimsy", "Individuality"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Full sun to partial shade",
     "watering": "Loves wet soil; keep constantly moist",
@@ -932,7 +940,11 @@
   "plant": "String of Pearls",
   "indoor": true,
   "edible": false,
-  "benefits": ["Aesthetic trailing plant", "Drought-tolerant"],
+  "benefits": ["Decorative", "Drought-tolerant"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "symbolism": ["Elegance", "Minimalism"],
   "faq": {
     "sunlight": "Bright, indirect light",
@@ -947,8 +959,12 @@
   "plant": "Pilea Peperomioides",
   "indoor": true,
   "edible": false,
-  "benefits": ["Aesthetic", "Symbol of prosperity"],
+  "benefits": ["Decorative", "Symbol of prosperity"],
   "symbolism": ["Friendship", "Luck"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Water when top inch of soil is dry",
@@ -964,6 +980,10 @@
   "edible": false,
   "benefits": ["Bright tropical flowers", "Air purification"],
   "symbolism": ["Hospitality", "Abundance"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Water every 7–10 days",
@@ -979,6 +999,10 @@
   "edible": false,
   "benefits": ["Aesthetic foliage", "Indoor decoration"],
   "symbolism": ["Creativity", "Balance"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Water when top inch is dry",
@@ -994,6 +1018,10 @@
   "edible": false,
   "benefits": ["Air purification", "Large tropical foliage"],
   "symbolism": ["Expansion", "Boldness"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Water every 1–2 weeks",
@@ -1188,8 +1216,12 @@
   "plant": "African Violet",
   "indoor": true,
   "edible": false,
-  "benefits": ["Aesthetic", "Air quality", "Compact size"],
+  "benefits": ["Decorative", "Air quality", "Compact size"],
   "symbolism": ["Loyalty", "Faithfulness"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Bottom watering preferred; avoid leaf contact",
@@ -1203,8 +1235,12 @@
   "plant": "Begonia",
   "indoor": true,
   "edible": false,
-  "benefits": ["Blooming decor", "Air purifying"],
+  "benefits": ["Indoor decoration", "Air purifying"],
   "symbolism": ["Gratitude", "Caution"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Keep soil moist, not soggy",
@@ -1220,6 +1256,10 @@
   "edible": false,
   "benefits": ["Succulent", "Low-maintenance", "Air quality"],
   "symbolism": ["Endurance", "Healing"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright light to full sun",
     "watering": "Let soil dry between waterings",
@@ -1235,6 +1275,10 @@
   "edible": false,
   "benefits": ["Showy blooms", "Winter flowering"],
   "symbolism": ["Pride", "Determination"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright indirect light",
     "watering": "Water when soil is dry to touch",
@@ -1250,6 +1294,10 @@
   "edible": false,
   "benefits": ["Pollinator-friendly", "Colorful display"],
   "symbolism": ["Lasting affection", "Joy"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Full sun",
     "watering": "Water when topsoil dries",
@@ -1278,8 +1326,12 @@
   "plant": "Tillandsia (Air plants)",
   "indoor": true,
   "edible": false,
-  "benefits": ["No soil needed", "Creative décor"],
+  "benefits": ["No soil needed", "Decorative"],
   "symbolism": ["Freedom", "Adaptability"],
+    "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright, indirect light",
     "watering": "Soak in water 20–30 minutes weekly",
