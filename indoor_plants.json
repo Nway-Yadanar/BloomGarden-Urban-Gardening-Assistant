@@ -1295,11 +1295,16 @@
 },
 {
   "id": "plant_068",
-  "plant": "Capsicum",
+  "plant": "Capsicum(Bell Peppers)",
   "indoor": false,
   "edible": true,
   "benefits": ["Vitamin C-rich", "Colorful", "Boosts immunity"],
   "symbolism": ["Energy", "Vitality"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6+ hrs direct sun",
     "watering": "Moderate, keep soil moist",
@@ -1315,6 +1320,11 @@
   "edible": true,
   "benefits": ["Hydrating", "Low-calorie", "Fresh greens"],
   "symbolism": ["Simplicity", "Renewal"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Full sun to partial shade",
     "watering": "Frequent, shallow watering",
@@ -1330,6 +1340,11 @@
   "edible": true,
   "benefits": ["Staple crop", "Rich in potassium", "Versatile"],
   "symbolism": ["Sustenance", "Grounding"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "6+ hrs full sun",
     "watering": "Moderate, keep soil moist",
@@ -1345,6 +1360,11 @@
   "edible": true,
   "benefits": ["Easy to regrow", "Rich in vitamin K & C", "Flavor enhancer"],
   "symbolism": ["Regrowth", "Vitality"],
+  "moon_phase": {
+  "growing": "Waxing Crescent Moon",
+  "harvesting":"Full Moon",
+  "resting": "Waning Crescent Moon"
+},
   "faq": {
     "sunlight": "Bright light or sunny window",
     "watering": "Keep soil lightly moist",
