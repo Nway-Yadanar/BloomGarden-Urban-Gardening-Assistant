@@ -220,7 +220,7 @@
   "edible": true,
   "benefits": ["Antibacterial", "Flavoring", "Anti-inflammatory"],
   "symbolism": ["Joy", "Health"],
-   "moon_phase": {
+  "moon_phase": {
   "growing": "New Moon",
   "harvesting":"Full Moon",
   "resting": "Waning Crescent Moon"
@@ -321,7 +321,12 @@
     "indoor": true,
     "edible": true,
     "benefits": ["Relaxation", "Fragrance", "Beauty uses"],
-    "symbolism": ["Peace", "Calm"],
+    "symbolism": ["Peace", "Calm","Purity"],
+     "moon_phase": {
+      "growing": "First Quarter",
+      "harvesting": "Waning Gibbous Moon",
+      "resting": "Last Quarter"
+    },
     "faq": {
       "sunlight": "6–8 hrs",
       "watering": "Every 7–10 days",
@@ -358,7 +363,7 @@
   "benefits": ["Vitamin K", "Breath freshener", "Culinary use"],
   "symbolism": ["Celebration", "Good luck"],
    "moon_phase": {
-  "growing": "New Moon",
+  "growing": "Waxing Crescent Moon",
   "harvesting":"Full Moon",
   "resting": "Waning Crescent Moon"
 },
@@ -378,7 +383,7 @@
   "benefits": ["Flavor enhancer", "Rich in Vitamin C & K", "Cleansing"],
   "symbolism": ["Strength", "Protection"],
    "moon_phase": {
-  "growing": "New Moon",
+  "growing": "Waxing Crescent Moon",
   "harvesting":"Full Moon",
   "resting": "Waning Crescent Moon"
 },
@@ -502,7 +507,7 @@
     "benefits": ["Culinary", "Aroma"],
     "symbolism": ["Luck", "Prosperity"],
      "moon_phase": {
-  "growing": "New Moon",
+  "growing": "Waxing Crescent Moon",
   "harvesting":"Full Moon",
   "resting": "Waning Crescent Moon"
 },
@@ -562,7 +567,7 @@
   "benefits": ["Culinary", "Aromatic", "Air purification"],
   "symbolism": ["Victory", "Protection"],
    "moon_phase": {
-  "growing": "New Moon",
+  "growing": "Waxing Crescent Moon",
   "harvesting":"Full Moon",
   "resting": "Waning Crescent Moon"
 },
@@ -1201,7 +1206,7 @@
   "benefits": ["Superfood", "High in fiber & nutrients", "Cold-hardy"],
   "symbolism": ["Healing", "Endurance"],
   "moon_phase": {
-  "growing": "New Moon",
+  "growing": "First Quarter Moon",
   "harvesting":"Full Moon",
   "resting": "Waning Crescent Moon"
 },
@@ -1501,7 +1506,87 @@
     "avoid": "Dark rooms, standing water",
     "notes": "Non-toxic"
   }
-}
+},
+ {
+    "id": "plant_079",
+    "plant": "Mugwort",
+    "indoor": false,
+    "edible": true,
+    "benefits": ["Medicinal", "Repels insects", "Dream herb"],
+    "symbolism": ["Protection", "Intuition"],
+    "moon_phase": {
+      "growing": "Waning Gibbous Moon",
+      "harvesting": "Full Moon",
+      "resting": "Waning Crescent Moon"
+    },
+    "faq": {
+      "sunlight": "Full sun to partial shade",
+      "watering": "Moderate, drought-tolerant once established",
+      "soil": "Well-draining",
+      "avoid": "Overwatering, rich soil",
+      "notes": "Mildly edible; used in teas and rituals"
+    }
+  },
+  {
+    "id": "plant_080",
+    "plant": "Sagebrush",
+    "indoor": false,
+    "edible": false,
+    "benefits": ["Aromatic", "Repels pests", "Medicinal uses"],
+    "symbolism": ["Cleansing", "Endurance"],
+    "moon_phase": {
+      "growing": "Waning Gibbous Moon",
+      "harvesting": "Full Moon",
+      "resting": "Waning Crescent Moon"
+    },
+    "faq": {
+      "sunlight": "Full sun",
+      "watering": "Low, very drought-tolerant",
+      "soil": "Poor, sandy or rocky soil",
+      "avoid": "Too much water or shade",
+      "notes": "Not edible"
+    }
+  },
+  {
+    "id": "plant_081",
+    "plant": "Camphor Plant",
+    "indoor": false,
+    "edible": false,
+    "benefits": ["Medicinal oil", "Aromatic", "Insect repellent"],
+    "symbolism": ["Purification", "Calm"],
+    "moon_phase": {
+      "growing": "Waning Gibbous Moon",
+      "harvesting": "Last Quarter",
+      "resting": "Waning Crescent Moon"
+    },
+    "faq": {
+      "sunlight": "Full sun",
+      "watering": "Moderate",
+      "soil": "Well-drained, fertile soil",
+      "avoid": "Waterlogging",
+      "notes": "Camphor is toxic if ingested"
+    }
+  },
+  {
+    "id": "plant_082",
+    "plant": "Yarrow",
+    "indoor": false,
+    "edible": false,
+    "benefits": ["Pollinator-friendly", "Medicinal", "Easy to grow"],
+    "symbolism": ["Healing", "Courage"],
+    "moon_phase": {
+      "growing": "Waning Gibbous Moon",
+      "harvesting": "Full Moon",
+      "resting": "Waning Crescent Moon"
+    },
+    "faq": {
+      "sunlight": "Full sun",
+      "watering": "Low to moderate",
+      "soil": "Well-drained, sandy",
+      "avoid": "Heavy, wet soil",
+      "notes": "Not typically eaten"
+    }
+  }
 
 
 
