@@ -2,6 +2,7 @@
   {
     "id": "plant_001",
     "plant": "Snake Plant",
+    "category": "Indoor",
     "indoor": true,
     "edible": false,
     "benefits": ["Air purification (benzene, formaldehyde)", "Low‑light tolerance"],
@@ -16,11 +17,22 @@
       "soil": "Sandy, well‑draining",
       "avoid": "Overwatering, Direct sunlight",
       "notes": "Toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "Snake Plant Care Guide",
+        "url": "https://example.com/snake-plant"
+      },
+      {
+        "title": "Best Pots for Snake Plants",
+        "url": "https://example.com/snake-pot"
+      }
+    ]
   },
   {
     "id": "plant_002",
     "plant": "Peace Lily",
+    "category": "Indoor",
     "indoor": true,
     "edible": false,
     "benefits": ["Air purification (benzene, ammonia)", "Aesthetic bloom"],
@@ -40,6 +52,7 @@
   {
     "id": "plant_003",
     "plant": "English Ivy",
+    "category": "Indoor",
     "indoor": true,
     "edible": false,
     "benefits": ["Air purification (formaldehyde)", "Mold reduction"],
@@ -59,6 +72,7 @@
   {
     "id": "plant_004",
     "plant": "Spider Plant",
+    "category": "Indoor",
     "indoor": true,
     "edible": false,
     "benefits": ["Air purification (formaldehyde, xylene)"],
@@ -78,6 +92,7 @@
   {
     "id": "plant_005",
     "plant": "Bamboo Palm",
+    "category": "Indoor",
     "indoor": true,
     "edible": false,
     "benefits": ["Air purification", "Humidity booster"],
@@ -97,6 +112,7 @@
   {
     "id": "plant_006",
     "plant": "Gerbera Daisy",
+    "category": "Decoration",
     "indoor": true,
     "edible": false,
     "benefits": ["Air purification", "Brightens décor"],
@@ -116,6 +132,7 @@
   {
     "id": "plant_007",
     "plant": "Aloe Vera",
+    "category": "Herb",
     "indoor": true,
     "edible": true,
     "benefits": ["Skin healing", "Air purification","Anti‑inflammatory"],
@@ -136,6 +153,7 @@
   {
     "id": "plant_008",
     "plant": "Rosemary",
+    "category": "Medicinal Herb",
     "indoor": true,
     "edible": true,
     "benefits": ["Memory boost", "Anti‑inflammatory", "Cooking", "Hair-Growth"],
@@ -156,6 +174,7 @@
   {
   "id": "plant_009",
   "plant": "Thai Basil",
+  "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Digestive aid", "Culinary (Asian dishes)", "Aromatic"],
@@ -176,6 +195,7 @@
 {
   "id": "plant_010",
   "plant": "Sweet Basil",
+  "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Anti‑inflammatory", "Antioxidant", "Cooking"],
@@ -196,6 +216,7 @@
 {
   "id": "plant_011",
   "plant": "Tulsi (Holy Basil)",
+  "category": "Medicinal Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Immunity boost", "Medicinal herb", "Air purification"],
@@ -216,6 +237,7 @@
 {
   "id": "plant_012",
   "plant": "Greek Oregano",
+  "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Antibacterial", "Flavoring", "Anti-inflammatory"],
@@ -237,6 +259,7 @@
 {
   "id": "plant_013",
   "plant": "Italian Oregano",
+  "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Culinary", "Digestive support", "Anti-inflammatory"],
@@ -257,6 +280,7 @@
    {
     "id": "plant_014",
     "plant": "Thyme",
+    "category": "Culinary Herb",
     "indoor": true,
     "edible": true,
     "benefits": ["Antiseptic", "Cooking", "Aroma"],
@@ -277,6 +301,7 @@
   {
   "id": "plant_015",
   "plant": "Spearmint",
+  "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Digestive aid", "Aroma", "Culinary"],
@@ -297,6 +322,7 @@
   {
   "id": "plant_016",
   "plant": "Peppermint",
+  "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Headache relief", "Fresh breath", "Digestion"],
@@ -318,6 +344,7 @@
   {
     "id": "plant_017",
     "plant": "Lavender",
+    "category": "Herb",
     "indoor": true,
     "edible": true,
     "benefits": ["Relaxation", "Fragrance", "Beauty uses"],
@@ -338,6 +365,7 @@
   {
     "id": "plant_018",
     "plant": "Chives",
+    "category": "Culinary Herb",
     "indoor": true,
     "edible": true,
     "benefits": ["Cooking", "Pest repellent"],
@@ -358,6 +386,7 @@
   {
   "id": "plant_019",
   "plant": "Curly Parsley",
+  "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Vitamin K", "Breath freshener", "Culinary use"],
@@ -378,6 +407,7 @@
 {
   "id": "plant_020",
   "plant": "Flat-Leaf Parsley",
+  "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Flavor enhancer", "Rich in Vitamin C & K", "Cleansing"],
@@ -400,6 +430,7 @@
   {
     "id": "plant_021",
     "plant": "Cilantro",
+    "category": "Culinary Herb",
     "indoor": true,
     "edible": true,
     "benefits": ["Detox", "Flavor", "Culinary"],
@@ -421,6 +452,7 @@
   {
     "id": "plant_022",
     "plant": "Jasminum polyanthum (Indoor Jasmine)",
+    "category": "Flower",
     "indoor": true,
     "edible": false,
     "benefits": ["Relaxation", "Fragrance"],
@@ -440,6 +472,7 @@
   {
     "id": "plant_023",
     "plant": "Mini Rose",
+    "category": "Flower",
     "indoor": true,
     "edible": true,
     "benefits": ["Beauty", "Fragrance", "Tea"],
@@ -459,6 +492,7 @@
   {
     "id": "plant_024",
     "plant": "Lucky Bamboo",
+    "category": "Decoration",
     "indoor": true,
     "edible": false,
     "benefits": ["Aesthetic", "Humidity"],
@@ -481,6 +515,7 @@
   {
     "id": "plant_025",
     "plant": "Sage",
+    "category": "Medicinal Herb",
     "indoor": true,
     "edible": true,
     "benefits": ["Culinary", "Aroma", "Cleansing"],
@@ -502,6 +537,7 @@
   {
     "id": "plant_026",
     "plant": "Lemon Balm",
+    "category": "Culinary Herb",
     "indoor": true,
     "edible": true,
     "benefits": ["Culinary", "Aroma"],
@@ -522,6 +558,7 @@
   {
     "id": "plant_027",
     "plant": "Lemongrass",
+    "category": "Culinary Herb",
     "indoor": true,
     "edible": true,
     "benefits": ["Culinary", "Aroma"],
@@ -542,6 +579,7 @@
   {
     "id": "plant_028",
   "plant": "Tarragon",
+  "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Culinary", "Digestive aid"],
@@ -562,6 +600,7 @@
 {
   "id": "plant_029",
   "plant": "Bay Leaf(Bay Laurel)",
+  "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
   "benefits": ["Culinary", "Aromatic", "Air purification"],
@@ -582,6 +621,7 @@
 {
   "id": "plant_030",
   "plant": "Calendula",
+  "category": "Flower",
   "indoor": true,
   "edible": true,
   "benefits": ["Skin healing", "Culinary", "Anti-inflammatory"],
@@ -1556,7 +1596,7 @@
     "symbolism": ["Purification", "Calm"],
     "moon_phase": {
       "growing": "Waning Gibbous Moon",
-      "harvesting": "Last Quarter",
+      "harvesting": "Last Quarter Moon",
       "resting": "Waning Crescent Moon"
     },
     "faq": {
