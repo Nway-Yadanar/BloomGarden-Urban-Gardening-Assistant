@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="gardening.css">
+<title>🌻 Plant FAQ</title>
 
+</head>
+<body>
+
+<header>🌻 Plant FAQ</header>
+
+<div class="pill-container" id="categoryButtons">
+  <!-- Buttons will be dynamically added here -->
+</div>
+
+<div>
+  <label for="plantSelect">🌿 Select a Plant:</label><br />
+  <select id="plantSelect">
+    <option value="">-- Choose a plant --</option>
+  </select>
+</div>
+
+<div id="plantDetails" class="plant-output"></div>
+
+<script>
+     let plants = [];
+  let categories = new Set();
+
+  // Load JSON file (adjust path if needed)
+  fetch('../data/indoor_plants.json')
+    .then(res => res.json())
+    .then(data => {
+      plants = data;
+
+      // Extract unique categories from plants
+      plants.forEach(p => categories.add(p.category));
+
+      createCategoryButtons();
+    })
+    .catch(err => {
+      console.error('Error loading plants.json:', err);
+    });
+  // keep a variable to track the active button
+  let activeButton = null;
+
+  function createCategoryButtons() {
+    const container = document.getElementById('categoryButtons');
+    categories.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.textContent = cat;
+      btn.className = 'pill-button';
+      btn.onclick = () => {
+        updateDropdown(cat);
+
+        // Remove active from previous button
+        if (activeButton) activeButton.classList.remove('active');
+
+        // Set current button active
+        btn.classList.add('active');
+        activeButton = btn;
+      };
+      container.appendChild(btn);
+    });
+  }
+
+  function updateDropdown(category) {
+    const select = document.getElementById('plantSelect');
+    select.innerHTML = ''; // clear all options
+
+    const filteredPlants = plants.filter(p => p.category === category);
+
+    filteredPlants.forEach(plant => {
+      const option = document.createElement('option');
+      option.value = plant.id;
+      option.textContent = plant.plant;
+      select.appendChild(option);
+    });
+
+    if (filteredPlants.length > 0) {
+      // Automatically select the first plant
+      select.value = filteredPlants[0].id;
+
+      // Trigger change event manually to update details
+      select.dispatchEvent(new Event('change'));
+    } else {
+      // If no plants, clear details
+      document.getElementById('plantDetails').innerHTML = '';
+    }
+  }
+   // Show plant info when user selects a plant
+  document.getElementById('plantSelect').addEventListener('change', function () {
+    const selectedId = this.value;
+    const plant = plants.find(p => p.id === selectedId);
+    const detailsDiv = document.getElementById('plantDetails');
+
+    if (plant) {
+      detailsDiv.innerHTML = `
+        <h3>${plant.plant}</h3>
+        <p><strong>Category:</strong> ${plant.category}</p>
+        <p><strong>Benefits:</strong> ${plant.benefits.join(', ')}</p>
+        <p><strong>Symbolism:</strong> ${plant.symbolism.join(', ')}</p>
+        <p><strong>Moon Phases:</strong> Growing - ${plant.moon_phase.growing}, Resting - ${plant.moon_phase.resting}</p>
+        <p><strong>Common FAQs</strong> 
+        <p><strong>Sunlight:</strong> ${plant.faq.sunlight}</p>
+        <p><strong>Watering:</strong> ${plant.faq.watering}</p>
+        <p><strong>Soil Type:</strong> ${plant.faq.soil}</p>
+        <p><strong>What to Avoid:</strong> ${plant.faq.avoid}</p>
+        <p><strong>Additional Notes:</strong> ${plant.faq.notes}</p>
+        <p><strong>What to Avoid:</strong> ${plant.faq.avoid}</p>
+       
+        
+
+        
+      `;
+      // Assuming `plant` is the selected plant object
+let resourcesHTML = '';
+
+if (plant.resources && plant.resources.length > 0) {
+  resourcesHTML += `<p><strong>Resources to check out:</strong></p><ul>`;
+  plant.resources.forEach(resource => {
+    resourcesHTML += `<li><a href="${resource.url}" target="_blank" rel="noopener noreferrer">${resource.title}</a></li>`;
+  });
+  resourcesHTML += `</ul>`;
+} else {
+  resourcesHTML += `<p><strong>Resources:</strong> None available.</p>`;
+}
+
+    } else {
+      detailsDiv.innerHTML = '';
+    }
+  });
+</script>
+</body>
+</html>
