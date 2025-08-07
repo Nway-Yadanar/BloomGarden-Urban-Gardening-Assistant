@@ -232,7 +232,17 @@
     "soil": "Loamy, well‑draining with compost",
     "avoid": "Cold weather, Overwatering",
     "notes": "Non‑toxic and sacred in many cultures"
-  }
+  },
+  "resources": [
+      {
+        "title": "History of Tulsi",
+        "url": "https://pragyata.com/the-genetics-and-history-of-the-indian-tulsi/"
+      },
+      {
+        "title": "About Tulsi ",
+        "url": "https://www.britannica.com/plant/holy-basil"
+      }
+    ]
 },
 {
   "id": "plant_012",
@@ -720,7 +730,7 @@
 {
   "id": "plant_035",
   "plant": "Orchid (Phalaenopsis)",
-  "category": "Flower",
+  "category": "Orchid",
   "indoor": true,
   "edible": false,
   "benefits": ["Air purification", "Beauty", "Mood boosting"],
@@ -1708,7 +1718,7 @@
   {
     "id": "plant_084",
     "plant": "Vanilla Orchid",
-    "category": "Epiphyte",
+    "category": "Orchid",
     "indoor": true,
     "edible": true,
     "benefits": ["Produces vanilla pods", "Air-purifying and ornamental"],
@@ -1734,7 +1744,7 @@
   {
     "id": "plant_085",
     "plant": "Phalaenopsis Orchid",
-    "category": "Epiphyte / Orchid",
+    "category": "Orchid",
     "indoor": true,
     "edible": false,
     "benefits": ["Improves indoor aesthetics", "Boosts mood"],
@@ -1760,7 +1770,7 @@
   {
     "id": "plant_086",
     "plant": "Dendrobium Orchid",
-    "category": "Epiphyte",
+    "category": "Orchid",
     "indoor": true,
     "edible": false,
     "benefits": ["Improves indoor aesthetics", "Boosts mood"],
@@ -1834,7 +1844,200 @@
         "url": "https://example.com/birdnest-fern"
       }
     ]
-  }
+  },
+  {
+  "id": "plant_089",
+  "plant": "Carnation (Dianthus caryophyllus)",
+  "category": "Flower/Medicinal",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Used in herbal teas", "Soothes anxiety", "Edible petals", "Pollinator-friendly"],
+  "symbolism": ["Love", "Admiration"],
+  "moon_phase": {
+    "growing": "Waxing Moon",
+    "resting": "Waning Moon"
+  },
+  "faq": {
+    "sunlight": "Full sun",
+    "watering": "Moderate, let soil dry slightly",
+    "soil": "Well-draining, neutral to alkaline",
+    "avoid": "Overwatering, poor air circulation",
+    "notes": "Suitable for balcony/urban containers"
+  },
+  "resources": [
+    {
+      "title": "Carnation Tea Benefits",
+      "url": "https://www.fnp.com/article/what-are-the-health-benefits-of-carnations"
+    }
+  ]
+},
+{
+  "id": "plant_090",
+  "plant": "Sweet William (Dianthus barbatus)",
+  "category": "Flower / Medicinal ",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Attracts bees and butterflies", "Petals used in garnishes", "Astringent in traditional remedies"],
+  "symbolism": ["Gallantry", "Finesse"],
+  "moon_phase": {
+    "growing": "First Quarter Moon",
+    "resting": "Last Quarter Moon"
+  },
+  "faq": {
+    "sunlight": "Full sun to partial shade",
+    "watering": "Water when topsoil is dry",
+    "soil": "Rich, well-draining",
+    "avoid": "Poor air flow",
+    "notes": "Great for vertical or balcony gardening"
+  },
+  "resources": [
+    {
+      "title": "Sweet William Growing Guide",
+      "url": "https://example.com/sweet-william-care"
+    }
+  ]
+},
+{
+  "id": "plant_091",
+  "plant": "Hollyhock (Alcea rosea)",
+  "category": "Flower / Medicinal",
+  "indoor": false,
+  "edible": true,
+  "benefits": ["Pollinator-friendly", "Soothes sore throat and skin irritation", "Tall flowering plant for backdrops"],
+  "symbolism": ["Ambition", "Fertility"],
+  "moon_phase": {
+    "growing": "New Moon",
+    "resting": "Waning Gibbous Moon"
+  },
+  "faq": {
+    "sunlight": "Full sun",
+    "watering": "Moderate, deep watering",
+    "soil": "Moist, fertile soil",
+    "avoid": "Overcrowding",
+    "notes": "Perfect for vertical and wall gardens"
+  },
+  "resources": [
+    {
+      "title": "Medicinal Uses of Hollyhock",
+      "url": "https://www.rxlist.com/supplements/hollyhock.htm"
+    }
+  ]
+},
+{
+  "id": "plant_093",
+  "plant": "Chrysanthemum (Chrysanthemum morifolium)",
+  "category": "Flower / Medicinal ",
+  "indoor": true,
+  "edible": true,
+  "benefits": ["Used in traditional teas", "Natural air purifier", "Anti-inflammatory"],
+  "symbolism": ["Longevity", "Joy"],
+  "moon_phase": {
+    "growing": "Full Moon",
+    "resting": "Waning Crescent Moon"
+  },
+  "faq": {
+    "sunlight": "Bright, indirect light indoors",
+    "watering": "Keep soil evenly moist",
+    "soil": "Well-drained, fertile soil",
+    "avoid": "Drought conditions",
+    "notes": "Ideal for indoor or container gardens"
+  },
+  "resources": [
+    {
+      "title": "Chrysanthemum Benefits",
+      "url": "https://the-qi.com/blogs/journal/the-history-and-healing-power-of-chrysanthemum?srsltid=AfmBOooY6pSbfBKuzY4W6Eg4AizDdaTkN2ZFB1S_npSMyNtMEZ7yO6xT"
+    }
+  ]
+},
+{
+  "id": "plant_094",
+  "plant": "Aster 'Sweet Dream'",
+  "category": "Flower / Pollinator-Friendly",
+  "indoor": false,
+  "edible": false,
+  "benefits": ["Attracts bees and butterflies", "Late-season bloom", "Brightens small spaces"],
+  "symbolism": ["Patience", "Daintiness"],
+  "moon_phase": {
+    "growing": "Waxing Gibbous Moon",
+    "resting": "Waning Gibbous Moon"
+  },
+  "faq": {
+    "sunlight": "Full sun to partial shade",
+    "watering": "Moderate, don’t let soil dry out",
+    "soil": "Loamy, well-draining",
+    "avoid": "Waterlogged soil",
+    "notes": "Balcony and terrace garden-friendly"
+  },
+  "resources": [
+    {
+      "title": "Beauty of Asters",
+      "url": "https://wildseedproject.net/blog/the-beauty-and-pollinator-benefits-of-asters-and-goldenrods"
+    }
+  ]
+},
+{
+  "id": "plant_095",
+  "plant": "Morning Glory (Ipomoea spp.)",
+  "category": "Climber / Flower / Medicinal",
+  "indoor": false,
+  "edible": false,
+  "benefits": ["Climber for vertical spaces", "Pollinator magnet", "Traditional uses in laxative remedies (seeds)"],
+  "symbolism": ["Love in vain", "Mortality"],
+  "moon_phase": {
+    "growing": "New Moon",
+    "resting": "Waning Crescent Moon"
+  },
+  "faq": {
+    "sunlight": "Full sun",
+    "watering": "Keep soil moist but not soggy",
+    "soil": "Well-drained, average soil",
+    "avoid": "Cold drafts, overwatering",
+    "notes": "Perfect for vertical/trellis gardening"
+  },
+  "resources": [
+    {
+      "title": "Morning Glory Guide",
+      "url": "https://www.thespruce.com/how-to-grow-morning-glories-4125567"
+    }
+  ]
+},
+{
+  "id": "plant_096",
+  "plant": "Moringa (Moringa oleifera)",
+  "category": "Medicinal Herb",
+  "indoor": false,
+  "edible": true,
+  "benefits": [
+    "Highly nutritious leaves rich in vitamins and minerals",
+    "Seeds purify water",
+    "Anti-inflammatory and antioxidant properties"
+  ],
+  "symbolism": ["Health", "Sustainability"],
+  "moon_phase": {
+    "growing": "New Moon, First Quarter",
+    "resting": "Last Quarter"
+  },
+  "faq": {
+    "sunlight": "Full sun (6–8 hrs)",
+    "watering": "Moderate, drought-tolerant once established",
+    "soil": "Well-drained, loamy",
+    "avoid": "Waterlogging",
+    "notes": "Contributes to food security and water safety in developing regions"
+  },
+  "resources": [
+    {
+      "title": "Benefits of Moringa-Oleifera",
+      "url": "https://www.healthline.com/nutrition/6-benefits-of-moringa-oleifera"
+    }
+  ]
+},
+
+
+
+
+
+
+
 
 
 
