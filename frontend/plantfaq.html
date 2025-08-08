@@ -3,29 +3,46 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="gardening.css">
 <title>🌻 Plant FAQ</title>
+<link rel="stylesheet" href="gardening.css">
 
 </head>
 <body>
+<header>
+  
+  <!-- Hamburger Icon -->
+  <div class="hamburger" onclick="toggleSidebar()">BloomGarden🌷☰</div>🌻 Plant FAQ
+</header>
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="plantfaq.html">🌿 Plant FAQ</a>
+ 
+      <a href="game.html">🌱 Growth Game</a>
+      <a href="journal.html">📔 Plant Journal</a>
+      <a href="moon.html">🌕 Lunar Recommender</a>
+    </nav>
+  </div>
 
-<header>🌻 Plant FAQ</header>
+<!--   
+  <header>🌻 Plant FAQ</header> -->
+<div class="main-content"> 
+  <div class="pill-container" id="categoryButtons">
+    <!-- Buttons will be dynamically added here -->
+  </div>
 
-<div class="pill-container" id="categoryButtons">
-  <!-- Buttons will be dynamically added here -->
+  <div>
+    <label for="plantSelect">🌿 Select a Plant:</label><br />
+    <select id="plantSelect">
+      <option value="">Choose a plant</option>
+    </select>
+  </div>
+
+  <div id="plantDetails" class="plant-output"></div>
 </div>
-
-<div>
-  <label for="plantSelect">🌿 Select a Plant:</label><br />
-  <select id="plantSelect">
-    <option value="">-- Choose a plant --</option>
-  </select>
-</div>
-
-<div id="plantDetails" class="plant-output"></div>
-
 <script>
-     let plants = [];
+  let plants = [];
   let categories = new Set();
 
   // Load JSON file (adjust path if needed)
@@ -42,6 +59,7 @@
     .catch(err => {
       console.error('Error loading plants.json:', err);
     });
+
   // keep a variable to track the active button
   let activeButton = null;
 
@@ -89,48 +107,53 @@
       document.getElementById('plantDetails').innerHTML = '';
     }
   }
-   // Show plant info when user selects a plant
+
+  // Show plant info when user selects a plant
   document.getElementById('plantSelect').addEventListener('change', function () {
     const selectedId = this.value;
     const plant = plants.find(p => p.id === selectedId);
     const detailsDiv = document.getElementById('plantDetails');
 
     if (plant) {
+      let resourcesHTML = '';
+
+      if (plant.resources && plant.resources.length > 0) {
+        resourcesHTML += `<p><strong>Resources to check out:</strong></p><ul>`;
+        plant.resources.forEach(resource => {
+          resourcesHTML += `<li><a href="${resource.url}" target="_blank" rel="noopener noreferrer">${resource.title}</a></li>`;
+        });
+        resourcesHTML += `</ul>`;
+      } else {
+        resourcesHTML += `<p><strong>Resources:</strong> None available.</p>`;
+      }
+
       detailsDiv.innerHTML = `
-        <h3>${plant.plant}</h3>
-        <p><strong>Category:</strong> ${plant.category}</p>
-        <p><strong>Benefits:</strong> ${plant.benefits.join(', ')}</p>
-        <p><strong>Symbolism:</strong> ${plant.symbolism.join(', ')}</p>
-        <p><strong>Moon Phases:</strong> Growing - ${plant.moon_phase.growing}, Resting - ${plant.moon_phase.resting}</p>
-        <p><strong>Common FAQs</strong> 
-        <p><strong>Sunlight:</strong> ${plant.faq.sunlight}</p>
-        <p><strong>Watering:</strong> ${plant.faq.watering}</p>
-        <p><strong>Soil Type:</strong> ${plant.faq.soil}</p>
-        <p><strong>What to Avoid:</strong> ${plant.faq.avoid}</p>
-        <p><strong>Additional Notes:</strong> ${plant.faq.notes}</p>
-        <p><strong>What to Avoid:</strong> ${plant.faq.avoid}</p>
-       
-        
-
-        
+        <h3>🍁 ${plant.plant} 🍁</h3>
+        <p><strong>📜 Category:</strong> ${plant.category}</p>
+        <p><strong>✨ Benefits:</strong> ${plant.benefits.join(', ')}</p>
+        <p><strong>🕯️ Symbolism:</strong> ${plant.symbolism.join(', ')}</p>
+        <p><strong>🌙 Moon Phases:</strong> Growing: ${plant.moon_phase.growing}, Resting: ${plant.moon_phase.resting}</p>
+        <h3>🗒️ Common FAQs</h3>
+        <p><strong>☀️ Sunlight:</strong> ${plant.faq.sunlight}</p>
+        <p><strong>💦 Watering:</strong> ${plant.faq.watering}</p>
+        <p><strong>🌱 Soil Type:</strong> ${plant.faq.soil}</p>
+        <p><strong>🚫 What to Avoid:</strong> ${plant.faq.avoid}</p>
+        <p><strong>✒️ Additional Notes:</strong> ${plant.faq.notes}</p>
+        ${resourcesHTML}
       `;
-      // Assuming `plant` is the selected plant object
-let resourcesHTML = '';
-
-if (plant.resources && plant.resources.length > 0) {
-  resourcesHTML += `<p><strong>Resources to check out:</strong></p><ul>`;
-  plant.resources.forEach(resource => {
-    resourcesHTML += `<li><a href="${resource.url}" target="_blank" rel="noopener noreferrer">${resource.title}</a></li>`;
-  });
-  resourcesHTML += `</ul>`;
-} else {
-  resourcesHTML += `<p><strong>Resources:</strong> None available.</p>`;
-}
-
     } else {
       detailsDiv.innerHTML = '';
     }
   });
+
+  // Sidebar toggle function
+  const sidebar = document.getElementById('sidebar');
+const hamburger = document.querySelector('.hamburger');
+
+hamburger.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+});
+
 </script>
 </body>
 </html>
