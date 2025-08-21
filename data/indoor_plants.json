@@ -132,7 +132,7 @@
   {
     "id": "plant_007",
     "plant": "Aloe Vera",
-    "category": "Medicinal Herb ",
+    "category": "Medicinal Herb",
     "indoor": true,
     "edible": true,
     "benefits": ["Skin healing", "Air purification","Anti‑inflammatory"],
@@ -923,24 +923,9 @@
     "notes": "Not suitable for small pots; needs outdoor container or pond"
   }
 },
+
 {
-  "id": "plant_045",
-  "plant": "Pitcher Plant",
-  "category": "Carnivorous",
-  "indoor": true,
-  "edible": false,
-  "benefits": ["Pest control", "Unique appearance"],
-  "symbolism": ["Curiosity", "Adaptation"],
-  "faq": {
-    "sunlight": "Bright, indirect sunlight",
-    "watering": "Distilled or rainwater; keep soil moist",
-    "soil": "Sphagnum moss or peat mix, low-nutrient",
-    "avoid": "Tap water, fertilizing, low humidity",
-    "notes": "Non-toxic to pets, but not for consumption"
-  }
-},
-{
-  "id": "plant_046",
+  "id": "plant_047",
   "plant": "Pothos",
   "category": "Decoration",
   "indoor": true,
@@ -960,7 +945,7 @@
   }
 },
 {
-  "id": "plant_047",
+  "id": "plant_048",
   "plant": "Purple Passion Plant",
   "category": "Decoration",
   "indoor": true,
@@ -981,7 +966,7 @@
   }
 },
 {
-  "id": "plant_048",
+  "id": "plant_049",
   "plant": "Moonshine Snake Plant",
   "category": "Succulent",
   "indoor": true,
@@ -1001,7 +986,7 @@
   }
 },
 {
-  "id": "plant_049",
+  "id": "plant_050",
   "plant": "Wintergreen Berries",
   "category": "Medicinal Herb",
   "indoor": false,
@@ -1017,7 +1002,7 @@
   }
 },
 {
-  "id": "plant_050",
+  "id": "plant_051",
   "plant": "Zebra Plant",
   "category": "Decoration",
   "indoor": true,
@@ -1037,7 +1022,7 @@
   }
 },
 {
-  "id": "plant_051",
+  "id": "plant_052",
   "plant": "Prayer Plant 'Beauty Kim'",
   "category": "Decoration",
   "indoor": true,
@@ -1057,7 +1042,7 @@
   }
 },
 {
-  "id": "plant_052",
+  "id": "plant_053",
   "plant": "Blue Star Fern",
   "category": "Decoration",
   "indoor": true,
@@ -1077,7 +1062,7 @@
   }
 },
 {
-  "id": "plant_053",
+  "id": "plant_054",
   "plant": "Tricolor Hoya 'Krimson Queen'",
   "category": "Decoration",
   "indoor": true,
@@ -1097,7 +1082,7 @@
   }
 },
 {
-  "id": "plant_054",
+  "id": "plant_055",
   "plant": "Corkscrew Rush",
   "category": "Aquatic",
   "indoor": true,
@@ -1117,7 +1102,7 @@
   }
 },
 {
-  "id": "plant_055",
+  "id": "plant_056",
   "plant": "String of Pearls",
   "category": "Succulent",
   "indoor": true,
@@ -1137,7 +1122,7 @@
   }
 },
 {
-  "id": "plant_056",
+  "id": "plant_057",
   "plant": "Pilea Peperomioides",
   "category": "Decoration",
   "indoor": true,
@@ -1157,7 +1142,7 @@
   }
 },
 {
-  "id": "plant_057",
+  "id": "plant_058",
   "plant": "Anthurium",
   "category": "Flower",
   "indoor": true,
@@ -1177,7 +1162,7 @@
   }
 },
 {
-  "id": "plant_058",
+  "id": "plant_059",
   "plant": "Begonia ",
   "category": "Flower",
   "indoor": true,
@@ -1197,7 +1182,7 @@
   }
 },
 {
-  "id": "plant_059",
+  "id": "plant_060",
   "plant": "Split Leaf Philodendron",
   "category": "Decoration",
   "indoor": true,
@@ -1218,7 +1203,7 @@
 },
 {
   
-  "id": "plant_060",
+  "id": "plant_061",
   "plant": "Beetroot",
   "category": "Vegetable",
   "indoor": false,
@@ -1239,7 +1224,7 @@
   }
 },
 {
-  "id": "plant_061",
+  "id": "plant_062",
   "plant": "Malaga Spinach",
   "category": "Vegetable",
   "indoor": false,
@@ -1260,7 +1245,7 @@
   }
 },
 {
-  "id": "plant_062",
+  "id": "plant_063",
   "plant": "Carrot",
   "category": "Vegetable",
   "indoor": false,
@@ -1281,7 +1266,7 @@
   }
 },
 {
-  "id": "plant_063",
+  "id": "plant_064",
   "plant": "Kale",
   "category": "Vegetable",
   "indoor": false,
@@ -1302,7 +1287,7 @@
   }
 },
 {
-  "id": "plant_064",
+  "id": "plant_065",
   "plant": "Tomatoes",
   "category": "Vegetable",
   "indoor": false,
@@ -1323,7 +1308,7 @@
   }
 },
 {
-  "id": "plant_065",
+  "id": "plant_066",
   "plant": "Radish",
   "category": "Vegetable",
   "indoor": false,
@@ -1344,7 +1329,7 @@
   }
 },
 {
-  "id": "plant_066",
+  "id": "plant_067",
   "plant": "Okra",
   "category": "Vegetable",
   "indoor": false,
@@ -1365,7 +1350,7 @@
   }
 },
 {
-  "id": "plant_067",
+  "id": "plant_068",
   "plant": "Zucchini",
   "category": "Vegetable",
   "indoor": false,
@@ -1386,7 +1371,7 @@
   }
 },
 {
-  "id": "plant_068",
+  "id": "plant_069",
   "plant": "Capsicum(Bell Peppers)",
   "category": "Vegetable",
   "indoor": false,
@@ -1407,7 +1392,7 @@
   }
 },
 {
-  "id": "plant_069",
+  "id": "plant_070",
   "plant": "Lettuce",
   "category": "Vegetable",
   "indoor": false,
@@ -1428,7 +1413,7 @@
   }
 },
 {
-  "id": "plant_070",
+  "id": "plant_071",
   "plant": "Potatoes",
   "category": "Vegetable",
   "indoor": false,
@@ -1449,7 +1434,7 @@
   }
 },
 {
-  "id": "plant_071",
+  "id": "plant_072",
   "plant": "Green Onions",
   "category": "Vegetable",
   "indoor": true,
@@ -1470,7 +1455,7 @@
   }
 },
 {
-  "id": "plant_072",
+  "id": "plant_073",
   "plant": "African Violet",
   "category": "Flower",
   "indoor": true,
@@ -1490,7 +1475,7 @@
   }
 },
 {
-  "id": "plant_073",
+  "id": "plant_074",
   "plant": "Begonia",
   "category": "Flower",
   "indoor": true,
@@ -1510,7 +1495,7 @@
   }
 },
 {
-  "id": "plant_074",
+  "id": "plant_075",
   "plant": "Kalanchoe",
   "category": "Succulent",
   "indoor": true,
@@ -1530,7 +1515,7 @@
   }
 },
 {
-  "id": "plant_075",
+  "id": "plant_076",
   "plant": "Amaryllis",
   "category": "Flower",
   "indoor": true,
@@ -1550,7 +1535,7 @@
   }
 },
 {
-  "id": "plant_076",
+  "id": "plant_077",
   "plant": "Zinnias",
   "category": "Flower",
   "indoor": false,
@@ -1570,7 +1555,7 @@
   }
 },
 {
-  "id": "plant_077",
+  "id": "plant_078",
   "plant": "Fennel",
   "category": "Culinary Herb",
   "indoor": false,
@@ -1586,7 +1571,7 @@
   }
 },
 {
-  "id": "plant_078",
+  "id": "plant_079",
   "plant": "Tillandsia (Air plants)",
   "category": "Epiphyte",
   "indoor": true,
@@ -1606,7 +1591,7 @@
   }
 },
  {
-    "id": "plant_079",
+    "id": "plant_080",
     "plant": "Mugwort",
     "category": "Medicinal Herb",
     "indoor": false,
@@ -1627,7 +1612,7 @@
     }
   },
   {
-    "id": "plant_080",
+    "id": "plant_081",
     "plant": "Sagebrush",
     "category": "Medicinal Herb",
     "indoor": false,
@@ -1648,7 +1633,7 @@
     }
   },
   {
-    "id": "plant_081",
+    "id": "plant_082",
     "plant": "Camphor Plant",
     "category": "Medicinal Herb",
     "indoor": false,
@@ -1669,7 +1654,7 @@
     }
   },
   {
-    "id": "plant_082",
+    "id": "plant_083",
     "plant": "Yarrow",
     "category": "Flower",
     "indoor": false,
@@ -1690,7 +1675,7 @@
     }
   },
 {
-    "id": "plant_083",
+    "id": "plant_084",
     "plant": "Staghorn Fern",
     "category": "Epiphyte",
     "indoor": true,
@@ -1716,7 +1701,7 @@
     ]
   },
   {
-    "id": "plant_084",
+    "id": "plant_085",
     "plant": "Vanilla Orchid",
     "category": "Orchid",
     "indoor": true,
@@ -1742,7 +1727,7 @@
     ]
   },
   {
-    "id": "plant_085",
+    "id": "plant_086",
     "plant": "Phalaenopsis Orchid",
     "category": "Orchid",
     "indoor": true,
@@ -1768,7 +1753,7 @@
     ]
   },
   {
-    "id": "plant_086",
+    "id": "plant_087",
     "plant": "Dendrobium Orchid",
     "category": "Orchid",
     "indoor": true,
@@ -1794,7 +1779,7 @@
     ]
   },
   {
-    "id": "plant_087",
+    "id": "plant_088",
     "plant": "Spanish Moss (Tillandsia usneoides)",
     "category": "Epiphyte",
     "indoor": true,
@@ -1820,7 +1805,7 @@
     ]
   },
   {
-    "id": "plant_088",
+    "id": "plant_089",
     "plant": "Bird’s Nest Fern (Asplenium nidus)",
     "category": "Epiphyte",
     "indoor": true,
@@ -1846,7 +1831,7 @@
     ]
   },
   {
-  "id": "plant_089",
+  "id": "plant_090",
   "plant": "Carnation (Dianthus caryophyllus)",
   "category": "Medicinal Flower",
   "indoor": false,
@@ -1872,9 +1857,9 @@
   ]
 },
 {
-  "id": "plant_090",
+  "id": "plant_091",
   "plant": "Sweet William (Dianthus barbatus)",
-  "category": "Medicinal Flower ",
+  "category": "Medicinal Flower",
   "indoor": false,
   "edible": true,
   "benefits": ["Attracts bees and butterflies", "Petals used in garnishes", "Astringent in traditional remedies"],
@@ -1898,7 +1883,7 @@
   ]
 },
 {
-  "id": "plant_091",
+  "id": "plant_092",
   "plant": "Hollyhock (Alcea rosea)",
   "category": "Medicinal Flower",
   "indoor": false,
@@ -1924,9 +1909,9 @@
   ]
 },
 {
-  "id": "plant_092",
+  "id": "plant_093",
   "plant": "Chrysanthemum (Chrysanthemum morifolium)",
-  "category": "Medicinal Flower ",
+  "category": "Medicinal Flower",
   "indoor": true,
   "edible": true,
   "benefits": ["Used in traditional teas", "Natural air purifier", "Anti-inflammatory"],
@@ -1950,7 +1935,7 @@
   ]
 },
 {
-  "id": "plant_093",
+  "id": "plant_094",
   "plant": "Aster 'Sweet Dream'",
   "category": "Flower",
   "indoor": false,
@@ -1976,7 +1961,7 @@
   ]
 },
 {
-  "id": "plant_094",
+  "id": "plant_095",
   "plant": "Morning Glory (Ipomoea spp.)",
   "category": "Medicinal Flower",
   "indoor": false,
@@ -2002,7 +1987,7 @@
   ]
 },
 {
-  "id": "plant_095",
+  "id": "plant_096",
   "plant": "Moringa (Moringa oleifera)",
   "category": "Medicinal Herb",
   "indoor": false,

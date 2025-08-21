@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunar Plant Recommender 🌙</title>
+  <link rel="stylesheet" href="gardening.css">
+  <style>
+
+    @media(max-width: 600px) {
+      .container {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+    <header>
+  
+  <!-- Hamburger Icon -->
+  <div class="hamburger" onclick="toggleSidebar()">
+    <img src="/images/cleanlogo.png" alt="BloomGarden Logo" class="logo">☰</div>
+    🌕 Lunar Plant Growing Guide
+</header>
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="plantfaq.html">🌿 Plant FAQ</a>
+ 
+      <a href="game.html">🌱 Growth Game</a>
+      <a href="journal.html">📔 Plant Journal</a>
+      <a href="moon.html">🌕 Lunar Recommender</a>
+    </nav>
+  </div>
+
+
+  <div class="container">
+    
+    
+    <div class="form-group">
+      <label for="date">Select Date</label>
+      <input type="date" id="date">
+    </div>
+
+    <div class="form-group">
+      <label for="plantType">Choose Plant Type</label>
+      <select id="plantType">
+        <option value="Edible">Edible</option>
+        <option value="Inedible">Inedible</option>
+      </select>
+       
+    </div>
+    
+
+    <button onclick="recommendPlants()">Get Recommendations</button>
+
+    <div id="phaseOutput" class="lunar-phase">🌙 Moon Phase</div>
+    <div id="suggestionOutput" class="results">🪴 Suggested plants will appear here.</div>
+  </div>
+
+  <script>
+    async function loadPlants() {
+      const response = await fetch('../data/indoor_plants.json');
+      return response.json();
+    }
+
+    function getMoonPhase(date) {
+      const day = date.getDate();
+      const cycleDay = day % 29.53; // simplified lunar cycle
+      if (cycleDay < 1) return "New Moon";
+      if (cycleDay < 7) return "Waxing Crescent";
+      if (cycleDay < 10) return "First Quarter";
+      if (cycleDay < 14) return "Waxing Gibbous";
+      if (cycleDay < 16) return "Full Moon";
+      if (cycleDay < 22) return "Waning Gibbous";
+      if (cycleDay < 25) return "Last Quarter";
+      return "Waning Crescent";
+    }
+
+    async function recommendPlants() {
+      const dateInput = document.getElementById('date').value;
+      const type = document.getElementById('plantType').value;
+      if (!dateInput) {
+        alert("Please select a date!");
+        return;
+      }
+
+      const date = new Date(dateInput);
+      const phase = getMoonPhase(date);
+      document.getElementById('phaseOutput').innerText = `🌙 ${phase}`;
+
+      const plants = await loadPlants();
+      const edibleOnly = type === "Edible";
+      let suggestions = plants.filter(p => {
+        if (edibleOnly && !p.edible) return false;
+        if (!edibleOnly && p.edible) return false;
+        return p.moon_phase && p.moon_phase.growing === phase;
+      }).map(p => p.plant);
+
+      const suggestionBox = document.getElementById('suggestionOutput');
+      if (suggestions.length === 0) {
+        suggestionBox.innerHTML = "No suitable plants today. 🌱 Focus on care tasks.";
+      } else {
+        suggestionBox.innerHTML = "🪴 Suggested Plants:<ul>" + suggestions.map(s => `<li>${s}</li>`).join("") + "</ul>";
+      }
+    }
+     const sidebar = document.getElementById('sidebar');
+const hamburger = document.querySelector('.hamburger');
+
+hamburger.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+});
+  </script>
+</body>
+</html>
