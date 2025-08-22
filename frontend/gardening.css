@@ -15,6 +15,10 @@ html, body {
   overflow-x: hidden;
   background-color: #fbeeff;
   color: #333333;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flexbox;
 }
 
 body {
@@ -27,13 +31,13 @@ body {
 
 header {
   margin-top: 0;
-  padding: clamp(0.5rem, 2vw, 1rem) 0; /* Adjust vertical padding if you want */
+  padding: clamp(0.5rem, 2vw, 1rem) 0; 
   width: 100%;
   box-sizing: border-box;
   text-align: center;
   font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: 600;
-  color: #004d40; /* dark warm brown */
+  color: #004d40; 
   top: 0;
   left: 0;
 }
@@ -249,6 +253,7 @@ label[for="plantSelect"] {
   }
  .container{
    padding: 0.5rem;
+ 
  }
 }
 
@@ -258,7 +263,7 @@ label[for="plantSelect"] {
       background: rgba(245, 201, 232);
       padding: 2rem;
       border-radius: 1.5rem;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 15px rgba(9, 9, 9, 0.1);
       max-width: 600px;
       width: 100%;
       text-align: center;
@@ -266,6 +271,7 @@ label[for="plantSelect"] {
       justify-content: center;
       display: flexbox;
       box-sizing: border-box;
+      
     }
 
     h1 {
@@ -343,8 +349,4 @@ label[for="plantSelect"] {
       padding-left: 1.2rem;
     }
 
-    @media(max-width: 600px) {
-      .container {
-        padding: 1.2rem;
-      }
-    }
+    
