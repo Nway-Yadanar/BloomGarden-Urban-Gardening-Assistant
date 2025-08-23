@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plant Journal</title>
+<link rel="stylesheet" href="gardening.css">
+<style>
+  /* Reset & base styles */
+  
+
+
+  .weather {
+  font-size: 1rem;
+  background: rgba(248, 245, 245, 0.6);
+  padding: 5px 10px;
+  border-radius: 10px;
+  flex-shrink: 0; /* prevents shrinking */
+  
+  }
+
+  /* Journal Grid */
+  .journal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.8);
+    border: 2px dashed #79534A;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+  }
+
+  .card.create-new {
+    background: rgba(255,255,255,0.5);
+    border-style: dashed;
+    color: #333;
+  }
+
+  /* Plant icon bottom right */
+ 
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .journal-grid {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .journal-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+    <header>
+  
+  <!-- Hamburger Icon -->
+   
+    <div class="title">🌕 Plant Journal</div>
+  <div class="hamburger" onclick="toggleSidebar()">
+    <img src="/images/cleanlogo.png" alt="BloomGarden Logo" class="logo">☰</div>
+   <div class="weather" id="weather">Loading..</div>
+    
+        
+    
+</header>
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="plantfaq.html">🌿 Plant FAQ</a>
+ 
+      <a href="game.html">🌱 Growth Game</a>
+      <a href="journal.html">📔 Plant Journal</a>
+      <a href="moon.html">🌕 Lunar Recommender</a>
+    </nav>
+  </div>
+
+ 
+
+  <div class="journal-grid">
+    <div class="card">Diary 1</div>
+    <div class="card">Diary 2</div>
+    <div class="card">Diary 3</div>
+    <div class="card create-new">+ create new</div>
+  </div>
+
+  <!-- Plant icon -->
+  <img src="/images/osmanthus.png" alt="Plant" class="plant-icon">
+
+</body>
+<script>
+    const sidebar = document.getElementById('sidebar');
+const hamburger = document.querySelector('.hamburger');
+
+hamburger.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+});
+
+
+  async function fetchWeatherByLocation(lat, lon) {
+    const apiKey = "94026de74b7de057a09644fb7dcd0351"; // get from openweathermap.org
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const city = data.name;
+      const temp = Math.round(data.main.temp);
+      const icon = data.weather[0].icon;
+      const description = data.weather[0].main;
+
+      document.getElementById("weather").innerHTML = `
+        <img src="https://openweathermap.org/img/wn/${icon}.png" 
+             alt="${description}" 
+             style="vertical-align:middle; width:24px; height:24px;">
+        ${city}: ${temp}°C
+      `;
+    } catch (error) {
+      document.getElementById("weather").textContent = "Weather unavailable";
+    }
+  }
+
+  // Get user location
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+        fetchWeatherByLocation(lat, lon);
+      },
+      () => {
+        document.getElementById("weather").textContent = "Location denied";
+      }
+    );
+  } else {
+    document.getElementById("weather").textContent = "Geolocation not supported";
+  }
+
+
+</script>
+</html>
