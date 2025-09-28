@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>🌻 Plant FAQ</title>
-<link rel="stylesheet" href="gardening.css">
+<link rel="stylesheet" href="static/gardening.css">
 
 </head>
 <body>
@@ -12,19 +12,19 @@
   
   <!-- Hamburger Icon -->
   <div class="hamburger" onclick="toggleSidebar()">
-    <img src="/images/cleanlogo.png" alt="BloomGarden Logo" class="logo">☰</div>
+    <img src="/static/images/cleanlogo.png" alt="BloomGarden Logo" class="logo">☰</div>
     
 </header>
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
-    <nav>
-      <a href="index.html">🏠 Home</a>
-      <a href="plantfaq.html">🌿 Plant FAQ</a>
- 
-      <a href="game.html">🌱 Growth Game</a>
-      <a href="journal.html">📔 Plant Journal</a>
-      <a href="moon.html">🌕 Lunar Recommender</a>
-    </nav>
+  <nav>
+        <a href="chatbot.html" data-route="chat">💬 Chatbot</a>
+        <a href="notice.html" data-route="moon">🌙 Luna Recommendations</a>
+        <a href="plantfaq.html" data-route="plantfaq">🪴 plant FAQ</a>
+        <a href="journal.html" data-route="journal">📔 Plant Journal</a>
+        <a href="pest.html" data-route="pest">📔 Pest Detection</a>
+        <a href="home.html" data-route="home">🏠 home</a>
+      </nav>
   </div>
 <div class="card-header">
     <span class="moon-emoji">🌻</span>
@@ -51,7 +51,7 @@
   let categories = new Set();
 
   // Load JSON file (adjust path if needed)
-  fetch('../data/indoor_plants.json')
+  fetch('static/data/indoor_plants.json')
     .then(res => res.json())
     .then(data => {
       plants = data;

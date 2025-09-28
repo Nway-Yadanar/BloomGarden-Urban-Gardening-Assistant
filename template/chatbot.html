@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chatbot</title>
+
+  <!-- optional font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/gardening.css" />
+</head>
+<body>
+  <main class="cbt">
+    <!-- top bar -->
+    <header class="cbt__topbar">
+      <!-- top-left hamburger -->
+      <button class="cbt__iconbtn" id="cbtMenuBtn" aria-label="toggle sidebar" title="Menu">☰</button>
+
+      <!-- brand centered-ish, flexible spacing either side -->
+      <div class="cbt__brand">
+        <span class="cbt__brandLogo" aria-hidden="true">💬</span>
+        <strong>chatbot</strong>
+        <span class="cbt__brandSub">simple • fast • pretty</span>
+      </div>
+
+      <div class="cbt__topbarRight">
+        
+        <button id="cbtThemeToggle" class="cbt__chip" aria-pressed="false" title="Toggle theme">🌓 theme</button>
+      </div>
+    </header>
+
+    <!-- sidebar (routes) -->
+    <aside id="cbtSidebar" class="cbt__sidebar" aria-label="sidebar navigation">
+      <nav>
+        <a href="chatbot.html" data-route="chat">💬 Chatbot</a>
+        <a href="notice.html" data-route="moon">🌙 Luna Recommendations</a>
+        <a href="plantfaq.html" data-route="plantfaq">🪴 plant FAQ</a>
+        <a href="journal.html" data-route="journal">📔 Plant Journal</a>
+        <a href="pest_detection.html" data-route="pest">📔 Pest Detection</a>
+        <a href="home.html" data-route="home">🏠 home</a>
+      </nav>
+    
+    </aside>
+
+    <!-- chat card -->
+    <section class="cbt__wrap">
+      <section class="cbt__card" aria-label="chat">
+        <!-- conversation -->
+        <div id="cbtChat" class="cbt__chat" role="log" aria-live="polite" aria-relevant="additions">
+          <div class="msg msg--ai">
+            <div class="msg__avatar" aria-hidden="true">🤖</div>
+            <div class="msg__bubble">
+              <p>hey! i’m your friendly chatbot. ask me anything ✨</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- composer -->
+        <form id="cbtComposer" class="cbt__composer" autocomplete="off" aria-label="message composer">
+          <label class="sr-only" for="cbtMessage">message</label>
+          <textarea id="cbtMessage" name="message" rows="1" placeholder="type a message…" spellcheck="true"></textarea>
+
+          <div class="cbt__composerActions">
+            <label class="cbt__fileLabel" title="Attach file">
+              <input id="cbtFileInput" type="file" hidden />
+              📎
+            </label>
+            <button id="cbtSendBtn" class="cbt__send" type="submit" title="Send (Enter)">➤</button>
+          </div>
+        </form>
+
+        <div id="cbtFilePreview" class="cbt__filePreview" hidden></div>
+      </section>
+
+      <footer class="cbt__footer">
+        <span>press <kbd>Enter</kbd> to send • <kbd>Shift</kbd>+<kbd>Enter</kbd> for new line</span>
+      </footer>
+    </section>
+  </main>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

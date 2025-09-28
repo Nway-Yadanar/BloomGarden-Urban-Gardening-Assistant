@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunar Plant Recommender 🌙</title>
+  <link rel="stylesheet" href="static/gardening.css">
+  <style>
+
+    @media(max-width: 600px) {
+      .container {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  
+  <!-- Hamburger Icon -->
+  <div class="hamburger">
+    <a class="brand" href="#">
+    <svg class="brand__logo" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 3c4 2 8 6 8 10s-4 8-8 10C8 21 4 17 4 13S8 5 12 3z" fill="#7cc78a"/>
+      <path d="M12 5v14M12 9c2 1 4 3 6 6M12 13c-2 .8-4 2.6-6 5" stroke="#477a54" stroke-opacity=".4" stroke-width="2" fill="none"/>
+    </svg>☰
+    </div>
+</header>
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+     <nav>
+        <a href="chatbot.html" data-route="chat">💬 Chatbot</a>
+        <a href="notice.html" data-route="moon">🌙 Luna Recommendations</a>
+        <a href="plantfaq.html" data-route="plantfaq">🪴 plant FAQ</a>
+        <a href="journal.html" data-route="journal">📔 Plant Journal</a>
+        <a href="pest.html" data-route="pest">📔 Pest Detection</a>
+        <a href="home.html" data-route="home">🏠 home</a>
+      </nav>
+  </div>
+   <div class="glass-card">
+  <div class="card-header">
+    <span class="moon-emoji">🌕</span>
+    <h1>Lunar Plant Recommender</h1>
+  </div>
+  <div class="today-moon">
+  <h3>Today's Moon Phase</h3>
+  <div class="moon-phase-container">
+    
+    <div class="moon-progress">
+      <div class="progress-bar" id="todayMoonBar"></div>
+    </div>
+    <div class="moon-text" id="todayMoonText">Loading...</div>
+  </div>
+</div>
+
+
+
+  <div class="form-group">
+    <label for="date">Select Date</label>
+    <input type="date" id="date">
+  </div>
+
+  <div class="form-group">
+    <label for="plantType">Choose Plant Type</label>
+    <select id="plantType">
+      <option value="Edible">Edible</option>
+      <option value="Inedible">Inedible</option>
+    </select>
+  </div>
+
+  <button onclick="recommendPlants()">Get Recommendations</button>
+
+  <div id="phaseOutput" class="lunar-phase">🌙 Moon Phase</div>
+  <div id="suggestionOutput" class="results">🪴 
+    <section>
+      <h3>🌱 Good for plant growing </h3>
+      <ul id="growList"></ul>
+
+    <h3>🌾 Good for Harvesting</h3>
+    <ul id="harvestList"></ul>
+
+    <h3>😴 Let These Rest</h3>
+    <ul id="restList"></ul>
+
+    <p id="recoEmpty" style="display:none;">No matches for this date.</p>
+    </section>
+  </div>
+</div>
+
+
+  <script src="/static/js/main.js"></script>
+
+  
+</body>
+<!-- <img src="/images/plant.png" alt="Plant" class="plant-icon"> -->
+</html>

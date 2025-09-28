@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pest Detection</title>
+    <link rel="stylesheet" href="static/gardening.css">
+</head>
+<body>
+    <div class="pest-container">
+  <!-- Upload Card -->
+  <div class="glass-card pest-card">
+    <h3>Upload Plant Photo</h3>
+    <div class="upload-box" id="uploadBox">
+      <p>🌿 Drag & drop your plant photo here<br>
+        or <span class="browse">click to browse files</span>
+      </p>
+      <p class="formats">Supported formats: JPG, PNG, GIF, WebP</p>
+      <input type="file" id="fileInput" accept="image/*" hidden>
+    </div>
+    <div class="button-row">
+      <button id="analyzeBtn" disabled>🔍 Detect Pests</button>
+      <button id="resetBtn">♻️ Select New Image</button>
+    </div>
+  </div>
+
+  <!-- Results Card -->
+  <div class="glass-card pest-card">
+    <h3>Pest Detection Results</h3>
+    <div id="results" class="results">
+      <p>Upload a clear photo of your plant leaves. Our AI will detect pests, highlight affected areas, and provide treatment recommendations.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

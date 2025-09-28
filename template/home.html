@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="static/gardening.css">
+</head>
+
+    <body class="home">
+        <header class="topbar">
+  <a class="brand" href="#">
+    <svg class="brand__logo" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 3c4 2 8 6 8 10s-4 8-8 10C8 21 4 17 4 13S8 5 12 3z" fill="#7cc78a"/>
+      <path d="M12 5v14M12 9c2 1 4 3 6 6M12 13c-2 .8-4 2.6-6 5" stroke="#477a54" stroke-opacity=".4" stroke-width="2" fill="none"/>
+    </svg>
+    <span class="brand__name">Garden Guide</span>
+  </a>
+
+  <nav class="topbar__right">
+    <span class="chip" id="weatherChip" title="Local weather">⛅ Loading…</span>
+    <a class="cta cta--sm" href="chatbot.html">Open Assistant</a>
+  </nav>
+</header>
+
+
+
+  <div class="home-hero">
+    <div class="parallax" aria-hidden="true">
+      <!-- your leaf <img class="leaf" ...> elements -->
+    </div>
+
+    <main class="wrap">
+      <section class="card">
+        <span class="badge">🌿 Smart Gardening • Moon & Weather Aware</span>
+        <h1 style="text-align: center;">Welcome to Garden Guide</h1>
+        <p class="lede">Your cozy hub for indoor gardening…</p>
+
+        <div class="features">
+          <div class="feature"><h3>Personalized Picks</h3><p>…</p></div>
+          <div class="feature"><h3>Gar</h3><p>…</p></div>
+          <div class="feature"><h3>Weather-Aware Tips</h3><p>…</p></div>
+        </div>
+
+        <a class="cta" href="chatbot.html">Continue to Assistant</a>
+      </section>
+    </main>
+  </div>
+
+
+
+
+<script>
+  // Simple, lightweight mouse-parallax (disabled for reduced motion)
+  (function () {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    const leaves = Array.from(document.querySelectorAll('.leaf'));
+    const strength = 20; // max px shift by depth
+
+    function move(e) {
+      const { innerWidth: w, innerHeight: h } = window;
+      const x = (e.clientX / w - 0.5) * 2; // -1..1
+      const y = (e.clientY / h - 0.5) * 2; // -1..1
+
+      for (const el of leaves) {
+        const depth = parseFloat(el.dataset.depth || '0.2');
+        const dx = -x * strength * depth;
+        const dy = -y * strength * depth;
+        el.style.transform = `translate3d(${dx}px, ${dy}px, 0) ${el.style.transform.replace(/translate3d\([^)]+\)\s*/,'')}`;
+      }
+    }
+
+    window.addEventListener('pointermove', move, { passive: true });
+  })();
+ 
+  // After fetching weather:
+  // document.getElementById("weather").innerHTML = ...  // (old)
+  // Replace/also write to the header chip:
+  function setWeatherChip(city, temp, icon, desc){
+    const el = document.getElementById('weatherChip');
+    if (!el) return;
+    el.innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}.png" alt="${desc}" style="width:18px;height:18px;vertical-align:middle"> ${city}: ${temp}°C`;
+  }
+
+  // In your fetchWeatherByLocation success block:
+  // setWeatherChip(city, temp, icon, description);
+
+  // For moon:
+  function setMoonChip(phase, illumination){
+    const el = document.getElementById('moonChip');
+    if (!el) return;
+    const emoji = (p => ({
+      "New Moon":"🌑","Waxing Crescent":"🌒","First Quarter":"🌓","Waxing Gibbous":"🌔",
+      "Full Moon":"🌕","Waning Gibbous":"🌖","Last Quarter":"🌗","Waning Crescent":"🌘"
+    }[p] || "🌙"))(phase);
+    el.textContent = `${emoji} ${illumination}% • ${phase}`;
+  }
+
+  // In your showTodayMoonPhase() success block:
+  // setMoonChip(phase, illumination);
+
+
+</script>
+</body>
+</html>
