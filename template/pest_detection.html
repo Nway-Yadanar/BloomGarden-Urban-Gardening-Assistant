@@ -7,6 +7,37 @@
     <link rel="stylesheet" href="static/gardening.css">
 </head>
 <body>
+   <main class="cbt">
+    <!-- top bar -->
+    <header class="cbt__topbar">
+      <!-- top-left hamburger -->
+      <button class="cbt__iconbtn" id="cbtMenuBtn" aria-label="toggle sidebar" title="Menu">☰</button>
+
+      <!-- brand centered-ish, flexible spacing either side -->
+      <div class="cbt__brand">
+        <span class="cbt__brandLogo" aria-hidden="true">💬</span>
+        <strong>chatbot</strong>
+        <span class="cbt__brandSub">simple • fast • pretty</span>
+      </div>
+
+      <div class="cbt__topbarRight">
+        
+        <button id="cbtThemeToggle" class="cbt__chip" aria-pressed="false" title="Toggle theme">🌓 theme</button>
+      </div>
+    </header>
+
+    <!-- sidebar (routes) -->
+    <aside id="cbtSidebar" class="cbt__sidebar" aria-label="sidebar navigation">
+      <nav>
+        <a href="chatbot.html" data-route="chat">💬 Chatbot</a>
+        <a href="notice.html" data-route="moon">🌙 Luna Recommendations</a>
+        <a href="plantfaq.html" data-route="plantfaq">🪴 plant FAQ</a>
+        <a href="pest_detection.html" data-route="pest">📔 Pest Detection</a>
+        <a href="home.html" data-route="home">🏠 home</a>
+      </nav>
+    
+    </aside>
+
     <div class="pest-container">
   <!-- Upload Card -->
   <div class="glass-card pest-card">
@@ -34,4 +65,5 @@
 </div>
 
 </body>
+<script></script>
 </html>

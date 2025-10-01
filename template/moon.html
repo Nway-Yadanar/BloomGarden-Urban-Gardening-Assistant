@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lunar Plant Recommender 🌙</title>
   <link rel="stylesheet" href="static/gardening.css">
+  <script src="/static/js/main.js"></script>
   <style>
 
     @media(max-width: 600px) {
@@ -15,28 +16,38 @@
   </style>
 </head>
 <body>
-  <header>
-  
-  <!-- Hamburger Icon -->
-  <div class="hamburger">
-    <a class="brand" href="#">
-    <svg class="brand__logo" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 3c4 2 8 6 8 10s-4 8-8 10C8 21 4 17 4 13S8 5 12 3z" fill="#7cc78a"/>
-      <path d="M12 5v14M12 9c2 1 4 3 6 6M12 13c-2 .8-4 2.6-6 5" stroke="#477a54" stroke-opacity=".4" stroke-width="2" fill="none"/>
-    </svg>☰
-    </div>
-</header>
-  <!-- Sidebar -->
-  <div id="sidebar" class="sidebar">
-     <nav>
+<main class="cbt">
+    <!-- top bar -->
+    <header class="cbt__topbar">
+      <!-- top-left hamburger -->
+      <button class="cbt__iconbtn" id="cbtMenuBtn" aria-label="toggle sidebar" title="Menu">☰</button>
+
+      <!-- brand centered-ish, flexible spacing either side -->
+      <div class="cbt__brand">
+        <span class="cbt__brandLogo" aria-hidden="true">💬</span>
+        <strong>Bloom Garden</strong>
+        <span class="cbt__brandSub">simple • fast • pretty</span>
+      </div>
+
+      <div class="cbt__topbarRight">
+        
+        <button id="cbtThemeToggle" class="cbt__chip" aria-pressed="false" title="Toggle theme">🌓 theme</button>
+      </div>
+    </header>
+
+    <!-- sidebar (routes) -->
+    <aside id="cbtSidebar" class="cbt__sidebar" aria-label="sidebar navigation">
+      <nav>
         <a href="chatbot.html" data-route="chat">💬 Chatbot</a>
         <a href="notice.html" data-route="moon">🌙 Luna Recommendations</a>
         <a href="plantfaq.html" data-route="plantfaq">🪴 plant FAQ</a>
-        <a href="journal.html" data-route="journal">📔 Plant Journal</a>
-        <a href="pest.html" data-route="pest">📔 Pest Detection</a>
+        <a href="pest_detection.html" data-route="pest">📔 Pest Detection</a>
         <a href="home.html" data-route="home">🏠 home</a>
       </nav>
-  </div>
+    
+    </aside>
+
+
    <div class="glass-card">
   <div class="card-header">
     <span class="moon-emoji">🌕</span>
@@ -88,7 +99,7 @@
 </div>
 
 
-  <script src="/static/js/main.js"></script>
+  /
 
   
 </body>

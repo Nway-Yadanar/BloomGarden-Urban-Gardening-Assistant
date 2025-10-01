@@ -80,7 +80,9 @@ import requests
 import os
 from pathlib import Path
 import pymysql
-import time
+from datetime import datetime, timezone
+from math import sin, pi
+
 
 DB = {
     "host": "127.0.0.1",
@@ -118,19 +120,79 @@ def notice():
 # --------------------------------------------------------------------
 @app.route("/moon")
 def moon():
-    """Astronomy API proxy (keeps API key server-side)"""
-    lat, lon = 16.8409, 96.1735  # Yangon
-    url = f"https://api.ipgeolocation.io/astronomy?apiKey={IPGEO_KEY}&lat={lat}&long={lon}"
+    """
+    Returns: {"phase": <string>, "illumination": <int percent 0..100>}
+    - Tries ipgeolocation quickly (2s timeout).
+    - Falls back to a precise local calculation so the UI never breaks.
+    """
+    # --- helper: local, dependency-free moon calc ---
+    def local_moon():
+        # Reference epoch & synodic month length
+        ref = datetime(2001, 1, 1, tzinfo=timezone.utc)
+        synodic_days = 29.530588853  # mean synodic month
+        days = (datetime.now(timezone.utc) - ref).total_seconds() / 86400.0
+        phase = (days % synodic_days) / synodic_days  # 0..1 (0=new, 0.5=full)
+        # illum fraction ≈ sin^2(pi * phase)
+        illum_pct = int(round((sin(pi * phase) ** 2) * 100))
+
+        # Name buckets (kept flexible so your JS normalizePhase() still matches)
+        eps = 0.03  # ~0.9 day tolerance around the quarter phases
+        if phase < eps or phase > 1 - eps:
+            name = "New Moon"
+        elif abs(phase - 0.25) < eps:
+            name = "First Quarter"
+        elif abs(phase - 0.50) < eps:
+            name = "Full Moon"
+        elif abs(phase - 0.75) < eps:
+            name = "Last Quarter"
+        elif phase < 0.25:
+            name = "Waxing Crescent Moon"
+        elif phase < 0.50:
+            name = "Waxing Gibbous Moon"
+        elif phase < 0.75:
+            name = "Waning Gibbous Moon"
+        else:
+            name = "Waning Crescent Moon"
+
+        return {"phase": name, "illumination": illum_pct}
+
+    # --- fast attempt: ipgeolocation (if available), then normalize ---
     try:
-        res = requests.get(url, timeout=10)
+        lat, lon = 16.8409, 96.1735  # Yangon (location isn’t critical for phase)
+        url = f"https://api.ipgeolocation.io/astronomy?apiKey={IPGEO_KEY}&lat={lat}&long={lon}"
+        res = requests.get(url, timeout=2)
         res.raise_for_status()
         data = res.json()
-        return jsonify({
-            "phase": data.get("moon_phase", "Unknown"),
-            "illumination": data.get("moon_illumination", "0"),
-        })
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+
+        # Phase string straight through
+        phase = data.get("moon_phase") or data.get("phase") or "Unknown"
+
+        # Illumination may come as "57" or "57.3" or as 0..1 fraction on some APIs
+        illum_raw = (
+            data.get("moon_illumination") or
+            data.get("illumination") or
+            data.get("moon_illumination_fraction")
+        )
+        illum_pct = None
+        if illum_raw is not None:
+            try:
+                f = float(illum_raw)
+                illum_pct = int(round(f if f > 1 else f * 100))
+            except Exception:
+                pass
+
+        if illum_pct is None or phase == "Unknown":
+            # use local values to fill any gaps
+            fallback = local_moon()
+            phase = phase if phase != "Unknown" else fallback["phase"]
+            illum_pct = illum_pct if illum_pct is not None else fallback["illumination"]
+
+        return jsonify({"phase": phase, "illumination": int(illum_pct)})
+
+    except Exception:
+        # Total fallback: dependency-free, guaranteed to work
+        return jsonify(local_moon())
+
 
 # --------------------------------------------------------------------
 # Pest Detection

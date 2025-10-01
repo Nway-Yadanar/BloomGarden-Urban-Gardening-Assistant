@@ -43,7 +43,7 @@ const themeRoot = document.documentElement;
 
   // theme toggle
   themeBtn?.addEventListener('click', () => {
-    const isDark = root.classList.toggle('cbt--dark');
+    const isDark = themeRoot.classList.toggle('cbt--dark');
     themeBtn.setAttribute('aria-pressed', String(isDark));
   });
 
@@ -228,6 +228,119 @@ async function ensurePlants() {
   return PLANTS;
 }
 
+/* ==========================
+ * Plant Catalog (categories + dropdown + details)
+ * Reuses ensurePlants(); runs only if required elements exist.
+ * ========================== */
+
+let ACTIVE_CAT_BTN = null;
+
+function renderPlantDetails(plant, container) {
+  if (!container) return;
+  if (!plant) { container.innerHTML = ''; return; }
+
+  const resources = Array.isArray(plant.resources) ? plant.resources : [];
+  const resourcesHTML = resources.length
+    ? `<p><strong>Resources to check out:</strong></p>
+       <ul>${resources.map(r => {
+            const url = r?.url ?? '#';
+            const title = r?.title ?? url;
+            return `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></li>`;
+          }).join('')}
+       </ul>`
+    : `<p><strong>Resources:</strong> None available.</p>`;
+
+  container.innerHTML = `
+    <h3>🍁 ${plant.plant || plant.name || 'Unknown'} 🍁</h3>
+    <p><strong>📜 Category:</strong> ${plant.category ?? '—'}</p>
+    <p><strong>✨ Benefits:</strong> ${(plant.benefits || []).join(', ') || '—'}</p>
+    <p><strong>🕯️ Symbolism:</strong> ${(plant.symbolism || []).join(', ') || '—'}</p>
+    <p><strong>🌙 Moon Phases:</strong>
+       Growing: ${plant?.moon_phase?.growing ?? '—'},
+       Resting: ${plant?.moon_phase?.resting ?? '—'}</p>
+    <h3>🗒️ Common FAQs</h3>
+    <p><strong>☀️ Sunlight:</strong> ${plant?.faq?.sunlight ?? '—'}</p>
+    <p><strong>💦 Watering:</strong> ${plant?.faq?.watering ?? '—'}</p>
+    <p><strong>🌱 Soil Type:</strong> ${plant?.faq?.soil ?? '—'}</p>
+    <p><strong>🚫 What to Avoid:</strong> ${plant?.faq?.avoid ?? '—'}</p>
+    <p><strong>✒️ Additional Notes:</strong> ${plant?.faq?.notes ?? '—'}</p>
+    ${resourcesHTML}
+  `;
+}
+
+function updateDropdown(category, plants, selectEl, detailsEl) {
+  if (!selectEl) return;
+  const filtered = (plants || []).filter(p => p.category === category);
+
+  selectEl.innerHTML = '';
+  for (const plant of filtered) {
+    const opt = document.createElement('option');
+    // Coerce to string so comparisons work even if id is a number
+    opt.value = String(plant.id ?? plant.plant);
+    opt.textContent = plant.plant || plant.name || 'Unknown';
+    selectEl.appendChild(opt);
+  }
+
+  if (filtered.length) {
+    selectEl.value = selectEl.options[0].value;
+    // Trigger change to render details
+    selectEl.dispatchEvent(new Event('change'));
+  } else if (detailsEl) {
+    detailsEl.innerHTML = '';
+  }
+}
+
+async function initPlantCatalog() {
+  const btnWrap  = document.getElementById('categoryButtons');
+  const selectEl = document.getElementById('plantSelect');
+  const detailsEl= document.getElementById('plantDetails');
+
+  // Only run on pages that actually have these elements
+  if (!btnWrap || !selectEl || !detailsEl) return;
+
+  try {
+    const plants = await ensurePlants();
+    const categories = [...new Set(plants.map(p => p.category).filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b));
+
+    // Build buttons
+    btnWrap.innerHTML = '';
+    ACTIVE_CAT_BTN = null;
+    for (const cat of categories) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = cat;
+      btn.className = 'pill-button';
+      btn.addEventListener('click', () => {
+        updateDropdown(cat, plants, selectEl, detailsEl);
+
+        if (ACTIVE_CAT_BTN) ACTIVE_CAT_BTN.classList.remove('active');
+        btn.classList.add('active');
+        ACTIVE_CAT_BTN = btn;
+      });
+      btnWrap.appendChild(btn);
+    }
+
+    // Select change → show details
+    selectEl.addEventListener('change', () => {
+      const selectedId = selectEl.value;
+      const plant = plants.find(p => String(p.id ?? p.plant) === selectedId);
+      renderPlantDetails(plant, detailsEl);
+    });
+
+    // Auto-pick the first category so the UI is populated on load
+    if (categories.length) {
+      const firstBtn = btnWrap.querySelector('button');
+      if (firstBtn) {
+        firstBtn.click(); // triggers dropdown + details render
+      }
+    }
+  } catch (err) {
+    console.error('initPlantCatalog() failed:', err);
+  }
+}
+
+
 function phaseKey(label) {
   // normalize flexible labels like "Waning Gibbous Moon"
   const p = String(label || '').toLowerCase().replace(/moon/g, '').trim();
@@ -348,6 +461,8 @@ document.addEventListener('DOMContentLoaded', () => {
       renderBuckets(buckets);
     });
   }
+  initPlantCatalog();
+
 });
 
 
@@ -434,41 +549,48 @@ document.addEventListener('DOMContentLoaded', () => {
       chip.textContent = 'Location denied';
     });
   };
-/* Pest Detection*/
-analyzeBtn.addEventListener('click', async () => {
-  results.innerHTML = `<p>🔍 Uploading and analyzing image...</p>`;
+/* Pest Detection (guarded so it doesn't crash pages without these elements) */
+const analyzeBtn = document.getElementById('analyzeBtn');
+if (analyzeBtn) {
+  const results = document.getElementById('results');
+  const pestFileInput = document.getElementById('pestFileInput');
 
-  const formData = new FormData();
-  formData.append('file', fileInput.files[0]);
-
-  try {
-    const res = await fetch('/pest-detect', {
-      method: 'POST',
-      body: formData
-    });
-    if (!res.ok) throw new Error(`Server returned ${res.status}`);
-    const data = await res.json();
-
-    if (data.error) {
-      results.innerHTML = `<p>⚠️ ${data.error}</p>`;
+  analyzeBtn.addEventListener('click', async () => {
+    if (!pestFileInput?.files?.[0]) {
+      if (results) results.innerHTML = `<p>⚠️ Please choose a file.</p>`;
       return;
     }
 
-    if (data.detected) {
-      results.innerHTML = `
-        <h4>Detected Pests</h4>
-        <ul>${data.pests.map(p => `<li>${p}</li>`).join('')}</ul>
-        <h4>Recommendations</h4>
-        <ul>${data.recommendations.map(r => `<li>${r}</li>`).join('')}</ul>
-      `;
-    } else {
-      results.innerHTML = `<p>✅ No pests detected.</p>`;
+    if (results) results.innerHTML = `<p>🔍 Uploading and analyzing image...</p>`;
+    const formData = new FormData();
+    formData.append('file', pestFileInput.files[0]);
+
+    try {
+      const res = await fetch('/pest-detect', { method: 'POST', body: formData });
+      if (!res.ok) throw new Error(`Server returned ${res.status}`);
+      const data = await res.json();
+
+      if (data.error) {
+        if (results) results.innerHTML = `<p>⚠️ ${data.error}</p>`;
+        return;
+      }
+
+      if (data.detected) {
+        if (results) results.innerHTML = `
+          <h4>Detected Pests</h4>
+          <ul>${data.pests.map(p => `<li>${p}</li>`).join('')}</ul>
+          <h4>Recommendations</h4>
+          <ul>${data.recommendations.map(r => `<li>${r}</li>`).join('')}</ul>
+        `;
+      } else {
+        if (results) results.innerHTML = `<p>✅ No pests detected.</p>`;
+      }
+    } catch (err) {
+      console.error(err);
+      if (results) results.innerHTML = `<p>⚠️ Error analyzing image. Try again later.</p>`;
     }
-  } catch (err) {
-    console.error(err);
-    results.innerHTML = `<p>⚠️ Error analyzing image. Try again later.</p>`;
-  }
-});
+  });
+}
 
   /* ==========================
    * Boot
