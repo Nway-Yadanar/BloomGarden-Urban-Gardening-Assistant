@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "rules": {
+    "daily_slots": 3,
+    "no_repeat_within_days": 3,
+    "max_daily_beans": 25,
+    "all_done_bonus_moons": 2
+  },
+  "phase_bonus": {
+    "phases": ["New Moon", "Full Moon"],
+    "extra_beans": 2,
+    "applies_to_task_ids": ["lunar_tip", "phase_id"]
+  },
+  "tasks": [
+    {
+      "id": "soil_check",
+      "title": "Do the 2–3 cm soil test",
+      "category": "observe",
+      "beans": 3,
+      "verify_event": "soil_check_logged",
+      "cooldown_days": 1,
+      "notes": "Check moisture with a finger test; do not water automatically."
+    },
+    {
+      "id": "leaf_audit",
+      "title": "Leaf audit (dusty / clean / yellowing)",
+      "category": "observe",
+      "beans": 3,
+      "verify_event": "leaf_audit_logged",
+      "cooldown_days": 1
+    },
+    {
+      "id": "rotate_pot",
+      "title": "Rotate one pot 90°",
+      "category": "observe",
+      "beans": 3,
+      "verify_event": "rotate_logged",
+      "cooldown_days": 1
+    },
+    {
+      "id": "dust_leaves",
+      "title": "Clean 2 leaves with a damp cloth",
+      "category": "observe",
+      "beans": 3,
+      "verify_event": "leaf_clean_logged",
+      "cooldown_days": 2
+    },
+    {
+      "id": "read_note",
+      "title": "Read 1 plant note",
+      "category": "knowledge",
+      "beans": 3,
+      "verify_event": "note_read",
+      "min_duration_sec": 15,
+      "cooldown_days": 1
+    },
+    {
+      "id": "ask_chatbot",
+      "title": "Ask the chatbot a care question",
+      "category": "knowledge",
+      "beans": 5,
+      "verify_event": "chat_message",
+      "keywords_any": ["water", "watering", "light", "repot", "humidity"],
+      "cooldown_days": 1
+    },
+    {
+      "id": "micro_quiz",
+      "title": "Answer a 1-question micro-quiz",
+      "category": "knowledge",
+      "beans": 5,
+      "verify_event": "micro_quiz_passed",
+      "cooldown_days": 1
+    },
+    {
+      "id": "pest_scan",
+      "title": "Run one pest detection scan",
+      "category": "pest",
+      "beans": 5,
+      "verify_event": "pest_scan_completed",
+      "cooldown_days": 1
+    },
+    {
+      "id": "pest_manual_check",
+      "title": "Manual pest check with guide",
+      "category": "pest",
+      "beans": 3,
+      "verify_event": "pest_manual_logged",
+      "cooldown_days": 1
+    },
+    {
+      "id": "drainage_check",
+      "title": "Verify pot has drainage",
+      "category": "environment",
+      "beans": 3,
+      "verify_event": "drainage_check_logged",
+      "cooldown_days": 3
+    },
+    {
+      "id": "humidity_nudge",
+      "title": "Set a water cup / pebble tray nearby",
+      "category": "environment",
+      "beans": 3,
+      "verify_event": "humidity_nudge_logged",
+      "cooldown_days": 2
+    },
+    {
+      "id": "relocate_from_draft",
+      "title": "Move plant away from draft/AC",
+      "category": "environment",
+      "beans": 3,
+      "verify_event": "relocate_logged",
+      "cooldown_days": 3
+    },
+    {
+      "id": "lunar_tip",
+      "title": "Read today’s lunar tip and mark an intention",
+      "category": "lunar",
+      "beans": 5,
+      "verify_event": "lunar_tip_ack",
+      "cooldown_days": 1
+    },
+    {
+      "id": "phase_id",
+      "title": "Identify today’s moon phase",
+      "category": "lunar",
+      "beans": 3,
+      "verify_event": "phase_id_correct",
+      "cooldown_days": 1
+    },
+    {
+      "id": "photo_before_after",
+      "title": "Snap a dated plant photo",
+      "category": "creative",
+      "beans": 3,
+      "verify_event": "photo_logged",
+      "cooldown_days": 2
+    },
+    {
+      "id": "mini_note",
+      "title": "Write a 1-sentence observation",
+      "category": "creative",
+      "beans": 3,
+      "verify_event": "note_logged",
+      "cooldown_days": 1
+    }
+  ],
+  "weekly_quests": [
+    {
+      "id": "week_chain_01",
+      "title": "Care Trio",
+      "beans_bonus": 10,
+      "steps": ["read_note", "ask_chatbot", "pest_scan"],
+      "reset": "weekly"
+    }
+  ]
+}
