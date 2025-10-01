@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sticker Collection</title>
+  <link rel="stylesheet" href="/static/gardening.css" />
+</head>
+<body class="cbt">
+  <header class="cbt__topbar">
+    <button id="cbtMenuBtn" class="cbt__iconbtn">☰</button>
+    <div class="cbt__brand"><strong>Stickers</strong></div>
+    <div class="cbt__topbarRight">
+      <div id="beanPill" class="glass-pill" title="Your coffee beans">0 🫘</div>
+    </div>
+  </header>
+
+  <aside id="cbtSidebar" class="cbt__sidebar">
+    <nav>
+      <a href="quiz.html">📘 Quiz</a>
+      <a href="stickers.html" aria-current="page">🏷️ Stickers</a>
+    </nav>
+  </aside>
+
+  <main class="cbt__wrap">
+    <section class="cbt__card">
+      <div id="stickerGrid" class="sticker-grid"></div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="redeemModal" class="modal" hidden>
+    <div class="modal__card">
+      <img id="modalImg" alt="" class="modal__img"/>
+      <h3 id="modalTitle"></h3>
+      <p id="modalCost"></p>
+      <div class="modal__actions">
+        <button id="redeemBtn" class="pill-button">Redeem</button>
+        <button id="cancelBtn" class="pill-button pill--ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/main.js" defer></script>
+</body>
+</html>

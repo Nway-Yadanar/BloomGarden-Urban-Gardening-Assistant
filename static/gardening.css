@@ -644,3 +644,52 @@ body.home::before{
       box-shadow: var(--glow);
       transform: translateY(-2px);
     }
+
+    
+/* Beans pill (clear glass look) */
+.glass-pill {
+  padding: 6px 12px; border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  font-weight: 600; display: inline-flex; gap: 6px; align-items: center;
+}
+
+/* Sticker grid */
+.sticker-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 14px;
+}
+.sticker {
+  background: var(--card); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px; padding: 10px; text-align: center; cursor: pointer;
+  transition: transform .12s ease;
+}
+.sticker:hover { transform: translateY(-2px); }
+.sticker img { width: 100%; aspect-ratio: 1; object-fit: contain; }
+.sticker.locked img { filter: grayscale(100%) opacity(.6); }
+.sticker__name { margin-top: 6px; font-size: 14px; }
+
+/* Modal */
+.modal {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: rgba(0,0,0,.45); z-index: 999;
+}
+.modal__card {
+  width: min(92vw, 420px);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 18px;
+  text-align: center;
+}
+.modal__img { width: 160px; height: 160px; object-fit: contain; display: block; margin: 8px auto 10px; }
+.modal__actions { display: flex; gap: 10px; justify-content: center; margin-top: 12px; }
+
+.pill-button {
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.08);
+  padding: 8px 14px; border-radius: 999px; cursor: pointer; font-weight: 600;
+}
+.pill--ghost { background: transparent; }
