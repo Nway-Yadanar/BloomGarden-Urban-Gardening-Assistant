@@ -82,6 +82,10 @@ from pathlib import Path
 import pymysql
 from datetime import datetime, timezone
 from math import sin, pi
+from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename  # you use this in /pest-detect
+from flask import session, redirect, url_for  # you already import request above
+
 
 
 DB = {
@@ -100,10 +104,11 @@ def db(): return pymysql.connect(**DB)
 # App setup
 # --------------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent
-TEMPLATE_DIR = BASE_DIR / "template"   # put home.html, chatbot.html, moon.html, plantfaq.html here
-STATIC_DIR   = BASE_DIR / "static"     # put /static/... files here (e.g., data/indoor_plants.json)
+TEMPLATE_DIR = BASE_DIR / "template"   
+STATIC_DIR   = BASE_DIR / "static"    
 
-app = Flask(__name__, static_folder=None)  # we'll serve static manually
+app = Flask(__name__, static_folder=None)  
+app.secret_key = os.getenv("SECRET_KEY", "dev-change-me")
 
 # Load key from env (safer) or fallback for testing
 IPGEO_KEY = os.getenv("IPGEO_KEY", "23f93f8fd38e4ba3ba47396b69dc3398")
@@ -261,13 +266,13 @@ def weather_api():
 @app.route("/")
 def home():
     # landing page
-    return send_from_directory(TEMPLATE_DIR, "home.html")
+    return send_from_directory(TEMPLATE_DIR, "landing.html")
 
-@app.route("/chatbot")
-@app.route("/chatbot.html")
-def chatbot():
-    # chatbot UI
+# move the unprotected route out of the way to avoid collision
+@app.route("/chatbot-plain", endpoint="chatbot_plain")
+def chatbot_plain():
     return send_from_directory(TEMPLATE_DIR, "chatbot.html")
+
 
 # Plant FAQ (explicit route)
 @app.route("/plantfaq")
@@ -326,6 +331,101 @@ def chat():
 
     # TODO: save to DB if you want
     return jsonify({"reply": f"you said: {text}"})
+
+# in app.py
+from functools import wraps
+from flask import session, redirect, url_for, request
+
+def login_required(view):
+    @wraps(view)
+    def _wrap(*args, **kwargs):
+        if 'user_id' not in session:
+            return redirect(url_for('login_page', next=request.path))
+        return view(*args, **kwargs)
+    return _wrap
+
+@app.route("/chatbot")
+@login_required
+def chatbot():
+     return send_from_directory(TEMPLATE_DIR, "chatbot.html")
+
+# after successful login/signup
+
+@app.get("/login")
+def login_page():
+    return send_from_directory(TEMPLATE_DIR, "login.html")
+
+@app.get("/signup")
+def signup_page():
+    return send_from_directory(TEMPLATE_DIR, "signup.html")
+
+@app.post("/signup")
+def signup_post():
+    email    = (request.form.get("email") or "").strip()
+    username = (request.form.get("username") or "").strip()
+    pw       = request.form.get("password") or ""
+    pw2      = request.form.get("password2") or ""
+    next_url = request.form.get("next") or "/chatbot"
+
+    if not email or not username or not pw:
+        return "Missing fields", 400
+    if pw != pw2 or len(pw) < 8:
+        return "Password mismatch / too short", 400
+
+    pwd_hash = generate_password_hash(pw, method="pbkdf2:sha256", salt_length=16)
+
+    with db() as con, con.cursor() as cur:
+        # enforce unique user/email
+        cur.execute("SELECT 1 FROM users WHERE Username=%s OR Email=%s", (username, email))
+        if cur.fetchone():
+            return "Username or email already exists", 409
+
+        cur.execute(
+            "INSERT INTO users (Username, Email, Password_hashed) VALUES (%s,%s,%s)",
+            (username, email, pwd_hash)
+        )
+        new_id = cur.lastrowid
+
+        # ensure wallet row exists (optional)
+        try:
+            cur.execute(
+                "INSERT IGNORE INTO user_wallet (user_id, beans, moons, beans_lifetime) VALUES (%s,0,0,0)",
+                (new_id,)
+            )
+        except Exception:
+            pass
+
+    session["user_id"] = new_id
+    return redirect(next_url)
+
+
+@app.post("/login")
+def do_login():
+    u_or_e   = (request.form.get("username_or_email") or "").strip()
+    pw       = request.form.get("password") or ""
+    next_url = request.form.get("next") or "/chatbot"
+
+    if not u_or_e or not pw:
+        return "Missing fields", 400
+
+    with db() as con, con.cursor() as cur:
+        cur.execute(
+            "SELECT ID, Password_hashed FROM users WHERE Username=%s OR Email=%s LIMIT 1",
+            (u_or_e, u_or_e)
+        )
+        row = cur.fetchone()
+
+    if not row:
+        return "Account not found", 404
+
+    uid   = row["ID"]
+    hash_ = row["Password_hashed"]
+
+    if not check_password_hash(hash_, pw):
+        return "Invalid credentials", 401
+
+    session["user_id"] = uid
+    return redirect(next_url)
 
 
 # --------------------------------------------------------------------

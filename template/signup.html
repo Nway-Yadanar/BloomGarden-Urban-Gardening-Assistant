@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign up • Bloom Garden</title>
+  <link rel="stylesheet" href="static/gardening.css" />
+</head>
+<body class="auth-body">
+  <main class="auth-wrap">
+    <section class="auth-card" aria-labelledby="signupTitle">
+      <div class="auth-logo">🪷</div>
+      <h1 id="signupTitle" class="auth-title">Your journey starts here</h1>
+      <p class="auth-sub">Take the first step</p>
+
+      <form class="auth-form" method="POST" action="/signup" novalidate>
+        <div class="field has-icon" data-icon="✉️">
+          <input class="input" id="email" name="email" type="email"
+                 placeholder="E-mail" autocomplete="email" required />
+        </div>
+
+        <div class="field has-icon" data-icon="👤">
+          <input class="input" id="username" name="username" type="text"
+                 placeholder="Username" autocomplete="username" required />
+        </div>
+
+        <div class="field has-icon" data-icon="🔒">
+          <input class="input" id="password" name="password" type="password"
+                 placeholder="Password" minlength="8" autocomplete="new-password" required />
+        </div>
+
+        <div class="field has-icon" data-icon="🔒">
+          <input class="input" id="password2" name="password2" type="password"
+                 placeholder="Confirm password" minlength="8" autocomplete="new-password" required />
+        </div>
+
+        <button class="btn-primary" type="submit">Sign up</button>
+      </form>
+
+      <p class="auth-alt">Already have an account? <a href="/login" class="link">Log in</a></p>
+    </section>
+  </main>
+</body>
+</html>

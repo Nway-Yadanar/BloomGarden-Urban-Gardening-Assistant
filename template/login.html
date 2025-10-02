@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Log in • Bloom Garden</title>
+  <link rel="stylesheet" href="static/gardening.css" />
+</head>
+
+
+<body class="auth-body">
+    <header class="wl-header">
+    <div class="wl-container wl-header__wrap">
+      <a href="/" class="wl-logo">Bloom<span>Garden</span></a>
+
+      <button class="wl-nav__toggle" id="wlNavToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="wl-nav" id="wlNav">
+        <a href="/" aria-current="page">Home</a>
+        <a href="#about">About</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="/login" class="wl-btn wl-btn--ghost">Log in</a>
+        <a href="/signup" class="wl-btn wl-btn--primary">Sign up</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-wrap">
+    <section class="auth-card" aria-labelledby="loginTitle">
+      <div class="auth-logo">🪷</div>
+      <h1 id="loginTitle" class="auth-title">Your journey starts here</h1>
+      <p class="auth-sub">Take the first step</p>
+
+      <form class="auth-form" method="POST" action="/login" novalidate>
+        <div class="field has-icon" data-icon="✉️">
+          <input class="input" id="username_or_email" name="username_or_email" type="text"
+                 placeholder="E-mail or Username" autocomplete="username" required />
+        </div>
+
+        <div class="field has-icon" data-icon="🔒">
+          <input class="input" id="password" name="password" type="password"
+                 placeholder="Password" autocomplete="current-password" required />
+        </div>
+
+        <!-- keep next param if present -->
+        <input type="hidden" name="next" value="">
+        <button class="btn-primary" type="submit">Log in</button>
+      </form>
+
+      <p class="auth-alt">Don't have an account? <a href="/signup" class="link">Sign up</a></p>
+    </section>
+  </main>
+</body>
+</html>

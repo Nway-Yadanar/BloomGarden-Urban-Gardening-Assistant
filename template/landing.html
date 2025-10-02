@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enjoy Nature • Bloom Garden</title>
+  <link rel="stylesheet" href="static/gardening.css" />
+</head>
+<body class="wl-body">
+  <!-- Top Nav -->
+  <header class="wl-header">
+    <div class="wl-container wl-header__wrap">
+      <a href="/" class="wl-logo">Bloom<span>Garden</span></a>
+
+      <button class="wl-nav__toggle" id="wlNavToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="wl-nav" id="wlNav">
+        <a href="/" aria-current="page">Home</a>
+        <a href="#about">About</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="/login" class="wl-btn wl-btn--ghost">Log in</a>
+        <a href="/signup" class="wl-btn wl-btn--primary">Sign up</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="wl-hero">
+      <div class="wl-container wl-hero__grid">
+        <div class="wl-hero__copy">
+          <p class="wl-eyebrow">Enjoy</p>
+          <h1 class="wl-h1">Nature</h1>
+          <p class="wl-sub">
+            Calm, informed indoor gardening—chatbot tips, lunar guidance, and
+            a playful reward system with coffee beans & moons.
+          </p>
+
+          <div class="wl-cta">
+            <a href="/signup" class="wl-btn wl-btn--primary">Get Started</a>
+            <a href="#about" class="wl-btn wl-btn--ghost">Learn More</a>
+          </div>
+
+          <ul class="wl-chips">
+            <li>💬 AI Chatbot</li>
+            <li>🪴 Plant Notes</li>
+            <li>🔍 Pest Scan</li>
+            <li>🌙 Lunar Tips</li>
+            <li>☕ Beans & 🌙 Moons</li>
+          </ul>
+        </div>
+
+        <!-- Hero Art (leafy, layered) -->
+        <div class="wl-hero__art" aria-hidden="true">
+          <svg viewBox="0 0 760 640" class="wl-hero__svg" role="img">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%"  stop-color="#2f6f50"/>
+                <stop offset="100%" stop-color="#1b4431"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%"  stop-color="#5fbf6e"/>
+                <stop offset="100%" stop-color="#9be58b"/>
+              </linearGradient>
+              <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="10" />
+              </filter>
+            </defs>
+
+            <!-- curved background -->
+            <path d="M760,0 L760,640 L0,640 L0,140 C120,40 360,20 520,80 C630,120 690,80 760,0 Z"
+                  fill="url(#g1)"/>
+
+
+            <!-- leaves (simple stylized) -->
+            <g fill="url(#g2)">
+              <path d="M80,590 C140,480 190,470 260,520 C200,520 160,560 150,640 L80,640 Z"/>
+              <path d="M210,640 C240,520 320,500 370,560 C330,560 300,600 295,640 Z"/>
+              <path d="M340,640 C370,540 470,520 520,580 C480,580 450,610 445,640 Z"/>
+              <path d="M470,640 C500,560 600,540 650,600 C620,600 590,620 585,640 Z"/>
+            </g>
+
+            <!-- dark leaves silhouette -->
+            <g fill="#153a2a">
+              <path d="M120,640 C130,570 210,520 240,560 C210,560 170,610 165,640 Z" />
+              <path d="M300,640 C310,570 390,530 420,560 C390,560 350,610 345,640 Z" />
+              <path d="M520,640 C530,570 620,540 650,580 C620,580 580,615 575,640 Z" />
+            </g>
+
+            <!-- floating dots -->
+            <g fill="#b7f5a6" opacity="0.8">
+              <circle cx="520" cy="160" r="4"/>
+              <circle cx="560" cy="200" r="3"/>
+              <circle cx="610" cy="230" r="5"/>
+              <circle cx="450" cy="140" r="3"/>
+              <circle cx="580" cy="280" r="3"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features section -->
+    <section class="wl-features" id="about">
+      <div class="wl-container">
+        <div class="wl-features__grid">
+          <article class="wl-card">
+            <h3>💬 Chatbot</h3>
+            <p>Ask care questions anytime—watering, light, repotting. Powered by your dataset.</p>
+          </article>
+          <article class="wl-card">
+            <h3>🔍 Pest Detection</h3>
+            <p>Upload a leaf photo; get instant analysis and safe next steps.</p>
+          </article>
+          <article class="wl-card">
+            <h3>🌙 Lunar Recommender</h3>
+            <p>Gentle, belief-friendly guidance aligned with moon phases.</p>
+          </article>
+          <article class="wl-card">
+            <h3>☕ Beans & 🌙 Moons</h3>
+            <p>Complete daily reminders, quizzes, and unlock stickers with beans; big stickers use moons.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="wl-vim">
+      <div class="wl-container wl-vim__grid">
+        <article class="wl-card wl-card--accent">
+          <h3>Vision</h3>
+          <p>Make indoor gardening calm, informed, and joyful for everyone.</p>
+        </article>
+        <article class="wl-card">
+          <h3>Mission</h3>
+          <p>Blend practical plant care with gentle rituals—guided by data, verified by you, rewarded with playful collectibles.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wl-footer" id="contact">
+    <div class="wl-container wl-footer__wrap">
+      <p>© <span id="y"></span> Bloom Garden</p>
+      <nav>
+        <a href="/login">Login</a>
+        
+        <a href="/privacy">Privacy</a>
+        <a href="/chatbot" class="wl-btn wl-btn--primary">Open Assistant</a>
+        <a href="/signup"  class="wl-btn wl-btn--ghost">Create Account</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // mobile nav
+    const toggle = document.getElementById('wlNavToggle');
+    const nav = document.getElementById('wlNav');
+    toggle?.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // year
+    const y = document.getElementById('y'); if (y) y.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
