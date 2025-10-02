@@ -1,8 +1,8 @@
 [
-  { "id": "leaf_1",   "name": "Lucky Leaf",    "img": "/static/stickers/leaf_1.png",   "cost": 20 },
-  { "id": "sprout_1", "name": "Happy Sprout",  "img": "/static/stickers/sprout_1.png", "cost": 25 },
-  { "id": "pot_1",    "name": "Terra Pot",     "img": "/static/stickers/pot_1.png",    "cost": 30 },
-  { "id": "mister_1", "name": "Mister Buddy",  "img": "/static/stickers/mister_1.png", "cost": 35 },
-  { "id": "cactus_1", "name": "Cactus Pal",    "img": "/static/stickers/cactus_1.png", "cost": 40 },
-  { "id": "moon_1",   "name": "Moon Grow",     "img": "/static/stickers/moon_1.png",   "cost": 50 }
+  { "id": "s001",   "name": "Carrot",    "img": "/static/stickers/carrot_beans1.png",   "cost": 20 },
+  { "id": "s002", "name": "Avocado",  "img": "/static/stickers/avocado_beans1.png", "cost": 25 },
+  { "id": "s003",    "name": "Avocado1",     "img": "/static/stickers/avocado_beans2",    "cost": 30 },
+  { "id": "s003", "name": "Anis",  "img": "/static/stickers/anis_bottle_beans1.png", "cost": 35 },
+  { "id": "s004", "name": "barberry",    "img": "/static/stickers/berbarry_bottle_moon1.png", "cost": 40 },
+  { "id": "s005",   "name": "bee",     "img": "/static/stickers/bee_moon1.png",   "cost": 50 }
 ]
