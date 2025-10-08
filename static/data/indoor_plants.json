@@ -47,7 +47,17 @@
       "soil": "Rich, well‑draining",
       "avoid":"Overwatering, Direct sunlight",
       "notes": "Toxic to pets, Regular Pruning"
-    }
+    },
+    "resources": [
+      {
+        "title": "Peace Lily Care Guide",
+        "url": "https://www.patchplants.com/pages/plant-care/complete-guide-to-peace-lily-care/"
+      },
+      {
+        "title": "Peace Lily Benefits",
+        "url": "https://lawn.com.au/peace-lily-benefits/"
+      }
+    ]
   },
   {
     "id": "plant_003",

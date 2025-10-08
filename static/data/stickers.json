@@ -39,7 +39,7 @@
   { "id": "s037",   "name": "rose1",     "img": "/static/stickers/rose_moon1.png",   "cost": 50 },
   { "id": "s038",   "name": "rosemary",     "img": "/static/stickers/rosemary_bottle_beans1.png",   "cost": 50 },
   { "id": "s039",   "name": "sandalwood",     "img": "/static/stickers/sandalwood_beans1.png",   "cost": 50 },
-  { "id": "s040",   "name": "witchhazel",     "img": "/static/stickers/witchhazel_moon1.png",   "cost": 50 },
+  { "id": "s040",   "name": "witchhazel",     "img": "/static/stickers/witchhazel_moon1.png",   "cost": 50 }
 
   
 ]
