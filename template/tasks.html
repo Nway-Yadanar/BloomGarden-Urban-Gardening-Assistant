@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Daily Tasks</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/gardening.css">
+</head>
+<body class="cbt">
+  <!-- top bar -->
+  <header class="cbt__topbar">
+    <button class="cbt__iconbtn" id="cbtMenuBtn" title="Menu" aria-label="toggle sidebar">☰</button>
+
+    <div class="cbt__brand">
+      <span class="cbt__brandLogo" aria-hidden="true">🌿</span>
+      <strong>Daily Tasks</strong>
+      <span class="cbt__brandSub">earn beans • claim moons</span>
+    </div>
+
+    <div class="cbt__topbarRight">
+    
+      <!-- Profile chip -->
+      <a href="/profile" class="cbt__chip"  id="navUserChip" title="Open profile">
+        <span id="navUserName">You</span>
+        <span  id="beansPill" style="margin-left:8px">0 🫘</span>
+      </a>
+      <button id="cbtThemeToggle" class="cbt__chip">🌓 theme</button>
+    </div>
+  </header>
+
+  <!-- sidebar -->
+  <aside id="cbtSidebar" class="cbt__sidebar" aria-label="sidebar navigation">
+    <nav>
+      <a href="/chatbot.html">💬 Chatbot</a>
+      <a href="notice.html">🌙 Luna Recommendations</a>
+      <a href="plantfaq.html">🪴 Plant FAQ</a>
+      <a href="pest_detection.html">🪲 Pest Detection</a>
+      <a href="/tasks" class="active">📋 Daily Tasks</a>
+      <a href="/stickers" class="active">🍀 Stickers</a>
+      <a href="home.html">🏠 Home</a>
+    </nav>
+  </aside>
+
+  <!-- main card -->
+  <main class="cbt__wrap">
+    <section class="cbt__card tasks-card">
+      <div class="tasks-header">
+        <div class="tasks-title">
+          <h1>Today</h1>
+          <p class="tasks-sub">Finish tasks to earn <b>beans</b>. Complete all to claim <b>moons</b>.</p>
+        </div>
+        <div class="tasks-stats">
+          <span class="glass-pill"><span id="todayDate">—</span></span>
+          <span class="glass-pill">Beans: <b id="statBeans">0</b></span>
+          <span class="glass-pill">Moons: <b id="statMoons">0</b></span>
+        </div>
+      </div>
+
+      <!-- task list -->
+      <ul id="taskList" class="tasks-list" aria-live="polite"></ul>
+
+      <div class="tasks-footer">
+        <button id="claimBonusBtn" class="cta" disabled>🌙 Claim All-Done Bonus</button>
+        <small class="tasks-hint" id="capHint"></small>
+      </div>
+    </section>
+  </main>
+
+  <!-- tiny modal for rewards -->
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

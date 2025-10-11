@@ -80,19 +80,21 @@ import requests
 import os
 from pathlib import Path
 import pymysql
+import json, hashlib
+from datetime import date, timedelta
 from datetime import datetime, timezone
 from math import sin, pi
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename  # you use this in /pest-detect
-from flask import session, redirect, url_for  # you already import request above
+from flask import session, redirect,abort, url_for  # you already import request above
 
 
 
 DB = {
     "host": "127.0.0.1",
-    "port": 3309,                    # XAMPP MySQL
+    "port": 3309,                    
     "user": "root",
-    "password": "",        # (often empty by default)
+    "password": "",        
     "database": "bloom_garden",
     "cursorclass": pymysql.cursors.DictCursor,
     "autocommit": True
@@ -298,8 +300,9 @@ def static_files(filename):
 # Optional: serve any other file under /template directly by name
 @app.route("/<path:filename>")
 def template_passthrough(filename):
+    if filename.startswith("api/"):
+            abort(404)
     return send_from_directory(TEMPLATE_DIR, filename)
-
 # --------------------------------------------------------------------
 # ChatBot
 # --------------------------------------------------------------------
@@ -427,6 +430,196 @@ def do_login():
     session["user_id"] = uid
     return redirect(next_url)
 
+@app.get("/tasks")
+@app.get("/tasks.html")
+@login_required
+def tasks_page():
+    return send_from_directory(TEMPLATE_DIR, "tasks.html")
+
+@app.get("/profile")
+@login_required
+def profile_page():
+    # (Create template/profile.html when you’re ready)
+    return send_from_directory(TEMPLATE_DIR, "profile.html")
+# ===== Beans/Moons Tasks API (minimal, matches tasks.html JS) =====
+DATA_DIR =  Path(app.static_folder) / "data"
+TASKS_PATH = DATA_DIR / "tasks.json"
+
+def _get_wallet(user_id: int):
+    with db() as con, con.cursor(dictionary=True) as cur:
+        cur.execute("SELECT beans, moons, beans_lifetime FROM user_wallet WHERE user_id=%s", (user_id,))
+        w = cur.fetchone()
+        if not w:
+            return {"beans": 0, "moons": 0, "beans_lifetime": 0}
+        return {k:int(w[k]) for k in w}
+
+def _add_wallet(user_id: int, beans=0, moons=0, lifetime=0):
+    with db() as con, con.cursor() as cur:
+        cur.execute("""
+        INSERT INTO user_wallet (user_id, beans, moons, beans_lifetime)
+          VALUES (%s,%s,%s,%s)
+          ON DUPLICATE KEY UPDATE
+            beans = beans + VALUES(beans),
+            moons = moons + VALUES(moons),
+            beans_lifetime = beans_lifetime + VALUES(beans_lifetime)
+        """, (user_id, max(0,beans), max(0,moons), max(0,lifetime)))
+
+def _today(): return date.today().isoformat()
+
+def _load_tasks_doc():
+    doc = json.loads(TASKS_PATH.read_text(encoding="utf-8"))
+    return {
+        "rules": doc.get("rules", {}),
+        "tasks": doc.get("tasks", [])
+    }
+
+def _pick_today_tasks(user_id: int):
+    """Deterministic daily selection using a stable hash; avoids tasks used in the last N days."""
+    doc = _load_tasks_doc()
+    rules = doc["rules"]; tasks = doc["tasks"]
+    slots = int(rules.get("daily_slots", 3))
+    no_repeat = int(rules.get("no_repeat_within_days", 3))
+
+    # tasks to avoid (done within window)
+    avoid = set()
+    with db() as con, con.cursor(dictionary=True) as cur:
+        cur.execute("""
+          SELECT task_id FROM user_task_log
+          WHERE user_id=%s AND task_date >= %s
+        """, (user_id, (date.today() - timedelta(days=no_repeat)).isoformat()))
+        for r in cur.fetchall(): avoid.add(r["task_id"])
+
+    # stable ordering by hash
+    def key_fn(t):
+        h = hashlib.sha256(f"{user_id}|{_today()}|{t['id']}".encode()).hexdigest()
+        return h
+
+    pool = [t for t in tasks if t.get("id") not in avoid] or tasks
+    pool.sort(key=key_fn)
+    picked = pool[:slots]
+
+    # mark done for today
+    done_ids = set()
+    with db() as con, con.cursor() as cur:
+        cur.execute("""
+          SELECT task_id FROM user_task_log WHERE user_id=%s AND task_date=%s
+        """, (user_id, _today()))
+        done_ids = {r[0] for r in cur.fetchall()}
+
+    items = [{
+        "id": t["id"],
+        "title": t.get("title",""),
+        "beans": int(t.get("beans", 0)),
+        "done": t["id"] in done_ids
+    } for t in picked]
+
+    all_done = all(x["done"] for x in items) and len(items) > 0
+    return items, all_done, rules
+
+@app.get("/api/wallet")
+@login_required
+def api_wallet():
+    uid = session["user_id"]
+    w = _get_wallet(uid)
+    # if you want username in header chip:
+    with db() as con, con.cursor(dictionary=True) as cur:
+        cur.execute("SELECT Username FROM users WHERE ID=%s", (uid,))
+        u = cur.fetchone() or {}
+    return jsonify({
+        "username": u.get("Username"),
+        "beans": w["beans"],
+        "moons": w["moons"],
+        "xp": w["beans_lifetime"]
+    })
+
+@app.get("/api/tasks/today")
+@login_required
+def api_tasks_today():
+    uid = session["user_id"]
+    tasks, all_done, rules = _pick_today_tasks(uid)
+    w = _get_wallet(uid)
+    return jsonify({
+        "date": _today(),
+        "beans": w["beans"],
+        "moons": w["moons"],
+        "tasks": tasks,
+        "all_done": all_done,
+        "all_done_bonus_moons": int(rules.get("all_done_bonus_moons", 2)),
+        "max_daily_beans": int(rules.get("max_daily_beans", 25))
+    })
+
+@app.post("/api/tasks/complete")
+@login_required
+def api_tasks_complete():
+    uid = session["user_id"]
+    data = request.get_json(silent=True) or request.form
+    task_id = (data.get("task_id") or "").strip()
+    if not task_id: return jsonify({"error":"task_id"}), 400
+
+    today_tasks, _, rules = _pick_today_tasks(uid)
+    t = next((x for x in today_tasks if x["id"] == task_id), None)
+    if not t: return jsonify({"error":"not_today"}), 400
+
+    # idempotent: if already logged for today, no beans
+    with db() as con, con.cursor() as cur:
+        cur.execute("""
+          SELECT 1 FROM user_task_log WHERE user_id=%s AND task_id=%s AND task_date=%s
+        """, (uid, task_id, _today()))
+        if cur.fetchone():
+            w = _get_wallet(uid)
+            return jsonify({"awarded_beans": 0, "awarded_moons": 0, "beans": w["beans"], "moons": w["moons"]})
+
+    # enforce daily cap
+    cap = int(rules.get("max_daily_beans", 25))
+    with db() as con, con.cursor() as cur:
+        cur.execute("""
+          SELECT COALESCE(SUM(awarded_beans),0) FROM user_task_log WHERE user_id=%s AND task_date=%s
+        """, (uid, _today()))
+        awarded_today = int(cur.fetchone()[0])
+
+    remaining = max(cap - awarded_today, 0)
+    award = min(t["beans"], remaining)
+
+    # log + update wallet
+    with db() as con, con.cursor() as cur:
+        cur.execute("""
+          INSERT INTO user_task_log (user_id, task_id, task_date, awarded_beans)
+          VALUES (%s,%s,%s,%s)
+        """, (uid, task_id, _today(), award))
+    if award > 0:
+        _add_wallet(uid, beans=award, lifetime=award)
+
+    w = _get_wallet(uid)
+    return jsonify({
+        "awarded_beans": award,
+        "awarded_moons": 0,
+        "beans": w["beans"],
+        "moons": w["moons"],
+        "daily_cap": cap,
+        "daily_awarded": min(awarded_today + award, cap)
+    })
+
+@app.post("/api/tasks/claim_all_done_bonus")
+@login_required
+def api_claim_all_done_bonus():
+    uid = session["user_id"]
+    _, all_done, rules = _pick_today_tasks(uid)
+    if not all_done: return jsonify({"error":"not_all_done"}), 400
+    bonus = int(rules.get("all_done_bonus_moons", 2))
+
+    # prevent double-claim using user_daily_bonus
+    with db() as con, con.cursor() as cur:
+        cur.execute("SELECT 1 FROM user_daily_bonus WHERE user_id=%s AND bonus_date=%s", (uid, _today()))
+        if cur.fetchone():
+            w = _get_wallet(uid)
+            return jsonify({"awarded_moons": 0, "beans": w["beans"], "moons": w["moons"]})
+
+    with db() as con, con.cursor() as cur:
+        cur.execute("INSERT INTO user_daily_bonus (user_id, bonus_date, awarded_moons) VALUES (%s,%s,%s)",
+                    (uid, _today(), bonus))
+    _add_wallet(uid, moons=bonus)
+    w = _get_wallet(uid)
+    return jsonify({"awarded_moons": bonus, "beans": w["beans"], "moons": w["moons"]})
 
 # --------------------------------------------------------------------
 # Dev entry

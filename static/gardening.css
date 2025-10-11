@@ -238,9 +238,10 @@ h3 { text-align: center; color: #8E549A; }
   gap: 8px;
   padding: .5rem;
   justify-content: center;
+  
 }
 .pill-button {
-  background-color: #69c6f1;
+  background-color: #4a6f9b;
   color: white;
   border-radius: 25px;
   padding: 8px 16px;
@@ -250,7 +251,7 @@ h3 { text-align: center; color: #8E549A; }
   transition: .2s;
 }
 .pill-button:hover {
-  background-color: #a2fda2;
+  background-color: #67b3a0;
   color: #79534A;
   transform: scale(1.05);
 }
@@ -569,7 +570,7 @@ body.home::before{
 .cbt__chip{
   border:1px solid rgba(0,0,0,0.08);
   padding:6px 10px; border-radius:999px; background:transparent; color:inherit;
-  cursor:pointer; font-weight:600; text-decoration:none;
+  cursor:pointer; font-weight:200; text-decoration:none;
 }
 
 /* sidebar (chatbot) */
@@ -727,13 +728,18 @@ body.home::before{
     
 /* Beans pill (clear glass look) */
 .glass-pill {
-  padding: 6px 12px; border-radius: 999px;
+  padding: 6px 9px; border-radius: 999px;
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.22);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  font-weight: 600; display: inline-flex; gap: 6px; align-items: center;
+  font-weight: 200; display: inline-flex; gap: 6px; align-items: center;
 }
-
+#navUserName {
+  font-size: medium;
+}
+#beansPill {
+  font-size: medium;
+}
 /* Sticker grid */
 .sticker-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -766,11 +772,11 @@ body.home::before{
 .modal__img { width: 160px; height: 160px; object-fit: contain; display: block; margin: 8px auto 10px; }
 .modal__actions { display: flex; gap: 10px; justify-content: center; margin-top: 12px; }
 
-.pill-button {
+/* .pill-button {
   border: 1px solid rgba(255,255,255,.22);
   background: rgba(255,255,255,.08);
   padding: 8px 14px; border-radius: 999px; cursor: pointer; font-weight: 600;
-}
+} */
 .pill--ghost { background: transparent; }
 
 /* ============ Auth (login / signup) ============ */
@@ -829,3 +835,60 @@ body.home::before{
 
 .auth-alt{ margin: 10px 0 0; font-size: 14px; color: var(--auth-muted); }
 .link{ color: var(--auth-brand); text-decoration: underline; font-weight: 600; }
+
+/* ============ Daily Tasks (glass) ============ */
+.tasks-card { padding: 18px; }
+.tasks-header{
+  display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 8px 6px 12px;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.tasks-title h1{ margin:.2rem 0; }
+.tasks-sub{ margin:.1rem 0 0; color: var(--text-muted); }
+.tasks-stats{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+
+.tasks-list{
+  list-style:none; padding: 12px 6px; margin: 0; display: grid;
+  grid-template-columns: 1fr; gap: 12px;
+}
+
+.task{
+  display:flex; align-items:center; gap: 12px;
+  padding: 12px 14px; border-radius: 16px;
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: var(--shadow);
+  transition: opacity .2s ease, transform .2s ease, border-color .2s ease;
+}
+.task:hover{ transform: translateY(-1px); border-color: rgba(0,0,0,.1); }
+.task__left{ display:flex; align-items:center; gap: 12px; flex:1; }
+.task__title{ font-weight: 700; }
+.task__beans{ font-weight: 700; color:#6a3; }
+
+.task input[type="radio"]{
+  appearance: none; width: 22px; height: 22px; border-radius: 999px;
+  border: 2px solid #7cc7f0; position: relative; cursor: pointer; background: #fff8;
+}
+.task input[type="radio"]:checked{
+  border-color: #45d07a; background: #45d07a22;
+}
+.task input[type="radio"]:checked::after{
+  content:""; position:absolute; inset: 4px; border-radius: 999px; background: #45d07a;
+}
+
+.task.done{ opacity: .45; }
+.task.done .task__title{ text-decoration: line-through; }
+
+.tasks-footer{
+  display:flex; align-items:center; justify-content: center; gap:10px;
+  padding: 10px 6px 2px;
+}
+.tasks-hint{ color: var(--text-muted); }
+
+/* lightweight toast */
+.toast{
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+  padding: 12px 14px; border-radius: 14px; color:#123; font-weight:700;
+  background: rgba(255,255,255,.85); border:1px solid rgba(0,0,0,.06); backdrop-filter: blur(8px);
+  box-shadow: var(--shadow); z-index: 9999; min-width: 220px; text-align: center;
+}

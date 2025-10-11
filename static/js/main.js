@@ -592,6 +592,8 @@ if (analyzeBtn) {
   });
 }
 
+
+
   /* ==========================
    * Boot
    * ========================== */
@@ -610,5 +612,155 @@ if (analyzeBtn) {
     }
   });
 });
+
+// ======================= Daily Tasks Page =======================
+(function () {
+  const listEl = document.getElementById('taskList');
+  if (!listEl) return; // only on tasks.html
+
+  const beansPill = document.getElementById('beansPill');
+  const statBeans = document.getElementById('statBeans');
+  const statMoons = document.getElementById('statMoons');
+  const capHint   = document.getElementById('capHint');
+  const toast     = document.getElementById('toast');
+  const claimBtn  = document.getElementById('claimBonusBtn');
+  const userName  = document.getElementById('navUserName');
+
+  // date label
+  const today = new Date();
+  const fmt = today.toLocaleDateString(undefined, { weekday:'short', month:'short', day:'numeric' });
+  const dEl = document.getElementById('todayDate');
+  if (dEl) dEl.textContent = fmt;
+
+  const showToast = (msg) => {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.hidden = false;
+    setTimeout(() => (toast.hidden = true), 1600);
+  };
+
+  const setPills = (beans, moons) => {
+    if (beansPill) beansPill.textContent = `${beans} 🫘`;
+    if (statBeans) statBeans.textContent = beans;
+    if (statMoons) statMoons.textContent = moons;
+  };
+
+  // Load username + wallet
+  async function loadHeader() {
+    try {
+      // If you have an endpoint for profile name, use it. Otherwise read from a data-* on the page or fallback.
+      const profile = await (await fetch('/api/wallet')).json();
+      setPills(profile.beans ?? 0, profile.moons ?? 0);
+      if (userName && profile.username) userName.textContent = profile.username;
+    } catch (e) {
+      /* not fatal */
+    }
+  }
+
+  // Render today’s tasks
+async function loadTasks() {
+  listEl.innerHTML = `<li class="task"><span>Loading…</span></li>`;
+  try {
+    const r = await fetch('/api/tasks/today', { cache: 'no-store' });
+
+    if (r.status === 401) {
+      // not logged in → send to login and come back here after
+      location.href = `/login?next=/tasks`;
+      return;
+    }
+    if (!r.ok) {
+      throw new Error(`HTTP ${r.status}`);
+    }
+
+    const data = await r.json();
+
+    // header stats
+    setPills(data.beans ?? 0, data.moons ?? 0);
+    if (capHint) {
+      const cap = Number(data.max_daily_beans ?? 25);
+      capHint.textContent = `Daily bean cap: ${cap}`;
+    }
+
+    // render list
+    listEl.innerHTML = '';
+    (data.tasks || []).forEach(t => {
+      const li = document.createElement('li');
+      li.className = 'task' + (t.done ? ' done' : '');
+      li.dataset.id = t.id;
+
+      li.innerHTML = `
+        <label class="task__left">
+          <input type="radio" ${t.done ? 'checked' : ''} aria-label="mark complete">
+          <div>
+            <div class="task__title">${t.title}</div>
+            <div class="task__meta"><span class="task__beans">+${t.beans} beans</span></div>
+          </div>
+        </label>
+      `;
+
+      const radio = li.querySelector('input[type="radio"]');
+      radio?.addEventListener('change', async () => {
+        radio.disabled = true;
+        try {
+          const res = await fetch('/api/tasks/complete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ task_id: t.id })
+          });
+          if (res.status === 401) { location.href = `/login?next=/tasks`; return; }
+          const js = await res.json();
+          if (!res.ok) { radio.checked = t.done; return; }
+
+          li.classList.add('done');
+          const add = Number(js.awarded_beans || 0);
+          if (add > 0) showToast(`+${add} beans`);
+          setPills(js.beans ?? 0, js.moons ?? 0);
+          await maybeEnableBonus();
+        } finally {
+          radio.disabled = false;
+        }
+      });
+
+      listEl.appendChild(li);
+    });
+
+    // bonus state
+    claimBtn.disabled = !data.all_done;
+    claimBtn.dataset.bonus = data.all_done_bonus_moons || 0;
+
+  } catch (e) {
+    listEl.innerHTML = `<li class="task">⚠️ Couldn't load tasks (${e.message}).</li>`;
+  }
+}
+
+
+  async function maybeEnableBonus() {
+    // quick check: all items have .done
+    const allDone = [...listEl.querySelectorAll('.task')].every(el => el.classList.contains('done'));
+    claimBtn.disabled = !allDone;
+  }
+
+  claimBtn?.addEventListener('click', async () => {
+    claimBtn.disabled = true;
+    try {
+      const r = await fetch('/api/tasks/claim_all_done_bonus', { method: 'POST' });
+      const js = await r.json();
+      if (!r.ok) {
+        claimBtn.disabled = true; // likely already claimed
+        return;
+      }
+      const plus = Number(js.awarded_moons || 0);
+      if (plus > 0) showToast(`+${plus} 🌙`);
+      setPills(js.beans ?? 0, js.moons ?? 0);
+    } catch (e) {
+      /* ignore */
+    }
+  });
+
+  // init
+  loadHeader();
+  loadTasks();
+})();
+
 })();
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>🌻 Plant FAQ</title>
 <link rel="stylesheet" href="static/gardening.css">
-<script src="/static/js/main.js"></script>
+
 </head>
 <body>
 <main class="cbt">
@@ -30,11 +30,13 @@
     <!-- sidebar (routes) -->
     <aside id="cbtSidebar" class="cbt__sidebar" aria-label="sidebar navigation">
       <nav>
-        <a href="chatbot.html" data-route="chat">💬 Chatbot</a>
-        <a href="notice.html" data-route="moon">🌙 Luna Recommendations</a>
-        <a href="plantfaq.html" data-route="plantfaq">🪴 plant FAQ</a>
-        <a href="pest_detection.html" data-route="pest">📔 Pest Detection</a>
-        <a href="home.html" data-route="home">🏠 home</a>
+        <a href="chatbot.html" data-route="chat"class="active">💬 Chatbot</a>
+        <a href="notice.html" data-route="moon" class="active">🌙 Luna Recommendations</a>
+        <a href="plantfaq.html" data-route="plantfaq" class="active">🪴 plant FAQ</a>
+        <a href="pest_detection.html" class="active">🪲 Pest Detection</a>
+        <a href="tasks.html" class="active">📋 Daily Tasks</a>
+        <a href="stickers.html" class="active">🍀 Stickers</a>
+        
       </nav>
     
     </aside>
@@ -43,8 +45,7 @@
     <span class="moon-emoji">🌻</span>
     <h1>Plant FAQ</h1>
   </div>
-<!--   
-  <header>🌻 Plant FAQ</header> -->
+
 <div class="main-content"> 
   <div class="pill-container" id="categoryButtons">
     <!-- Buttons will be dynamically added here -->
@@ -61,4 +62,5 @@
 </div>
 
 </body>
+<script src="/static/js/main.js"></script>
 </html>
