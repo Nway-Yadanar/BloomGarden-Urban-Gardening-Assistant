@@ -1,80 +1,3 @@
-
-
-# from flask import Flask, jsonify, send_from_directory
-# import requests
-# import os
-
-# app = Flask(__name__)
-
-# # Load key from env (safer) or hardcode for testing
-# API_KEY = os.getenv("IPGEO_KEY", "23f93f8fd38e4ba3ba47396b69dc3398")
-
-# # --- API: Moon data ---------------------------------------------------------
-# @app.route("/moon")
-# def moon():
-#     lat, lon = 16.8409, 96.1735  # Example: Yangon
-#     url = f"https://api.ipgeolocation.io/astronomy?apiKey={API_KEY}&lat={lat}&long={lon}"
-#     try:
-#         res = requests.get(url, timeout=10)  # safer with timeout
-#         res.raise_for_status()
-#         data = res.json()
-#         return jsonify({
-#             "phase": data.get("moon_phase", "Unknown"),
-#             "illumination": data.get("moon_illumination", "0")
-#         })
-#     except Exception as e:
-#         return jsonify({"error": str(e)}), 500
-    
-# # --- API: Weather data ------------------------------------------------------
-# @app.route("/weather")
-# def weather():
-#     lat = flask.request.args.get("lat")
-#     lon = flask.request.args.get("lon")
-#     api_key = os.getenv("OPENWEATHER_KEY")
-#     if not (lat and lon and api_key):
-#         return jsonify({"error": "Missing lat/lon or API key"}), 400
-
-#     url = (
-#         f"https://api.openweathermap.org/data/2.5/weather"
-#         f"?lat={lat}&lon={lon}&appid={api_key}&units=metric"
-#     )
-#     try:
-#         res = requests.get(url, timeout=10)
-#         res.raise_for_status()
-#         data = res.json()
-#         # Forward only safe fields
-#         return jsonify({
-#             "name": data.get("name"),
-#             "main": data.get("main"),
-#             "weather": data.get("weather")
-#         })
-#     except Exception as e:
-#         return jsonify({"error": str(e)}), 500
-
-
-# # --- Pages: Index + Chatbot -------------------------------------------------
-# @app.route("/")
-# def home():
-#     # Serve your new landing page (index)
-#     return send_from_directory("template", "home.html")
-
-# @app.route("/chatbot")
-# @app.route("/chatbot.html")
-# def chatbot():
-#     # Serve the chatbot UI
-#     return send_from_directory("template", "chatbot.html")
-
-# # --- Static passthrough for other files in /template ------------------------
-# @app.route("/<path:filename>")
-# def serve_static(filename):
-#     return send_from_directory("template", filename)
-
-# if __name__ == "__main__":
-#     # Set host='0.0.0.0' if running in a container
-#     app.run(debug=True)
-
-
-
 from flask import Flask, jsonify, send_from_directory, request
 import requests
 import os
@@ -362,41 +285,58 @@ def login_page():
 def signup_page():
     return send_from_directory(TEMPLATE_DIR, "signup.html")
 
+import re
+from werkzeug.security import generate_password_hash
+
+EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+PW_RE    = re.compile(r"^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$")
+from urllib.parse import urlencode
+from flask import redirect
+
+def _signup_err(field, msg, username="", email=""):
+    q = urlencode({"err_field": field, "err_msg": msg, "u": username, "e": email})
+    return redirect(f"/signup?{q}")
+
+
 @app.post("/signup")
 def signup_post():
-    email    = (request.form.get("email") or "").strip()
     username = (request.form.get("username") or "").strip()
+    email    = (request.form.get("email") or "").strip()
     pw       = request.form.get("password") or ""
     pw2      = request.form.get("password2") or ""
     next_url = request.form.get("next") or "/chatbot"
 
-    if not email or not username or not pw:
-        return "Missing fields", 400
-    if pw != pw2 or len(pw) < 8:
-        return "Password mismatch / too short", 400
+    # validations
+    if not (3 <= len(username) <= 50):
+        return _signup_err("username", "Username must be 3–50 characters.", username, email)
+    if not EMAIL_RE.match(email):
+       return _signup_err("email", "Please enter a valid email address.", username, email)
 
-    pwd_hash = generate_password_hash(pw, method="pbkdf2:sha256", salt_length=16)
+    if not PW_RE.match(pw):
+      return _signup_err("password", "Password must be at least 8 chars with 1 uppercase, 1 number, 1 special.", username, email)
+    if pw != pw2:
+        return _signup_err("password2", "Passwords do not match.", username, email)
 
+    # unique checks (username or email)
     with db() as con, con.cursor() as cur:
-        # enforce unique user/email
-        cur.execute("SELECT 1 FROM users WHERE Username=%s OR Email=%s", (username, email))
-        if cur.fetchone():
-            return "Username or email already exists", 409
+      cur.execute("SELECT 1 FROM users WHERE Username=%s OR Email=%s LIMIT 1", (username, email))
+      if cur.fetchone():
+          return _signup_err("email", "Username or email already exists.", username, email)
+      pwd_hash = generate_password_hash(pw, method="pbkdf2:sha256", salt_length=16)
+      cur.execute(
+        "INSERT INTO users (Username, Email, Password_hashed) VALUES (%s,%s,%s)",
+        (username, email, pwd_hash)
+      )
+      new_id = cur.lastrowid
 
+      # ensure wallet row exists (optional)
+      try:
         cur.execute(
-            "INSERT INTO users (Username, Email, Password_hashed) VALUES (%s,%s,%s)",
-            (username, email, pwd_hash)
+          "INSERT IGNORE INTO user_wallet (user_id, beans, moons, beans_lifetime) VALUES (%s,0,0,0)",
+          (new_id,)
         )
-        new_id = cur.lastrowid
-
-        # ensure wallet row exists (optional)
-        try:
-            cur.execute(
-                "INSERT IGNORE INTO user_wallet (user_id, beans, moons, beans_lifetime) VALUES (%s,0,0,0)",
-                (new_id,)
-            )
-        except Exception:
-            pass
+      except Exception:
+        pass
 
     session["user_id"] = new_id
     return redirect(next_url)
@@ -442,11 +382,11 @@ def profile_page():
     # (Create template/profile.html when you’re ready)
     return send_from_directory(TEMPLATE_DIR, "profile.html")
 # ===== Beans/Moons Tasks API (minimal, matches tasks.html JS) =====
-DATA_DIR =  Path(app.static_folder) / "data"
+DATA_DIR = STATIC_DIR / "data"
 TASKS_PATH = DATA_DIR / "tasks.json"
 
 def _get_wallet(user_id: int):
-    with db() as con, con.cursor(dictionary=True) as cur:
+     with db() as con, con.cursor() as cur:
         cur.execute("SELECT beans, moons, beans_lifetime FROM user_wallet WHERE user_id=%s", (user_id,))
         w = cur.fetchone()
         if not w:
@@ -482,7 +422,7 @@ def _pick_today_tasks(user_id: int):
 
     # tasks to avoid (done within window)
     avoid = set()
-    with db() as con, con.cursor(dictionary=True) as cur:
+    with db() as con, con.cursor() as cur:
         cur.execute("""
           SELECT task_id FROM user_task_log
           WHERE user_id=%s AND task_date >= %s
@@ -504,7 +444,8 @@ def _pick_today_tasks(user_id: int):
         cur.execute("""
           SELECT task_id FROM user_task_log WHERE user_id=%s AND task_date=%s
         """, (user_id, _today()))
-        done_ids = {r[0] for r in cur.fetchall()}
+        rows = cur.fetchall() or []
+        done_ids = {r["task_id"] for r in cur.fetchall()}
 
     items = [{
         "id": t["id"],
@@ -522,7 +463,7 @@ def api_wallet():
     uid = session["user_id"]
     w = _get_wallet(uid)
     # if you want username in header chip:
-    with db() as con, con.cursor(dictionary=True) as cur:
+    with db() as con, con.cursor() as cur:
         cur.execute("SELECT Username FROM users WHERE ID=%s", (uid,))
         u = cur.fetchone() or {}
     return jsonify({
@@ -573,9 +514,13 @@ def api_tasks_complete():
     cap = int(rules.get("max_daily_beans", 25))
     with db() as con, con.cursor() as cur:
         cur.execute("""
-          SELECT COALESCE(SUM(awarded_beans),0) FROM user_task_log WHERE user_id=%s AND task_date=%s
-        """, (uid, _today()))
-        awarded_today = int(cur.fetchone()[0])
+     SELECT COALESCE(SUM(awarded_beans),0) AS total
+     FROM user_task_log
+     WHERE user_id=%s AND task_date=%s
+    """, (uid, _today()))
+    row = cur.fetchone() or {"total": 0}
+    awarded_today = int(row.get("total", 0))
+
 
     remaining = max(cap - awarded_today, 0)
     award = min(t["beans"], remaining)
@@ -599,27 +544,63 @@ def api_tasks_complete():
         "daily_awarded": min(awarded_today + award, cap)
     })
 
-@app.post("/api/tasks/claim_all_done_bonus")
+@app.route("/api/tasks/claim_all_done_bonus", methods=["POST"])
 @login_required
+
 def api_claim_all_done_bonus():
-    uid = session["user_id"]
-    _, all_done, rules = _pick_today_tasks(uid)
-    if not all_done: return jsonify({"error":"not_all_done"}), 400
+    uid = session.get("user_id")
+    if not uid:
+        return jsonify({"error": "auth"}), 401
+
+    # Figure out which IDs are required today and which ones you finished
+    tasks_today, _, rules = _pick_today_tasks(uid)
+    required_ids = {t["id"] for t in tasks_today}
+
+    with db() as con, con.cursor() as cur:
+        cur.execute("""
+            SELECT task_id FROM user_task_log
+            WHERE user_id=%s AND task_date=%s
+        """, (uid, _today()))
+        done_rows = cur.fetchall() or []
+    done_ids = {r["task_id"] for r in done_rows}
+
+    missing = sorted(list(required_ids - done_ids))
+    if missing:
+        # Return 200 with a reason so UI can show a message,
+        # instead of a hard 400 that looks like an error.
+        return jsonify({
+            "awarded_moons": 0,
+            "reason": "not_all_done",
+            "missing": missing,
+        }), 200
+
     bonus = int(rules.get("all_done_bonus_moons", 2))
 
-    # prevent double-claim using user_daily_bonus
+    # Prevent double-claim
     with db() as con, con.cursor() as cur:
-        cur.execute("SELECT 1 FROM user_daily_bonus WHERE user_id=%s AND bonus_date=%s", (uid, _today()))
-        if cur.fetchone():
-            w = _get_wallet(uid)
-            return jsonify({"awarded_moons": 0, "beans": w["beans"], "moons": w["moons"]})
+        cur.execute("SELECT 1 FROM user_daily_bonus WHERE user_id=%s AND bonus_date=%s",
+                    (uid, _today()))
+        already = cur.fetchone()
+    if already:
+        w = _get_wallet(uid)
+        return jsonify({"awarded_moons": 0, "beans": w["beans"], "moons": w["moons"], "reason": "already_claimed"}), 200
 
+    # Credit moons + log the bonus
     with db() as con, con.cursor() as cur:
-        cur.execute("INSERT INTO user_daily_bonus (user_id, bonus_date, awarded_moons) VALUES (%s,%s,%s)",
-                    (uid, _today(), bonus))
+        cur.execute("""
+            INSERT INTO user_daily_bonus (user_id, bonus_date, awarded_moons)
+            VALUES (%s, %s, %s)
+        """, (uid, _today(), bonus))
     _add_wallet(uid, moons=bonus)
     w = _get_wallet(uid)
-    return jsonify({"awarded_moons": bonus, "beans": w["beans"], "moons": w["moons"]})
+
+    return jsonify({
+        "awarded_moons": bonus,
+        "beans": w["beans"],
+        "moons": w["moons"],
+        "reason": "ok"
+    }), 200
+
 
 # --------------------------------------------------------------------
 # Dev entry
@@ -627,3 +608,5 @@ def api_claim_all_done_bonus():
 if __name__ == "__main__":
     # Use host='0.0.0.0' if running in a container
     app.run(debug=True)
+
+

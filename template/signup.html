@@ -14,31 +14,92 @@
       <p class="auth-sub">Take the first step</p>
 
       <form class="auth-form" method="POST" action="/signup" novalidate>
-        <div class="field has-icon" data-icon="✉️">
-          <input class="input" id="email" name="email" type="email"
-                 placeholder="E-mail" autocomplete="email" required />
-        </div>
 
-        <div class="field has-icon" data-icon="👤">
-          <input class="input" id="username" name="username" type="text"
-                 placeholder="Username" autocomplete="username" required />
-        </div>
+         <label>
+  Username
+  <input type="text" name="username" id="username" required minlength="3" maxlength="50">
+  <p class="form-error" id="errUsername">Username must be 3–50 characters.</p>
+</label>
 
-        <div class="field has-icon" data-icon="🔒">
-          <input class="input" id="password" name="password" type="password"
-                 placeholder="Password" minlength="8" autocomplete="new-password" required />
-        </div>
+<label>
+  Email
+  <input type="email" name="email" id="email" required>
+  <p class="form-error" id="errEmail">Please enter a valid email address.</p>
+</label>
 
-        <div class="field has-icon" data-icon="🔒">
-          <input class="input" id="password2" name="password2" type="password"
-                 placeholder="Confirm password" minlength="8" autocomplete="new-password" required />
-        </div>
+<label>
+  Password
+  <div class="pw-field">
+    <input type="password" name="password" id="password" required autocomplete="new-password">
+    <button type="button" class="pw-toggle" aria-label="Show password" aria-pressed="false">
+  
+      <svg class="eye eye-open" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 5c-5 0-9 4.5-10 7 1 2.5 5 7 10 7s9-4.5 10-7c-1-2.5-5-7-10-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"/>
+      </svg>
+      <!-- eye-off (hidden) -->
+      <svg class="eye eye-closed" viewBox="0 0 24 24" aria-hidden="true" hidden>
+        <path d="M3 3l18 18-1.4 1.4-3-3A12.7 12.7 0 0 1 12 19C7 19 3 14.5 2 12c.42-1.03 1.38-2.5 2.73-3.95L1.6 4.4 3 3Zm6.7 6.7A3.9 3.9 0 0 0 8 12a4 4 0 0 0 4 4c.75 0 1.44-.2 2.05-.55l-4.35-4.35Zm3.6-2.6 2.2 2.2A4 4 0 0 0 12 8c.44 0 .86.07 1.3.2ZM21.27 9.95c.74.86 1.27 1.7 1.73 2.05-1 2.5-5 7-11 7-1.7 0-3.28-.33-4.7-.9l1.62-1.62c.95.35 2 .52 3.08.52 5 0 9-4.5 10-7-.3-.33-.8-1.04-1.73-2.05Z"/>
+      </svg>
+    </button>
+  </div>
+  <p class="form-error" id="errPassword">Password must be at least 8 characters and include 1 uppercase, 1 number, and 1 special character.</p>
+</label>
 
-        <button class="btn-primary" type="submit">Sign up</button>
+<label>
+  Confirm Password
+  <div class="pw-field">
+    <input type="password" name="password2" id="password2" required autocomplete="new-password">
+    <button type="button" class="pw-toggle" aria-label="Show password" aria-pressed="false">
+      <svg class="eye eye-open" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 5c-5 0-9 4.5-10 7 1 2.5 5 7 10 7s9-4.5 10-7c-1-2.5-5-7-10-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"/>
+      </svg>
+      <svg class="eye eye-closed" viewBox="0 0 24 24" aria-hidden="true" hidden>
+        <path d="M3 3l18 18-1.4 1.4-3-3A12.7 12.7 0 0 1 12 19C7 19 3 14.5 2 12c.42-1.03 1.38-2.5 2.73-3.95L1.6 4.4 3 3Zm6.7 6.7A3.9 3.9 0 0 0 8 12a4 4 0 0 0 4 4c.75 0 1.44-.2 2.05-.55l-4.35-4.35Zm3.6-2.6 2.2 2.2A4 4 0 0 0 12 8c.44 0 .86.07 1.3.2ZM21.27 9.95c.74.86 1.27 1.7 1.73 2.05-1 2.5-5 7-11 7-1.7 0-3.28-.33-4.7-.9l1.62-1.62c.95.35 2 .52 3.08.52 5 0 9-4.5 10-7-.3-.33-.8-1.04-1.73-2.05Z"/>
+      </svg>
+    </button>
+  </div>
+  <p class="form-error" id="errPassword2">Passwords do not match.</p>
+</label>
+
+
+<button type="submit" class="wl-btn wl-btn--primary">Create Account</button>
+
       </form>
 
       <p class="auth-alt">Already have an account? <a href="/login" class="link">Log in</a></p>
     </section>
   </main>
+<script>
+(() => {
+  document.querySelectorAll('.pw-field').forEach(wrap => {
+    const input  = wrap.querySelector('input');
+    const btn    = wrap.querySelector('.toggle');
+    const eye    = btn.querySelector('.icon-eye');     // open eye
+    const eyeoff = btn.querySelector('.icon-eyeoff');  // eye with slash
+    if (!input || !btn || !eye || !eyeoff) return;
+
+    // visible = password text is shown
+    const set = (visible) => {
+      input.type = visible ? 'text' : 'password';
+      btn.setAttribute('aria-pressed', String(visible));
+      // show OPEN eye when HIDDEN, and CLOSED eye when VISIBLE
+      eye.hidden    = visible;     // open eye hidden when visible
+      eyeoff.hidden = !visible;    // eye-off shown when visible
+    };
+
+    // start hidden (open eye visible)
+    set(false);
+
+    btn.addEventListener('click', () => {
+      set(input.type === 'password'); // toggle
+      input.focus();
+      const n = input.value.length;
+      try { input.setSelectionRange(n, n); } catch {}
+    });
+  });
+})();
+</script>
+
+
 </body>
 </html>
