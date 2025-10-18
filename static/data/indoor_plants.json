@@ -77,7 +77,17 @@
       "soil": "Moist, well‑draining",
       "avoid":"Overwatering",
       "notes":"Toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "How to Grow and Care for English Ivy",
+        "url": "https://www.thespruce.com/english-ivy-plants-2132215"
+      },
+      {
+        "title": "English Ivy Benefits",
+        "url": "https://www.webmd.com/vitamins/ai/ingredientmono-465/english-ivy"
+      }
+    ]
   },
   {
     "id": "plant_004",
@@ -97,7 +107,17 @@
       "soil": "Well‑draining potting mix",
       "avoid": "Overwatering",
       "notes": "Non‑toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "How to Grow and Care for Spider Plants",
+        "url": "https://www.thespruce.com/spider-plants-chlorophytum-definition-1902773"
+      },
+      {
+        "title": "Benefits of Spider Plants",
+        "url": "https://www.southernliving.com/spider-plant-benefits-6833414"
+      }
+    ]
   },
   {
     "id": "plant_005",
@@ -117,7 +137,17 @@
       "soil": "Moist, well‑draining",
       "avoid": "Cold drafts, Sudden Temperature Drops",
       "notes": "Non‑toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "Bamboo Palm Care Guide",
+        "url": "https://www.thespruce.com/bamboo-palm-8652810"
+      },
+      {
+        "title": "Bamboo Palm Benefits",
+        "url": "https://meserii.com/blogs/bamboo/palm-benefits?srsltid=AfmBOoo0RAbhv_LvdPzVx-it_G5WItgTjS5AF38Jwcikbtatzy0OXD7c"
+      }
+    ]
   },
   {
     "id": "plant_006",
@@ -137,7 +167,18 @@
       "soil": "Rich, moist, well‑draining",
       "avoid":"Extreme Hot Temperature",
       "notes":"Non‑toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "Gerbera Daisy Care Guide",
+        "url": "https://www.gardeningknowhow.com/ornamental/flowers/gerbera-daisy/gerbera-daisies-indoors.htm"
+      },
+      {
+        "title": "Beauty of Gerbera Daisy",
+        "url": "https://www.gardenia.net/plants/common-names/gerbera-daisy"
+      }
+    ]
+
   },
   {
     "id": "plant_007",
@@ -158,7 +199,17 @@
       "soil": "Cactus/succulent mix",
       "avoid":"Overwatering",
       "notes":"Toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "Aloe Vera Care Guide",
+        "url": "https://www.thespruce.com/grow-aloe-vera-1403153"
+      },
+      {
+        "title": "Aloe Vera Benefits",
+        "url": "https://www.medicalnewstoday.com/articles/318591"
+      }
+    ]
   },
   {
     "id": "plant_008",
@@ -179,12 +230,22 @@
       "soil": "Well‑draining, pH 6–7",
       "avoid": "Overwatering, Shade areas",
       "notes":"Non‑toxic to pets"
-    }
+    },
+  "resources": [
+      {
+        "title": "Rosemary Care Guide",
+        "url": "https://www.thespruce.com/grow-and-care-for-rosemary-plants-1403406"
+      },
+      {
+        "title": "Rosemary Benefits",
+        "url": "https://thenovastudio.com/growing-using-rosemary-in-skincare-and-food/"
+      }
+    ]
   },
   {
   "id": "plant_009",
   "plant": "Thai Basil",
-  "category": "Culinary Herb",
+  "category": "Culinary Herb, garnish for Asian food",
   "indoor": true,
   "edible": true,
   "benefits": ["Digestive aid", "Culinary (Asian dishes)", "Aromatic"],
@@ -200,12 +261,22 @@
     "soil": "Fertile, moist, well‑drained",
     "avoid": "Shade areas, Dry soil",
     "notes": "Non‑toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Thai Basil Care Guide",
+        "url": "https://www.thespruce.com/thai-basil-7375163"
+      },
+      {
+        "title": "Thai Basil Benefits",
+        "url": "https://www.geturbanleaf.com/blogs/herbs/the-benefits-of-thai-basil-and-why-you-should-be-growing-thai-basil-indoors?srsltid=AfmBOorl1Lmk6XfiFU89P76_nOmuCfsRT02U4AD9c96H6ozW-lg9eV_s"
+      }
+    ]
 },
 {
   "id": "plant_010",
   "plant": "Sweet Basil",
-  "category": "Culinary Herb",
+  "category": "Culinary Herb, garnish for Italian food",
   "indoor": true,
   "edible": true,
   "benefits": ["Anti‑inflammatory", "Antioxidant", "Cooking"],
@@ -221,12 +292,22 @@
     "soil": "Rich, moist, well‑draining",
     "avoid": "Overwatering, Cold drafts",
     "notes": "Non‑toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Sweet Basil Care Guide",
+        "url": "https://www.thespruce.com/how-to-grow-basil-plants-1402624"
+      },
+      {
+        "title": "Sweet Basil Benefits",
+        "url": "https://www.healthline.com/nutrition/10-proven-basil-benefits"
+      }
+    ]
 },
 {
   "id": "plant_011",
   "plant": "Tulsi (Holy Basil)",
-  "category": "Medicinal Herb",
+  "category": "Medicinal Herb,Used in religious rituals and medicinal tea",
   "indoor": true,
   "edible": true,
   "benefits": ["Immunity boost", "Medicinal herb", "Air purification"],
@@ -257,7 +338,7 @@
 {
   "id": "plant_012",
   "plant": "Greek Oregano",
-  "category": "Culinary Herb",
+  "category": "Culinary Herb, Used in Mediterranean cuisine and roubus dishes",
   "indoor": true,
   "edible": true,
   "benefits": ["Antibacterial", "Flavoring", "Anti-inflammatory"],
@@ -273,13 +354,24 @@
     "soil": "Well-drained, sandy or loamy",
     "avoid": "Overwatering, Poor drainage",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Greek Oregano Care Guide",
+        "url": "https://www.thespruce.com/growing-oregano-plants-1402818"
+      },
+      {
+        "title": "Greek Oregano Benefits ",
+        "url": "https://www.medicalnewstoday.com/articles/266259"
+      }
+    ]
+
 },
 
 {
   "id": "plant_013",
   "plant": "Italian Oregano",
-  "category": "Culinary Herb",
+  "category": "Culinary Herb,Used in Italian cuisine and seasoning",
   "indoor": true,
   "edible": true,
   "benefits": ["Culinary", "Digestive support", "Anti-inflammatory"],
@@ -295,7 +387,17 @@
     "soil": "Well-draining, fertile",
     "avoid": "Soggy soil, Low light",
     "notes": "Non-toxic to pets"
-    }
+    },
+  "resources": [
+      {
+        "title": "Italian Oregano Care Guide",
+        "url": "https://www.thespruce.com/growing-oregano-plants-1402818"
+      },
+      {
+        "title": "Italian Oregano Benefits ",
+        "url": "https://www.medicalnewstoday.com/articles/266259"
+      }
+    ]
    },
    {
     "id": "plant_014",
