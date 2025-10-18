@@ -418,7 +418,18 @@
       "soil": "Well‑draining, sandy loam",
       "avoid": "Overwatering, Shade areas",
       "notes": "Non‑toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "Thyme Care Guide",
+        "url": "https://www.thespruce.com/grow-thyme-indoors-1902495"
+      },
+      {
+        "title": "Thyme Benefits ",
+        "url": "https://www.healthline.com/health/health-benefits-of-thyme"
+      }
+    ]
+  
    },
   {
   "id": "plant_015",
@@ -439,7 +450,18 @@
     "soil": "Rich, moist, well-drained",
     "avoid": "Drying out, Poor drainage",
     "notes": "Mildly toxic to pets in large quantities,Regular Pruning"
-  }
+  },
+  "resources": [
+      {
+        "title": "Spearmint Care Guide",
+        "url": "https://www.thespruce.com/growing-mint-1402628"
+      },
+      {
+        "title": "Spearmint Benefits ",
+        "url": "https://foodiegardener.com/grow-mint-indoors-spearmint-and-peppermint/"
+      }
+    ]
+  
 },
   {
   "id": "plant_016",
@@ -460,8 +482,18 @@
     "soil": "Moist, fertile, well-drained",
     "avoid": "Dry soil, Direct harsh sun",
     "notes": "Mildly toxic to pets in large quantities"
-  }
-},
+  },
+  "resources": [
+      {
+        "title": "Peppermint Care Guide",
+        "url": "https://www.thespruce.com/growing-mint-1402628"
+      },
+      {
+        "title": "Peppermint Benefits ",
+        "url": "https://www.healthline.com/nutrition/peppermint-tea-benefits"
+      }
+    ]
+  },
 
   {
     "id": "plant_017",
@@ -482,7 +514,17 @@
       "soil": "Sandy, well‑draining",
       "avoid": "Overwatering, Poor Air Circulation, Extreme Cold",
       "notes":"Mildy-toxic to pets in large quantities"
-    }
+    },
+    "resources": [
+      {
+        "title": "Lavender Care Guide",
+        "url": "https://www.gardenia.net/guide/how-to-successfully-grow-care-for-a-lavender-plant-indoors"
+      },
+      {
+        "title": "Lavender Benefits",
+        "url": "https://www.healthline.com/health/what-lavender-can-do-for-you"
+      }
+    ]
   },
   {
     "id": "plant_018",
@@ -503,12 +545,22 @@
       "soil": "Moist, well‑draining",
       "avoid": "Overwatering, Overcrowding, Shade areas",
       "notes": "Toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "Chives Care Guide",
+        "url": "https://www.groworganic.com/blogs/articles/growing-chives-indoors-a-comprehensive-guide?srsltid=AfmBOorhPV7--EIvKxiEfw1qsZJIsp5r-qdL-_RUggODwalAxrRXoHQ7"
+      },
+      {
+        "title": "Chives Benefits",
+        "url": "https://www.medicalnewstoday.com/articles/275009"
+      }
+    ]
   },
   {
   "id": "plant_019",
   "plant": "Curly Parsley",
-  "category": "Culinary Herb",
+  "category": "Culinary Herb, garnish for dishes",
   "indoor": true,
   "edible": true,
   "benefits": ["Vitamin K", "Breath freshener", "Culinary use"],
@@ -524,11 +576,21 @@
     "soil": "Nutrient-rich, well-draining",
     "avoid": "Waterlogging, Harsh sunlight",
     "notes": "Safe in small quantities; mildly toxic to pets in large quantities"
-  }
+  },
+  "resources": [
+      {
+        "title": "Curly Parsley Care Guide",
+        "url": "https://www.thespruce.com/how-to-grow-and-care-for-parsley-11694995"
+      },
+      {
+        "title": "Curly Parsley Benefits ",
+        "url": "https://www.healthline.com/nutrition/parsley-benefits"
+      }
+    ]
 },
 {
   "id": "plant_020",
-  "plant": "Flat-Leaf Parsley",
+  "plant": "Italian Parsley",
   "category": "Culinary Herb",
   "indoor": true,
   "edible": true,
@@ -545,9 +607,18 @@
     "soil": "Well-drained, fertile",
     "avoid": "Neglecting moisture, Shade",
     "notes": "Mildly toxic to pets in large quantities"
-  }
+  },
+  "resources": [
+      {
+        "title": "Italian Parsley Care Guide",
+        "url": "https://www.thespruce.com/how-to-grow-and-care-for-parsley-11694995"
+      },
+      {
+        "title": "Italian Parsley Benefits ",
+        "url": "https://www.healthline.com/nutrition/parsley-benefits"
+      }
+    ]
 },
-
 
   {
     "id": "plant_021",
@@ -568,7 +639,17 @@
       "soil": "Loamy, well‑draining",
       "avoid":"Overwatering, Direct sunlight,high humidity",
       "notes":"Non-toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "Cilantro Care Guide",
+        "url": "https://www.thespruce.com/how-to-grow-cilantro-4125820"
+      },
+      {
+        "title": "Cilantro Benefits",
+        "url": "https://www.webmd.com/diet/health-benefits-cilantro"
+      }
+    ]
   },
   
   {
@@ -589,7 +670,18 @@
       "soil": "Rich, slightly acidic, well‑draining",
       "avoid":"Overwatering,Dry Air",
       "notes":"Non-toxic to pets if true jasmine,Prune after flowering"
-    }
+    },
+    "resources": [
+      {
+        "title": "Indoor Jasmine Care Guide",
+        "url": "https://www.epicgardening.com/jasmine-plant-indoor/"
+      },
+      {
+        "title": "Indoor Jasmine Benefits",
+        "url": "https://www.backyardboss.net/benefits-of-having-jasmine-plant-at-home/"
+      }
+    ]
+
   },
   {
     "id": "plant_023",
@@ -609,7 +701,17 @@
       "soil": "Rich, well‑draining",
       "avoid":"Overwatering, Drying out",
       "notes": "Non-toxic to pets,Prune before new growth"
-    }
+    },
+    "resources": [
+      {
+        "title": "Mini Rose Care Guide",
+        "url": "https://housing.com/news/how-to-grow-and-care-for-miniature-roses/"
+      },
+      {
+        "title": "Mini Rose Benefits",
+        "url": "https://housing.com/news/how-to-grow-and-care-for-miniature-roses/"
+      }
+    ]
   },
   {
     "id": "plant_024",
@@ -629,7 +731,17 @@
       "soil": "Water (hydroponic) or well‑draining mix",
       "avoid":"Chlorine in water, Drafts both hot and cold",
       "notes":"Toxic to pets, Chinese Tradition and meaning varies with bamboo arrangements"
-    }
+    },
+    "resources": [
+      {
+        "title": "Lucky Bamboo Care Guide",
+        "url": "https://www.thespruce.com/growing-lucky-bamboo-1902994"
+      },
+      {
+        "title": "Lucky Bamboo Benefits",
+        "url": "https://bloomboxclub.com/blogs/news/lucky-bamboo-plant-benefits-for-you-and-your-home"
+      }
+    ]
   },
     
 
@@ -654,7 +766,17 @@
       "avoid": "Overwatering, Insufficient sunlight",
       "notes": "Toxic to pets in large amounts, Prune before new growth"
       
-    }
+    },
+    "resources": [
+      {
+        "title": "Sage Care Guide",
+        "url": "https://www.almanac.com/plant/sage"
+      },
+      {
+        "title": "Sage Benefits",
+        "url": "https://www.healthline.com/nutrition/sage"
+      }
+    ]
   },
   {
     "id": "plant_026",
@@ -675,7 +797,17 @@
       "soil": "Rich Moist Soil",
       "avoid":"Extreme Hot Temperature, Overwattering",
       "notes": "Non-toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "Lemon Balm Care Guide",
+        "url": "https://www.thespruce.com/grow-lemon-balm-indoors-1902572"
+      },
+      {
+        "title": "Lemon Balm Benefits",
+        "url": "https://www.healthline.com/health/lemon-balm-uses"
+      }
+    ]
   },
   {
     "id": "plant_027",
@@ -696,7 +828,17 @@
       "soil": "Dry Soil, Extreme Cold",
       "avoid":"Shade areas, Dry soil, Extreme Cold Temperature",
       "notes":"Toxic to pets"
-    }
+    },
+    "resources": [
+      {
+        "title": "Lemongrass Care Guide",
+        "url": "https://www.thespruce.com/lemongrass-plant-profile-4686088"
+      },
+      {
+        "title": "Lemongrass Benefits",
+        "url": "https://www.medicalnewstoday.com/articles/321969"
+      }
+    ]
   },
   {
     "id": "plant_028",
@@ -717,7 +859,17 @@
     "soil": "Well-draining, slightly sandy soil",
     "avoid": "Overwatering, poor drainage",
     "notes": "Non-toxic to pets, Best suited for growing in balcony or backyard"
-  }
+  },
+  "resources": [
+      {
+        "title": "Terragon Care Guide",
+        "url": "https://www.thespruce.com/tarragon-care-growing-guide-5024873"
+      },
+      {
+        "title": "Terragon Benefits",
+        "url": "https://www.healthline.com/nutrition/tarragon-benefits-uses"
+      }
+    ]
 },
 {
   "id": "plant_029",
@@ -738,7 +890,17 @@
     "soil": "Well-draining, fertile soil",
     "avoid": "Frost, soggy roots",
     "notes": "Toxic to pets in large amounts,Best suited for growing in balcony or backyard "
-  }
+  },
+  "resources": [
+      {
+        "title": "Bay Leaf Care Guide",
+        "url": "https://www.thespruce.com/how-to-grow-your-own-bay-laurel-tree-1402602"
+      },
+      {
+        "title": "Bay Leaf Benefits",
+        "url": "https://www.healthline.com/health/5-possible-uses-for-bay-leaf"
+      }
+    ]
 },
 {
   "id": "plant_030",
@@ -759,7 +921,17 @@
     "soil": "Well-draining, moderately rich soil",
     "avoid": "Overwatering, poor light",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Calendula Care Guide",
+        "url": "https://www.gardenia.net/guide/learn-how-to-grow-and-care-calendula"
+      },
+      {
+        "title": "Calendula Benefits",
+        "url": "https://www.verywellhealth.com/health-benefits-of-calendula-4582641"
+      }
+    ]
 },
 {
   "id": "plant_031",
