@@ -952,7 +952,17 @@
     "soil": "Well-drained, sandy or loamy",
     "avoid": "Excessive heat or water",
     "notes": "Mildly toxic to pets in large quantities"
-  }
+  },
+  "resources": [
+      {
+        "title": "Chamomile Care Guide",
+        "url": "https://www.thespruce.com/how-to-grow-chamomile-1402627"
+      },
+      {
+        "title": "Chamomile Benefits",
+        "url": "https://www.webmd.com/diet/supplement-guide-chamomile"
+      }
+    ]
 },
 {
   "id": "plant_032",
@@ -972,7 +982,18 @@
     "soil": "Deep, loose, sandy soil",
     "avoid": "Frost, compact soil",
     "notes": "Avoid for pets and people with hypertension, Best suited for growing in balcony or backyard"
-  }
+  },
+  
+  "resources": [
+      {
+        "title": "Licorice Root Care Guide",
+        "url": "https://www.thespruce.com/licorice-plant-care-guide-8644450"
+      },
+      {
+        "title": "Licorice Root Benefits",
+        "url": "https://www.healthline.com/nutrition/licorice-root"
+      }
+    ]
 },
 {
   "id": "plant_033",
@@ -982,13 +1003,28 @@
   "edible": false,
   "benefits": ["Skincare", "Anti-inflammatory", "Astringent"],
   "symbolism": ["Healing", "Magic"],
+  "moon_phase": {
+  "growing": "Waning Crescent Moon",
+  "resting": "Waning Crescent Moon"
+  },
   "faq": {
     "sunlight": "Full sun to partial shade",
     "watering": "Moist but well-drained soil",
     "soil": "Acidic to neutral, loamy soil",
     "avoid": "Hot, dry environments",
     "notes": "Non-toxic but not edible; best in backyard or large container outdoors"
-  }
+  },
+  "resources": [
+      {
+        "title": "Witch Hazel Care Guide",
+        "url": "https://www.thespruce.com/witch-hazel-growing-guide-5191457"
+      },
+      {
+        "title": "Witch Hazel Benefits",
+        "url": "https://www.healthline.com/nutrition/witch-hazel-benefits-uses"
+      }
+    ]
+  
 },
 {
   "id": "plant_034",
@@ -1009,7 +1045,17 @@
     "soil": "Rich, well-drained soil",
     "avoid": "Dry soil, poor drainage",
     "notes": "Best grown in balcony or small garden with support; non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Cucumber Care Guide",
+        "url": "https://www.almanac.com/plant/cucumbers"
+      },
+      {
+        "title": "Cucumber Benefits",
+        "url": "https://www.healthline.com/nutrition/health-benefits-of-cucumber"
+      }
+    ]
 },
 {
   "id": "plant_035",
@@ -1029,7 +1075,18 @@
     "soil": "Special orchid bark mix; well-aerated",
     "avoid": "Overwatering, cold drafts",
     "notes": "Non-toxic to pets (Phalaenopsis species)"
-  }
+  },
+  "resources": [
+      {
+        "title": "Orchid Care Guide",
+        "url": "https://www.thespruce.com/basic-indoor-orchid-care-1902822"
+      },
+      {
+        "title": "Orchid Benefits",
+        "url": "https://www.bborchids.com/blog/discover-health-benefits-of-orchids/"
+      }
+    ]
+
 },
 {
   "id": "plant_036",
@@ -1049,7 +1106,17 @@
     "soil": "Well-draining, airy potting mix",
     "avoid": "Direct sunlight, soggy soil",
     "notes": "Toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Philodendron Care Guide",
+        "url": "https://www.thespruce.com/grow-philodendron-houseplants-1902768"
+      },
+      {
+        "title": "Philodendron Benefits",
+        "url": "https://bloomboxclub.com/blogs/news/a-guide-to-philodendrons-care-benefits"
+      }
+    ]
 },
 {
   "id": "plant_037",
@@ -1069,7 +1136,17 @@
     "soil": "Rich, well-drained potting mix",
     "avoid": "Dry soil, direct sunlight",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Areca Palm Care Guide",
+        "url": "https://www.thespruce.com/grow-areca-palms-indoors-1902876"
+      },
+      {
+        "title": "Areca Palm Benefits",
+        "url": "https://www.plantsforallseasons.co.uk/blogs/areca-palm-care/benefits-of-having-an-areca-palm-in-your-home"
+      }
+    ]
 },
 {
   "id": "plant_038",
@@ -1089,7 +1166,17 @@
     "soil": "Peaty, well-draining mix",
     "avoid": "Dry air, direct sunlight",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Boston Fern Care Guide",
+        "url": "https://www.thespruce.com/grow-nephrolepis-boston-ferns-1902723"
+      },
+      {
+        "title": "Boston Fern Benefits",
+        "url": "https://www.picturethisai.com/benefits/Nephrolepis_exaltata__Bostoniensis_.html"
+      }
+    ]
 },
 {
   "id": "plant_039",
@@ -1109,11 +1196,21 @@
     "soil": "Acidic, well-drained soil",
     "avoid": "Cold drafts, alkaline soil",
     "notes": "Mildly toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Gardenia Care Guide",
+        "url": "https://www.thespruce.com/grow-gardenia-indoors-1902758"
+      },
+      {
+        "title": "Gardenia Benefits",
+        "url": "https://www.rxlist.com/supplements/gardenia.htm"
+      }
+    ]
 },
 {
   "id": "plant_040",
-  "plant": "ZZ Plant",
+  "plant": "ZZ Plant (Zenzibar Gem)",
   "category": "Decoration",
   "indoor": true,
   "edible": false,
@@ -1129,7 +1226,17 @@
     "soil": "Well-draining potting mix",
     "avoid": "Overwatering, direct sunlight",
     "notes": "Toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "ZZ Plant Care Guide",
+        "url": "https://www.thespruce.com/zz-zanzibar-gem-plant-profile-4796783"
+      },
+      {
+        "title": "ZZ Plant Benefits",
+        "url": "https://www.fnp.com/article/what-are-the-amazing-benefits-of-keeping-a-zz-plant"
+      }
+    ]
 },
 {
   "id": "plant_041",
@@ -1149,7 +1256,17 @@
     "soil": "Well-draining, peat-based soil",
     "avoid": "Overwatering, full sun",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Money Tree Care Guide",
+        "url": "https://www.thespruce.com/growing-guiana-chestnut-indoors-4773440"
+      },
+      {
+        "title": "Money Tree Benefits",
+        "url": "https://www.livelyroot.com/blogs/plant-care/money-tree-meaning-benefits-symbolism?srsltid=AfmBOorxcG4B_s41U_SXZ4PtUWku95Tt-ne1u5aRv7KSEfITv4fmZc5U"
+      }
+    ]
 },
 {
   "id": "plant_042",
@@ -1169,7 +1286,17 @@
     "soil": "Sandy, well-draining cactus mix",
     "avoid": "Overwatering, low light",
     "notes": "Toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Jade Plant Care Guide",
+        "url": "https://www.thespruce.com/grow-jade-plants-indoors-1902981"
+      },
+      {
+        "title": "Jade Plant Benefits",
+        "url": "https://www.livelyroot.com/blogs/plant-care/jade-plant-meaning-symbolism-and-benefits?srsltid=AfmBOoowiR0qubeLJkwGFMbGpYYL3OOYQvH0209e8sKrkY7dG20dki85"
+      }
+    ]
 },
 {
   "id": "plant_043",
