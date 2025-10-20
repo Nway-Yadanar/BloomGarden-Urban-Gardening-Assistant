@@ -1316,7 +1316,18 @@
     "soil": "Well-draining potting mix",
     "avoid": "Overwatering, direct sun",
     "notes": "Toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Corn Plant Care Guide",
+        "url": "https://www.thespruce.com/grow-dracaena-fragrans-indoors-1902748"
+      },
+      {
+        "title": "Corn Plant Benefits",
+        "url": "https://foliagefriend.com/dracaena-fragrans-flower-meaning/"
+      }
+    ]
+
 },
 {
   "id": "plant_044",
@@ -1332,7 +1343,17 @@
     "soil": "Heavy clay soil for aquatic plants",
     "avoid": "Cold temperatures, moving water",
     "notes": "Not suitable for small pots; needs outdoor container or pond"
-  }
+  },
+  "resources": [
+      {
+        "title": "Lotus Care Guide",
+        "url": "https://kenaqgardens.org/grow-a-lotus/"
+      },
+      {
+        "title": "Lotus Benefits",
+        "url": "https://earthmonk.guru/spiritual-development-lotus-flower/"
+      }
+    ]
 },
 
 {
@@ -1353,7 +1374,17 @@
     "soil": "Well-draining potting soil",
     "avoid": "Overwatering, direct sun",
     "notes": "Toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Pothos Care Guide",
+        "url": "https://www.thespruce.com/pothos-an-easy-to-grow-houseplant-1403154"
+      },
+      {
+        "title": "Pothos Benefits",
+        "url": "https://www.livelyroot.com/blogs/plant-care/benefits-of-golden-pothos?srsltid=AfmBOorC1X5HXHBOUGQAtxSxKhD4C3OgU6yettmT8n1Z8RJSoLIyFlMt"
+      }
+    ]
 },
 {
   "id": "plant_048",
@@ -1374,7 +1405,17 @@
     "soil": "Well-draining potting mix",
     "avoid": "Waterlogged soil, intense direct sun",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Purple Passion Plant Care Guide",
+        "url": "https://www.thespruce.com/purple-passion-vine-growing-guide-5235282"
+      },
+      {
+        "title": "Purple Passion Plant Benefits",
+        "url": "https://www.wekivafoliage.com/blogs/plant-care/5-reasons-gynura-aurantiaca-is-the-crown-jewel-of-indoor-plants?srsltid=AfmBOorQ3PdwFqg240GgzZfXVCI41l38mp8mY1Av2ll9xynS_ATIHVSQ"
+      }
+    ]
 },
 {
   "id": "plant_049",
@@ -1394,7 +1435,17 @@
     "soil": "Well-draining cactus or succulent mix",
     "avoid": "Overwatering, freezing temps",
     "notes": "Toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Moonshine Snake Plant Care Guide",
+        "url": "https://www.thespruce.com/moonshine-snake-plant-7095618"
+      },
+      {
+        "title": "Moonshine Snake Plant Benefits",
+        "url": "https://www.healthline.com/health/benefits-of-snake-plant"
+      }
+    ]
 },
 {
   "id": "plant_050",
@@ -1410,7 +1461,17 @@
     "soil": "Acidic, well-draining soil",
     "avoid": "Alkaline soil, overwatering",
     "notes": "Safe in small quantities; essential oil can be toxic in large doses"
-  }
+  },
+  "resources": [
+      {
+        "title": "Wintergreen Care Guide",
+        "url": "https://www.thespruce.com/grow-wintergreen-plants-for-a-splash-of-winter-color-4685614"
+      },
+      {
+        "title": "Wintergreen Benefits",
+        "url": "https://www.drugs.com/npc/wintergreen.html"
+      }
+    ]
 },
 {
   "id": "plant_051",
@@ -1430,7 +1491,17 @@
     "soil": "Peat-based, well-draining soil",
     "avoid": "Dry soil, direct sun, cold drafts",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Zebra Plant Care Guide",
+        "url": "https://www.thespruce.com/grow-zebra-plants-inside-1902777"
+      },
+      {
+        "title": "Zebra Plant Benefits",
+        "url": "https://greg.app/zebra-plant-benefits/"
+      }
+    ]
 },
 {
   "id": "plant_052",
@@ -1450,7 +1521,17 @@
     "soil": "Peaty, well-draining soil",
     "avoid": "Cold drafts, direct sunlight",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Prayer Plant Care Guide",
+        "url": "https://www.thespruce.com/grow-maranta-inside-1902647"
+      },
+      {
+        "title": "Prayer Plant Benefits",
+        "url": "https://feelgrounded.com/blogs/resources/how-prayer-plants-inspire-wellness-gratitude?srsltid=AfmBOoq6_rmoEElByOGKyrE8aJ7esWdIktpRVN_OP6B9hPASdmbs_aOg"
+      }
+    ]
 },
 {
   "id": "plant_053",
@@ -1470,7 +1551,17 @@
     "soil": "Rich, well-draining soil",
     "avoid": "Dry air, direct sunlight",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Blue Star Fern Care Guide",
+        "url": "https://www.thespruce.com/blue-star-fern-care-7553051"
+      },
+      {
+        "title": "Blue Star Fern Benefits",
+        "url": "https://www.gardenia.net/plant/phlebodium-aureum-blue-star-fern-grow-and-care-tips"
+      }
+    ]
 },
 {
   "id": "plant_054",
@@ -1490,7 +1581,17 @@
     "soil": "Well-draining cactus mix or orchid mix",
     "avoid": "Overwatering, dark spaces",
     "notes": "Mildly toxic to pets if ingested"
-  }
+  },
+  "resources": [
+      {
+        "title": "Tricolor Hoya Care Guide",
+        "url": "https://www.thespruce.com/hoya-plants-1315763"
+      },
+      {
+        "title": "Tricolor Hoya Benefits",
+        "url": "https://gardenpals.com/hoya-tricolor/"
+      }
+    ]
 },
 {
   "id": "plant_055",
@@ -1510,7 +1611,17 @@
     "soil": "Heavy, moisture-retaining soil",
     "avoid": "Dry soil, low humidity",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Corkscrew Rush Care Guide",
+        "url": "https://www.inlandshoreskc.com/blog/water-garden-wonders-plant-spotlight-corkscrew-rush"
+      },
+      {
+        "title": "Corkscrew Rush Benefits",
+        "url": "https://www.picturethisai.com/benefits/Juncus_effusus__Spiralis_.html"
+      }
+    ]
 },
 {
   "id": "plant_056",
@@ -1530,7 +1641,17 @@
     "soil": "Well-draining succulent mix",
     "avoid": "Overwatering, low light",
     "notes": "Toxic to pets and humans if ingested"
-  }
+  },
+  "resources": [
+      {
+        "title": "String of Pearls Care Guide",
+        "url": "https://www.picturethisai.com/benefits/Curio_rowleyanus.html"
+      },
+      {
+        "title": "String of Pearls Benefits",
+        "url": "https://www.picturethisai.com/benefits/Curio_rowleyanus.html"
+      }
+    ]
 },
 {
   "id": "plant_057",
@@ -1550,7 +1671,17 @@
     "soil": "Light, well-draining soil",
     "avoid": "Direct sun, soggy soil",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Pilea Peperomioides Care Guide",
+        "url": "https://www.thespruce.com/growing-pilea-peperomioides-5090425"
+      },
+      {
+        "title": "Pilea Peperomioides Benefits",
+        "url": "https://greg.app/chinese-money-plant-benefits/"
+      }
+    ]
 },
 {
   "id": "plant_058",
@@ -1570,7 +1701,17 @@
     "soil": "Peat-based, well-draining soil",
     "avoid": "Overwatering, direct sunlight",
     "notes": "Toxic to pets and humans"
-  }
+  },
+  "resources": [
+      {
+        "title": "Anthurium Care Guide",
+        "url": "https://www.thespruce.com/grow-anthurium-plants-1902738"
+      },
+      {
+        "title": "Anthurium Benefits",
+        "url": "https://anthuriuminfo.com/en/air-purifying-benefits-of-anthuriums-in-winter/"
+      }
+    ]
 },
 {
   "id": "plant_059",
@@ -1590,11 +1731,21 @@
     "soil": "Light, airy, well-draining mix",
     "avoid": "Overwatering, direct sun",
     "notes": "Toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Begonia Care Guide",
+        "url": "https://www.thespruce.com/begonias-care-guide-7108561"
+      },
+      {
+        "title": "Begonia Benefits",
+        "url": "https://www.netmeds.com/c/health-library/post/begonia-uses-health-benefits-and-how-to-eat-this-aromatic-flower?srsltid=AfmBOoqBD8nGZlrVTfWTRvaHe4wscH5QYFGQn7yZplBiip5MJSSr0iW3"
+      }
+    ]
 },
 {
   "id": "plant_060",
-  "plant": "Split Leaf Philodendron",
+  "plant": "Monstera Philodendron",
   "category": "Decoration",
   "indoor": true,
   "edible": false,
@@ -1610,7 +1761,17 @@
     "soil": "Well-draining peat-based soil",
     "avoid": "Direct sunlight, soggy soil",
     "notes": "Toxic to pets and humans"
-  }
+  },
+  "resources": [
+      {
+        "title": "Monstera Philodendron Care Guide",
+        "url": "https://www.thespruce.com/how-to-grow-monstera-deliciosa-5072671"
+      },
+      {
+        "title": "Monstera Philodendron Benefits",
+        "url": "https://greg.app/monstera-benefits/"
+      }
+    ]
 },
 {
   
