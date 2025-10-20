@@ -1793,7 +1793,17 @@
     "soil": "Loose, well-draining, rich soil",
     "avoid": "Waterlogging, compact soil",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Beetroot Care Guide",
+        "url": "https://www.thespruce.com/how-to-grow-beets-in-the-home-garden-1403456"
+      },
+      {
+        "title": "Beetroot Benefits",
+        "url": "https://www.healthline.com/nutrition/benefits-of-beets"
+      }
+    ]
 },
 {
   "id": "plant_062",
@@ -1814,7 +1824,17 @@
     "soil": "Rich, well-draining soil",
     "avoid": "Drought conditions",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Malaga Spinach Care Guide",
+        "url": "https://www.thespruce.com/malabar-spinach-growing-guide-5219861"
+      },
+      {
+        "title": "Malaga Spinach Benefits",
+        "url": "https://healthokglobal.com/blog/malabar-spinach"
+      }
+    ]
 },
 {
   "id": "plant_063",
@@ -1835,7 +1855,17 @@
     "soil": "Loose, sandy, well-drained",
     "avoid": "Heavy clay soil, dry periods",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Carrot Care Guide",
+        "url": "https://empressofdirt.net/grow-carrots-indoors/"
+      },
+      {
+        "title": "Carrot Benefits",
+        "url": "https://www.healthline.com/nutrition/foods/carrots"
+      }
+    ]
 },
 {
   "id": "plant_064",
@@ -1856,7 +1886,17 @@
     "soil": "Fertile, well-drained, loamy",
     "avoid": "Dry soil, shade",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Kale Care Guide",
+        "url": "https://www.thespruce.com/ornamental-cabbage-and-flowering-kale-1402853"
+      },
+      {
+        "title": "Kale Benefits",
+        "url": "https://www.bbcgoodfood.com/health/nutrition/health-benefits-kale"
+      }
+    ]
 },
 {
   "id": "plant_065",
@@ -1877,7 +1917,17 @@
     "soil": "Well-drained, fertile",
     "avoid": "Water on foliage, overwatering",
     "notes": "Non-toxic to humans, mildly toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Tomato Care Guide",
+        "url": "https://www.thespruce.com/growing-organic-tomatoes-indoors-2539817"
+      },
+      {
+        "title": "Tomato Benefits",
+        "url": "https://www.healthline.com/nutrition/foods/tomatoes"
+      }
+    ]
 },
 {
   "id": "plant_066",
@@ -1898,7 +1948,17 @@
     "soil": "Loose, well-drained, fertile",
     "avoid": "Drought, overcrowding",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Radish Care Guide",
+        "url": "https://www.geturbanleaf.com/blogs/vegetables/growing-radish-indoors?srsltid=AfmBOor7pJwzliBKsyc3Cc4m5Ru3RdzaKdbqeVjAZ03XjV3_QnLztOM4"
+      },
+      {
+        "title": "Radish Benefits",
+        "url": "https://www.verywellhealth.com/radishes-7495441"
+      }
+    ]
 },
 {
   "id": "plant_067",
@@ -1919,7 +1979,17 @@
     "soil": "Well-draining, loamy",
     "avoid": "Cold temps, poor drainage",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Okra Care Guide",
+        "url": "https://www.thespruce.com/growing-okra-in-the-backyard-vegetable-garden-1403473"
+      },
+      {
+        "title": "Okra Benefits",
+        "url": "https://www.healthline.com/nutrition/okra-health-benefits"
+      }
+    ]
 },
 {
   "id": "plant_068",
@@ -1940,7 +2010,17 @@
     "soil": "Rich, well-draining",
     "avoid": "Crowded spacing, soggy roots",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Zucchini Care Guide",
+        "url": "https://www.thespruce.com/zucchini-growing-tips-1402989"
+      },
+      {
+        "title": "Zucchini Benefits",
+        "url": "https://www.healthline.com/nutrition/zucchini-benefits"
+      }
+    ]
 },
 {
   "id": "plant_069",
@@ -1961,7 +2041,17 @@
     "soil": "Well-drained, fertile",
     "avoid": "Waterlogging, shade",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Capsicum Care Guide",
+        "url": "https://www.thespruce.com/ornamental-pepper-plant-profile-4587282"
+      },
+      {
+        "title": "Capsicum Benefits",
+        "url": "https://www.healthline.com/nutrition/foods/bell-peppers"
+      }
+    ]
 },
 {
   "id": "plant_070",
@@ -1982,7 +2072,17 @@
     "soil": "Moist, fertile, well-drained",
     "avoid": "Heat, dry spells",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Lettuce Care Guide",
+        "url": "https://www.thespruce.com/growing-lettuce-indoors-8421149"
+      },
+      {
+        "title": "Lettuce Benefits",
+        "url": "https://www.webmd.com/diet/health-benefits-lettuce"
+      }
+    ]
 },
 {
   "id": "plant_071",
@@ -2003,7 +2103,17 @@
     "soil": "Loose, well-drained, slightly acidic",
     "avoid": "Wet soil, frost",
     "notes": "Non-toxic to humans; green parts toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Potato Care Guide",
+        "url": "https://www.thespruce.com/growing-potatoes-in-containers-1403463"
+      },
+      {
+        "title": "Potato Benefits",
+        "url": "https://potatogoodness.com/nutrition/"
+      }
+    ]
 },
 {
   "id": "plant_072",
@@ -2024,7 +2134,17 @@
     "soil": "Well-draining potting mix",
     "avoid": "Dry soil, overcrowding",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Green Onions Care Guide",
+        "url": "https://www.thespruce.com/how-to-grow-scallions-41257995"
+      },
+      {
+        "title": "Green Onions Benefits",
+        "url": "https://www.tuasaude.com/en/green-onions/"
+      }
+    ]
 },
 {
   "id": "plant_073",
@@ -2044,7 +2164,17 @@
     "soil": "African violet mix or light potting mix",
     "avoid": "Cold drafts, direct sun",
     "notes": "Non-toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "African Violet Care Guide",
+        "url": "https://www.thespruce.com/grow-african-violets-indoors-1902733"
+      },
+      {
+        "title": "African Violet Benefits",
+        "url": "https://housing.com/news/african-violet/"
+      }
+    ]
 },
 {
   "id": "plant_074",
@@ -2064,7 +2194,17 @@
     "soil": "Well-drained peat-based mix",
     "avoid": "Water on leaves, overwatering",
     "notes": "Toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Begonia Care Guide",
+        "url": "https://www.thespruce.com/begonias-care-guide-7108561"
+      },
+      {
+        "title": "Begonia Benefits",
+        "url": "https://www.netmeds.com/c/health-library/post/begonia-uses-health-benefits-and-how-to-eat-this-aromatic-flower?srsltid=AfmBOoqBD8nGZlrVTfWTRvaHe4wscH5QYFGQn7yZplBiip5MJSSr0iW3"
+      }
+    ]
 },
 {
   "id": "plant_075",
@@ -2084,7 +2224,17 @@
     "soil": "Cactus/succulent mix",
     "avoid": "Overwatering",
     "notes": "Toxic to pets"
-  }
+  },
+  "resources": [
+      {
+        "title": "Kalanchoe Care Guide",
+        "url": "https://www.thespruce.com/growing-kalanchoe-plants-1902982"
+      },
+      {
+        "title": "Kalanchoe Benefits",
+        "url": "https://thursd.com/products/plants/outdoor-flowering-plants/kalanchoe-pinnata"
+      }
+    ]
 },
 {
   "id": "plant_076",
@@ -2104,7 +2254,17 @@
     "soil": "Well-draining potting mix",
     "avoid": "Watering bulb directly",
     "notes": "Toxic to pets and humans"
-  }
+  },
+  "resources": [
+      {
+        "title": "Amaryllis Care Guide",
+        "url": "https://www.thespruce.com/growing-amaryllis-1402227"
+      },
+      {
+        "title": "Amaryllis Benefits",
+        "url": "https://www.gardenia.net/plants/genera/hippeastrum-amaryllis"
+      }
+    ]
 },
 {
   "id": "plant_077",
@@ -2124,7 +2284,17 @@
     "soil": "Well-drained garden soil",
     "avoid": "Poor drainage",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Zinnias Care Guide",
+        "url": "https://www.thespruce.com/zinnias-a-burst-of-hot-flower-colors-from-zinnias-1402919"
+      },
+      {
+        "title": "Zinnias Benefits",
+        "url": "https://www.thepaintedhinge.com/zinnia-benefits-boost-your-garden-and-health/"
+      }
+    ]
 },
 {
   "id": "plant_078",
@@ -2140,7 +2310,22 @@
     "soil": "Rich, well-drained",
     "avoid": "Water stress",
     "notes": "Non-toxic"
-  }
+  },
+  "moon_phase": {
+    "growing": "Waxing Crescent Moon",
+    "harvesting": "Full Moon",
+    "resting": "Waning Crescent Moon"
+  },
+  "resources": [
+      {
+        "title": "Fennel Care Guide",
+        "url": "https://www.gardenia.net/plant/foeniculum-vulgare"
+      },
+      {
+        "title": "Fennel Benefits",
+        "url": "https://www.gardenia.net/plant/foeniculum-vulgare"
+      }
+    ]
 },
 {
   "id": "plant_079",
@@ -2160,7 +2345,17 @@
     "soil": "No soil required",
     "avoid": "Dark rooms, standing water",
     "notes": "Non-toxic"
-  }
+  },
+  "resources": [
+      {
+        "title": "Tillandsia Care Guide",
+        "url": "https://www.thespruce.com/air-plant-care-guide-5211052"
+      },
+      {
+        "title": "Tillandsia Benefits",
+        "url": "https://planetdesert.com/blogs/news/what-are-air-plants-top-10-benefits-and-top-5-mistakes-you-need-to-know?srsltid=AfmBOoqPhYtLGFnZ-xp7kRA2HyI_oNGvfbmgX5TJdAZssyATtNpOV55J"
+      }
+    ]
 },
  {
     "id": "plant_080",
@@ -2181,7 +2376,17 @@
       "soil": "Well-draining",
       "avoid": "Overwatering, rich soil",
       "notes": "Mildly edible; used in teas and rituals"
-    }
+    },
+    "resources": [
+      {
+        "title": "Mugwort Care Guide",
+        "url": "https://greg.app/plant-care/artemisia-vulgaris-mugwort"
+      },
+      {
+        "title": "Mugwort Benefits",
+        "url": "https://www.healthline.com/health/mugwort-weed-with-potential"
+      }
+    ]
   },
   {
     "id": "plant_081",
@@ -2202,7 +2407,17 @@
       "soil": "Poor, sandy or rocky soil",
       "avoid": "Too much water or shade",
       "notes": "Not edible"
-    }
+    },
+    "resources": [
+      {
+        "title": "Sagebrush Care Guide",
+        "url": "https://www.thespruce.com/artemisia-1402826"
+      },
+      {
+        "title": "Sagebrush Benefits",
+        "url": "https://examine.com/supplements/artemisia-annua/?srsltid=AfmBOoqqZK5yoBdZd4j6LQVsqJyVdZkZVx5xgZNS4Qw8zZ53_MlHHiux"
+      }
+    ]
   },
   {
     "id": "plant_082",
@@ -2223,7 +2438,17 @@
       "soil": "Well-drained, fertile soil",
       "avoid": "Waterlogging",
       "notes": "Camphor is toxic if ingested"
-    }
+    },
+    "resources": [
+      {
+        "title": "Camphor Plant Care Guide",
+        "url": "https://greg.app/plant-care/cinnamomum-camphora-camphor"
+      },
+      {
+        "title": "Camphor Benefits",
+        "url": "https://www.healthline.com/health/what-is-camphor"
+      }
+    ]
   },
   {
     "id": "plant_083",
