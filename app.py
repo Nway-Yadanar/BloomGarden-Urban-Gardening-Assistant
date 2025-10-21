@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, send_from_directory, request
+from flask import Flask, jsonify, send_from_directory, request,render_template
 import requests
 import os
 from pathlib import Path
@@ -30,8 +30,13 @@ def db(): return pymysql.connect(**DB)
 # --------------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent
 TEMPLATE_DIR = BASE_DIR / "template"   
-STATIC_DIR   = BASE_DIR / "static"    
+STATIC_DIR   = BASE_DIR / "static"   
+DATA_DIR    = STATIC_DIR / "data" 
+TASKS_PATH  = DATA_DIR / "tasks.json"
+STICKERS_DIR = DATA_DIR / "stickers"
+STICKERS_PATH = STICKERS_DIR / "stickers.json"
 
+DAILY_MOON_BONUS = 2
 app = Flask(__name__, static_folder=None)  
 app.secret_key = os.getenv("SECRET_KEY", "dev-change-me")
 
@@ -489,117 +494,182 @@ def api_tasks_today():
         "max_daily_beans": int(rules.get("max_daily_beans", 25))
     })
 
+
 @app.post("/api/tasks/complete")
 @login_required
+
 def api_tasks_complete():
-    uid = session["user_id"]
-    data = request.get_json(silent=True) or request.form
-    task_id = (data.get("task_id") or "").strip()
-    if not task_id: return jsonify({"error":"task_id"}), 400
+    uid = session.get("user_id")
+    data = request.get_json(force=True) or {}
+    task_id = str(data.get("task_id") or "").strip()
+    is_done = bool(data.get("done"))          # true=mark done, false=undo
 
-    today_tasks, _, rules = _pick_today_tasks(uid)
-    t = next((x for x in today_tasks if x["id"] == task_id), None)
-    if not t: return jsonify({"error":"not_today"}), 400
+    if not task_id:
+        return jsonify({"error": "bad_request"}), 400
 
-    # idempotent: if already logged for today, no beans
+    today = _today()
+    tasks, done_set, rules = _pick_today_tasks(uid)
+    beans_per_task = int(rules.get("beans_per_task", 5))
+
+    # Only allow toggling tasks that are part of today's list
+    today_ids = {str(t["id"]) for t in tasks}
+    if task_id not in today_ids:
+        return jsonify({"error": "not_today"}), 400
+
     with db() as con, con.cursor() as cur:
-        cur.execute("""
-          SELECT 1 FROM user_task_log WHERE user_id=%s AND task_id=%s AND task_date=%s
-        """, (uid, task_id, _today()))
-        if cur.fetchone():
-            w = _get_wallet(uid)
-            return jsonify({"awarded_beans": 0, "awarded_moons": 0, "beans": w["beans"], "moons": w["moons"]})
+        if is_done:
+            # insert if not exists
+            cur.execute(
+                "INSERT IGNORE INTO user_tasks_done (user_id, task_id, done_date) VALUES (%s,%s,%s)",
+                (uid, task_id, today),
+            )
+            # award beans *only if this row was newly inserted*
+            if cur.rowcount == 1:
+                cur.execute(
+                    "UPDATE user_wallet SET beans = beans + %s WHERE user_id = %s",
+                    (beans_per_task, uid),
+                )
+        else:
+            # undo: delete row, optionally remove beans (usually DON'T remove; keep earnings)
+            cur.execute(
+                "DELETE FROM user_tasks_done WHERE user_id=%s AND task_id=%s AND done_date=%s",
+                (uid, task_id, today),
+            )
+            # we won't subtract beans to keep it simple/fair
 
-    # enforce daily cap
-    cap = int(rules.get("max_daily_beans", 25))
-    with db() as con, con.cursor() as cur:
-        cur.execute("""
-     SELECT COALESCE(SUM(awarded_beans),0) AS total
-     FROM user_task_log
-     WHERE user_id=%s AND task_date=%s
-    """, (uid, _today()))
-    row = cur.fetchone() or {"total": 0}
-    awarded_today = int(row.get("total", 0))
+        # fetch updated wallet and done-set
+        cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s", (uid,))
+        row = cur.fetchone() or (0, 0)
+        beans, moons = int(row[0]), int(row[1])
+
+        cur.execute(
+            "SELECT COUNT(*) FROM user_tasks_done WHERE user_id=%s AND done_date=%s",
+            (uid, today),
+        )
+        done_count = int(cur.fetchone()[0])
+
+    return jsonify({"ok": True, "beans": beans, "moons": moons, "done_count": done_count})
 
 
-    remaining = max(cap - awarded_today, 0)
-    award = min(t["beans"], remaining)
-
-    # log + update wallet
-    with db() as con, con.cursor() as cur:
-        cur.execute("""
-          INSERT INTO user_task_log (user_id, task_id, task_date, awarded_beans)
-          VALUES (%s,%s,%s,%s)
-        """, (uid, task_id, _today(), award))
-    if award > 0:
-        _add_wallet(uid, beans=award, lifetime=award)
-
-    w = _get_wallet(uid)
-    return jsonify({
-        "awarded_beans": award,
-        "awarded_moons": 0,
-        "beans": w["beans"],
-        "moons": w["moons"],
-        "daily_cap": cap,
-        "daily_awarded": min(awarded_today + award, cap)
-    })
-
-@app.route("/api/tasks/claim_all_done_bonus", methods=["POST"])
+@app.post("/api/tasks/claim_all_done_bonus")
 @login_required
 
-def api_claim_all_done_bonus():
+def api_tasks_claim_bonus():
+    uid = session.get("user_id")
+    today = _today()
+
+    # how many should be done today?
+    tasks, done_set, rules = _pick_today_tasks(uid)
+    required = len(tasks)
+
+    with db() as con, con.cursor() as cur:
+        # count actually done today
+        cur.execute(
+            "SELECT COUNT(*) FROM user_tasks_done WHERE user_id=%s AND done_date=%s",
+            (uid, today),
+        )
+        done_count = int(cur.fetchone()[0])
+
+        if required == 0 or done_count < required:
+            return jsonify({"ok": False, "error": "not_all_done", "done": done_count, "total": required}), 400
+
+        # already claimed bonus today?
+        cur.execute(
+            "SELECT 1 FROM user_task_bonus WHERE user_id=%s AND bonus_date=%s",
+            (uid, today),
+        )
+        if cur.fetchone():
+            # idempotent: return current wallet without adding again
+            cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s", (uid,))
+            row = cur.fetchone() or (0, 0)
+            return jsonify({"ok": True, "already_claimed": True, "beans": int(row[0]), "moons": int(row[1])})
+
+        # award moons and record claim
+        cur.execute(
+            "UPDATE user_wallet SET moons = moons + %s WHERE user_id=%s",
+            (DAILY_MOON_BONUS, uid),
+        )
+        cur.execute(
+            "INSERT INTO user_task_bonus (user_id, bonus_date, moons_awarded) VALUES (%s,%s,%s)",
+            (uid, today, DAILY_MOON_BONUS),
+        )
+        cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s", (uid,))
+        row = cur.fetchone() or (0, 0)
+        beans, moons = int(row[0]), int(row[1])
+
+    return jsonify({"ok": True, "beans": beans, "moons": moons, "awarded": DAILY_MOON_BONUS})
+
+#profile page
+@login_required
+def profile_page():
+    return render_template("profile.html")
+import json
+from datetime import date
+
+def _load_sticker(sticker_id: str):
+    with open("static/data/stickers.json", "r", encoding="utf-8") as f:
+        items = json.load(f)
+    # find by id
+    for s in items:
+        if str(s.get("id")) == str(sticker_id):
+            return s
+    return None
+
+@app.post("/api/stickers/redeem")
+def api_stickers_redeem():
     uid = session.get("user_id")
     if not uid:
-        return jsonify({"error": "auth"}), 401
+        return jsonify({"error":"auth"}), 401
 
-    # Figure out which IDs are required today and which ones you finished
-    tasks_today, _, rules = _pick_today_tasks(uid)
-    required_ids = {t["id"] for t in tasks_today}
+    data = request.get_json(force=True) or {}
+    sid = (data.get("sticker_id") or "").strip()
+    stk = _load_sticker(sid)
+    if not stk:
+        return jsonify({"ok":False, "error":"unknown_sticker"}), 400
+
+    # cost can be like "25" (beans) or "2m" (moons)
+    cost_raw = str(stk.get("cost", "")).lower().strip()
+    use_moons = cost_raw.endswith("m")
+    cost = int(cost_raw[:-1]) if use_moons else int(cost_raw or "0")
 
     with db() as con, con.cursor() as cur:
-        cur.execute("""
-            SELECT task_id FROM user_task_log
-            WHERE user_id=%s AND task_date=%s
-        """, (uid, _today()))
-        done_rows = cur.fetchall() or []
-    done_ids = {r["task_id"] for r in done_rows}
+        # already owned?
+        cur.execute("SELECT 1 FROM user_stickers WHERE user_id=%s AND sticker_id=%s LIMIT 1", (uid, sid))
+        if cur.fetchone():
+            # return wallet unchanged
+            cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s", (uid,))
+            w = cur.fetchone() or {"beans":0, "moons":0}
+            return jsonify({"ok":True, "already_owned":True, "beans":int(w.get("beans",0)), "moons":int(w.get("moons",0))})
 
-    missing = sorted(list(required_ids - done_ids))
-    if missing:
-        # Return 200 with a reason so UI can show a message,
-        # instead of a hard 400 that looks like an error.
-        return jsonify({
-            "awarded_moons": 0,
-            "reason": "not_all_done",
-            "missing": missing,
-        }), 200
+        # check wallet
+        cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s LIMIT 1", (uid,))
+        w = cur.fetchone() or {"beans":0, "moons":0}
+        beans = int(w.get("beans", 0))
+        moons = int(w.get("moons", 0))
 
-    bonus = int(rules.get("all_done_bonus_moons", 2))
+        if use_moons:
+            if moons < cost:
+                return jsonify({"ok":False, "error":"insufficient_moons", "beans":beans, "moons":moons}), 400
+            # deduct moons
+            cur.execute("UPDATE user_wallet SET moons = moons - %s WHERE user_id=%s", (cost, uid))
+        else:
+            if beans < cost:
+                return jsonify({"ok":False, "error":"insufficient_beans", "beans":beans, "moons":moons}), 400
+            # deduct beans
+            cur.execute("UPDATE user_wallet SET beans = beans - %s WHERE user_id=%s", (cost, uid))
 
-    # Prevent double-claim
-    with db() as con, con.cursor() as cur:
-        cur.execute("SELECT 1 FROM user_daily_bonus WHERE user_id=%s AND bonus_date=%s",
-                    (uid, _today()))
-        already = cur.fetchone()
-    if already:
-        w = _get_wallet(uid)
-        return jsonify({"awarded_moons": 0, "beans": w["beans"], "moons": w["moons"], "reason": "already_claimed"}), 200
+        # grant sticker
+        cur.execute(
+            "INSERT INTO user_stickers (user_id, sticker_id, acquired_at) VALUES (%s,%s,%s)",
+            (uid, sid, date.today())
+        )
 
-    # Credit moons + log the bonus
-    with db() as con, con.cursor() as cur:
-        cur.execute("""
-            INSERT INTO user_daily_bonus (user_id, bonus_date, awarded_moons)
-            VALUES (%s, %s, %s)
-        """, (uid, _today(), bonus))
-    _add_wallet(uid, moons=bonus)
-    w = _get_wallet(uid)
+        # new wallet values
+        cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s", (uid,))
+        w2 = cur.fetchone() or {"beans":0, "moons":0}
 
-    return jsonify({
-        "awarded_moons": bonus,
-        "beans": w["beans"],
-        "moons": w["moons"],
-        "reason": "ok"
-    }), 200
+    return jsonify({"ok":True, "beans":int(w2.get("beans",0)), "moons":int(w2.get("moons",0))})
+
 
 
 # --------------------------------------------------------------------

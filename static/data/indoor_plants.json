@@ -27,7 +27,8 @@
         "title": "Best Pots for Snake Plants",
         "url": "https://example.com/snake-pot"
       }
-    ]
+    ],
+    "image":"static/images/snake_plant.jpg"
   },
   {
     "id": "plant_002",
@@ -57,7 +58,8 @@
         "title": "Peace Lily Benefits",
         "url": "https://lawn.com.au/peace-lily-benefits/"
       }
-    ]
+    ],
+    "image":"static/images/peace_lily.jpg"
   },
   {
     "id": "plant_003",
@@ -87,7 +89,8 @@
         "title": "English Ivy Benefits",
         "url": "https://www.webmd.com/vitamins/ai/ingredientmono-465/english-ivy"
       }
-    ]
+    ],
+    "image":"static/images/english_ivy.jpg"
   },
   {
     "id": "plant_004",
@@ -117,7 +120,8 @@
         "title": "Benefits of Spider Plants",
         "url": "https://www.southernliving.com/spider-plant-benefits-6833414"
       }
-    ]
+    ],
+    "image":"static/images/spider_plant.jpg"
   },
   {
     "id": "plant_005",
@@ -147,7 +151,8 @@
         "title": "Bamboo Palm Benefits",
         "url": "https://meserii.com/blogs/bamboo/palm-benefits?srsltid=AfmBOoo0RAbhv_LvdPzVx-it_G5WItgTjS5AF38Jwcikbtatzy0OXD7c"
       }
-    ]
+    ],
+    "image":"static/images/bamboo_palm.jpg"
   },
   {
     "id": "plant_006",
@@ -2469,7 +2474,18 @@
       "soil": "Well-drained, sandy",
       "avoid": "Heavy, wet soil",
       "notes": "Not typically eaten"
-    }
+    },
+    "resources": [
+      {
+        "title": "Yarrow Care Guide",
+        "url": "https://www.thespruce.com/achillea-growing-yarrow-in-the-perennial-garden-1402830"
+      },
+      {
+        "title": "Yarrow Benefits",
+        "url": "https://www.organicfacts.net/yarrow-achillea.html"
+      }
+    ],
+    "image":"static/images/yarrow.png"
   },
 {
     "id": "plant_084",
@@ -2493,9 +2509,15 @@
     "resources": [
       {
         "title": "Staghorn Fern Care",
-        "url": "https://example.com/staghorn-care"
+        "url": "https://www.thespruce.com/grow-platycerium-species-1902725"
+      },
+      {
+        "title": "Staghorn Fern Benefits",
+        "url": "https://cafeplanta.com/blogs/resources/staghorn-fern-benefits"
       }
-    ]
+    ],
+    "image":"static/images/staghorn_fern.png"
+
   },
   {
     "id": "plant_085",
@@ -2503,7 +2525,7 @@
     "category": "Orchid",
     "indoor": true,
     "edible": true,
-    "benefits": ["Produces vanilla pods", "Air-purifying and ornamental"],
+    "benefits": ["Produces vanilla pods for vanilla", "Air-purifying and ornamental"],
     "symbolism": ["Luxury", "Creativity"],
     "moon_phase": {
       "growing": "Full Moon",
@@ -2519,9 +2541,14 @@
     "resources": [
       {
         "title": "Growing Vanilla Orchids",
-        "url": "https://example.com/vanilla-orchid"
+        "url": "https://www.thespruce.com/vanilla-orchid-care-1315974"
+      },
+      {
+        "title": "Vanilla Orchids Benefits",
+        "url": "https://www.healthline.com/nutrition/vanilla-extract-benefits"
       }
-    ]
+    ],
+    "image":"static/images/vanilla_orchid.png"
   },
   {
     "id": "plant_086",
@@ -2545,9 +2572,14 @@
     "resources": [
       {
         "title": "Phalaenopsis Care",
-        "url": "https://example.com/phalaenopsis-care"
+        "url": "https://gardens.si.edu/collections/plants/orchids/orchid-care-sheets/phalaenopsis/"
+      },
+      {
+        "title": "Phalaenopsis Benefits",
+        "url": "https://www.bborchids.com/blog/discover-health-benefits-of-orchids/"
       }
-    ]
+    ],
+    "image":"static/images/phalaenopsis_orchid.jpg"
   },
   {
     "id": "plant_087",
@@ -2573,7 +2605,8 @@
         "title": "Dendrobium Orchid Care",
         "url": "https://example.com/dendrobium-care"
       }
-    ]
+    ],
+    "image":"static/images/dendrobium_orchid.jpg"
   },
   {
     "id": "plant_088",
@@ -2597,9 +2630,10 @@
     "resources": [
       {
         "title": "Spanish Moss Care",
-        "url": "https://example.com/spanish-moss-care"
+        "url": "https://www.gardenersworld.com/how-to/grow-plants/how-to-grow-spanish-moss/"
       }
-    ]
+    ],
+    "image":"static/images/spanish_moss.jpg"
   },
   {
     "id": "plant_089",
@@ -2623,9 +2657,10 @@
     "resources": [
       {
         "title": "Bird's Nest Fern Care",
-        "url": "https://example.com/birdnest-fern"
+        "url": "https://www.thespruce.com/grow-asplenium-nidus-ferns-1902716"
       }
-    ]
+    ],
+    "image":"static/images/birds_nest_fern.jpg"
   },
   {
   "id": "plant_090",
@@ -2651,7 +2686,8 @@
       "title": "Carnation Tea Benefits",
       "url": "https://www.fnp.com/article/what-are-the-health-benefits-of-carnations"
     }
-  ]
+  ],
+  "image":"static/images/carnation.jpg"
 },
 {
   "id": "plant_091",
@@ -2675,9 +2711,10 @@
   "resources": [
     {
       "title": "Sweet William Growing Guide",
-      "url": "https://example.com/sweet-william-care"
+      "url": "https://www.thespruce.com/sweet-williams-growing-guide-5200995"
     }
-  ]
+  ],
+  "image":"static/images/sweet_william.jpg"
 },
 {
   "id": "plant_092",
@@ -2703,7 +2740,8 @@
       "title": "Medicinal Uses of Hollyhock",
       "url": "https://www.rxlist.com/supplements/hollyhock.htm"
     }
-  ]
+  ],
+  "image":"static/images/hollyhock.jpg"
 },
 {
   "id": "plant_093",
@@ -2729,7 +2767,8 @@
       "title": "Chrysanthemum Benefits",
       "url": "https://the-qi.com/blogs/journal/the-history-and-healing-power-of-chrysanthemum?srsltid=AfmBOooY6pSbfBKuzY4W6Eg4AizDdaTkN2ZFB1S_npSMyNtMEZ7yO6xT"
     }
-  ]
+  ],
+  "image":"static/images/chrysanthemum.jpg"
 },
 {
   "id": "plant_094",
@@ -2755,7 +2794,8 @@
       "title": "Beauty of Asters",
       "url": "https://wildseedproject.net/blog/the-beauty-and-pollinator-benefits-of-asters-and-goldenrods"
     }
-  ]
+  ],
+  "image":"static/images/aster.jpg"
 },
 {
   "id": "plant_095",
@@ -2781,7 +2821,8 @@
       "title": "Morning Glory Guide",
       "url": "https://www.thespruce.com/how-to-grow-morning-glories-4125567"
     }
-  ]
+  ],
+  "image":"static/images/morning_glory.jpg"
 },
 {
   "id": "plant_096",
@@ -2811,7 +2852,8 @@
       "title": "Benefits of Moringa-Oleifera",
       "url": "https://www.healthline.com/nutrition/6-benefits-of-moringa-oleifera"
     }
-  ]
+  ],
+  "image":"static/images/moringa.png"
 }
 
 

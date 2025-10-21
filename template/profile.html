@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Profile • Bloom Garden</title>
+  <link rel="stylesheet" href="/static/gardening.css">
+  <style>
+    /* ---- page shell ---- */
+    .wl-container{max-width:1100px;margin-inline:auto;padding:24px}
+    .wl-grid{display:grid;gap:18px}
+    @media (min-width: 950px){ .wl-grid{grid-template-columns: 320px 1fr} }
+
+    /* ---- glass cards ---- */
+    .card{background:rgba(255,255,255,.65);backdrop-filter: blur(10px);
+      border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:18px}
+    .card h3{margin:0 0 10px;font-size:1.05rem}
+
+    /* header */
+    .page-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .page-top h1{font-size:1.25rem;margin:0}
+
+    /* profile header */
+    .pf-head{display:flex;gap:16px;align-items:center}
+    .pf-avatar{width:84px;height:84px;border-radius:50%;overflow:hidden;
+      border:2px solid rgba(0,0,0,.08);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .pf-avatar img{width:100%;height:100%;object-fit:cover}
+    .pf-meta{flex:1}
+    .pf-name{font-weight:700;font-size:1.15rem}
+    .pf-username{opacity:.7}
+    .pf-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .wl-btn--ghost{border:1px solid rgba(0,0,0,.12);background:transparent}
+
+    /* wallet pill */
+    .wallet{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
+      border:1px dashed rgba(0,0,0,.15);background:rgba(255,255,255,.6)}
+    .pill b{font-variant-numeric: tabular-nums}
+
+    /* progress */
+    .prog{display:grid;gap:10px}
+    .bar{height:10px;border-radius:999px;background:rgba(0,0,0,.08);overflow:hidden}
+    .bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#7b53b0,#4aa38c)}
+
+    /* list rows */
+    .row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+    .row:last-child{border-bottom:0}
+    .row small{opacity:.65}
+
+    /* stickers grid */
+    .stickers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    @media (max-width:600px){ .stickers{grid-template-columns:repeat(3,1fr)} }
+    .st{aspect-ratio:1;border-radius:14px;display:grid;place-items:center;
+      border:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.7);position:relative}
+    .st img{width:70%;height:70%;object-fit:contain;filter: drop-shadow(0 2px 4px rgba(0,0,0,.12))}
+    .st.locked{filter: grayscale(1) contrast(.9);opacity:.7}
+    .st .cost{position:absolute;bottom:6px;left:6px;padding:4px 8px;border-radius:999px;font-size:.75rem;
+      background:rgba(0,0,0,.06)}
+    .st .badge{position:absolute;top:6px;right:6px;padding:3px 7px;border-radius:999px;font-size:.7rem;background:#4aa38c;color:#fff}
+
+    /* modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.35);padding:20px}
+    .modal.open{display:flex}
+    .modal-card{background:rgba(255,255,255,.8);backdrop-filter: blur(10px);
+      border:1px solid rgba(0,0,0,.08);border-radius:18px;padding:18px;max-width:420px;width:100%}
+    .modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+
+    /* small bits */
+    .muted{opacity:.6}
+    .kv{display:grid;grid-template-columns:120px 1fr;gap:6px 10px}
+  </style>
+</head>
+<body class="wl">
+  <!-- Top bar (reuse your site header) -->
+  <header class="wl-topbar">
+    <a href="/chatbot" class="back-link" aria-label="Back to chatbot">← Back</a>
+
+    <div class="wl-container wl-topbar__wrap">
+      <div class="brand"><a href="/"><strong>Bloom</strong> Garden</a></div>
+      <aside id="cbtSidebar" class="cbt__sidebar" aria-label="sidebar navigation">
+    <nav>
+      <a href="/chatbot.html">💬 Chatbot</a>
+      <a href="notice.html">🌙 Luna Recommendations</a>
+      <a href="plantfaq.html">🪴 Plant FAQ</a>
+      <a href="pest_detection.html">🪲 Pest Detection</a>
+      <a href="/tasks" class="active">📋 Daily Tasks</a>
+      <a href="/stickers" class="active">🍀 Stickers</a>
+      <a href="home.html">🏠 Home</a>
+    </nav>
+  </aside>
+      
+    </div>
+  </header>
+
+  <main class="wl-container wl-grid">
+    <!-- LEFT: profile + wallet + actions -->
+    <section class="card">
+      <div class="pf-head">
+        <div class="pf-avatar">
+          <img id="pfAvatar" src="/static/img/avatar-default.png" alt="Avatar">
+        </div>
+        <div class="pf-meta">
+          <div class="pf-name" id="pfName">Alex</div>
+          <div class="pf-username muted" id="pfEmail">@alex@example.com</div>
+          <div class="wallet">
+            <span class="pill">☕ Beans: <b id="beansCount">0</b></span>
+            <span class="pill">🌙 Moons: <b id="moonsCount">0</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prog" style="margin-top:14px">
+        <div class="row"><span>Daily tasks</span><small id="tasksDone">0/3</small></div>
+        <div class="bar"><span id="tasksBar"></span></div>
+      </div>
+
+      <div style="margin-top:14px" class="pf-actions">
+        <button class="wl-btn wl-btn--primary" id="btnEdit">Edit profile</button>
+        <label class="wl-btn wl-btn--ghost">
+          Change avatar<input type="file" id="avatarInput" accept="image/*" hidden>
+        </label>
+        <a href="/logout" class="wl-btn wl-btn--ghost">Log out</a>
+      </div>
+    </section>
+
+    <!-- RIGHT: details / activity -->
+    <section class="wl-grid" style="grid-template-columns: 1fr">
+      <div class="card">
+        <h3>Account details</h3>
+        <div class="kv">
+          <div class="muted">Username</div><div id="kvUsername">alex</div>
+          <div class="muted">Email</div><div id="kvEmail">alex@example.com</div>
+          <div class="muted">Member since</div><div id="kvSince">—</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Recent activity</h3>
+        <div class="row"><span>Completed: Water check</span><small>+5 beans</small></div>
+        <div class="row"><span>Claimed all-done bonus</span><small>+2 moons</small></div>
+        <div class="row"><span>Redeemed sticker: “Lucky Leaf”</span><small>-30 beans</small></div>
+      </div>
+
+      <div class="card">
+        <h3>Your stickers</h3>
+        <div class="stickers" id="stGrid">
+          <!-- sample items -->
+          <button class="st" data-id="leaf01" data-name="Lucky Leaf" data-cost="30" data-owned="1">
+            <img src="/static/stickers/leaf01.png" alt="">
+            <span class="badge">Owned</span>
+          </button>
+          <button class="st locked" data-id="moon01" data-name="Silver Moon" data-cost="2m" data-owned="0">
+            <img src="/static/stickers/moon01.png" alt="">
+            <span class="cost">2 🌙</span>
+          </button>
+          <button class="st locked" data-id="bee01" data-name="Tiny Bee" data-cost="25" data-owned="0">
+            <img src="/static/stickers/bee01.png" alt="">
+            <span class="cost">25 ☕</span>
+          </button>
+          <button class="st locked" data-id="sprout01" data-name="Sprout" data-cost="40" data-owned="0">
+            <img src="/static/stickers/sprout01.png" alt="">
+            <span class="cost">40 ☕</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- redeem modal -->
+  <div class="modal" id="redeemModal" aria-hidden="true">
+    <div class="modal-card">
+      <h3 id="rdmTitle">Redeem sticker</h3>
+      <p class="muted" id="rdmHint">Cost: <b id="rdmCost">—</b></p>
+      <div class="modal-actions">
+        <button class="wl-btn wl-btn--ghost" id="rdmCancel">Cancel</button>
+        <button class="wl-btn wl-btn--primary" id="rdmConfirm">Redeem</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -------- minimal JS wiring (replace with your real APIs) ----------
+    // 1) Load profile + wallet
+    async function loadProfile() {
+      try {
+        const r = await fetch('/api/wallet');     // your existing endpoint returns {username,email,beans,moons,...}
+        const w = await r.json();
+        document.getElementById('pfName').textContent = w.username || 'You';
+        document.getElementById('pfEmail').textContent = w.email || '';
+        document.getElementById('kvUsername').textContent = w.username || '';
+        document.getElementById('kvEmail').textContent = w.email || '';
+        document.getElementById('beansCount').textContent = w.beans ?? 0;
+        document.getElementById('moonsCount').textContent = w.moons ?? 0;
+        document.getElementById('userChip').textContent = w.username || 'You';
+
+        // daily tasks progress (optional endpoint)
+        const t = await (await fetch('/api/tasks/today')).json().catch(()=>({tasks:[], all_done:false}));
+        const done = (t.tasks || []).filter(x => x.done).length;
+        const total = (t.tasks || []).length || 3;
+        document.getElementById('tasksDone').textContent = `${done}/${total}`;
+        const pct = Math.round((done/Math.max(total,1))*100);
+        document.getElementById('tasksBar').style.width = pct + '%';
+      } catch(e) { console.warn(e); }
+    }
+
+    // 2) Avatar upload (preview only; hook to /api/profile/avatar if you have it)
+    document.getElementById('avatarInput')?.addEventListener('change', (ev) => {
+      const f = ev.target.files?.[0]; if (!f) return;
+      const url = URL.createObjectURL(f);
+      document.getElementById('pfAvatar').src = url;
+      // TODO: POST to your backend to persist
+    });
+
+    // 3) Stickers: open modal and redeem
+    const modal = document.getElementById('redeemModal');
+    let selSticker = null;
+    document.getElementById('stGrid')?.addEventListener('click', (e) => {
+      const btn = e.target.closest('.st'); if (!btn) return;
+      const owned = btn.dataset.owned === '1';
+      if (owned) return; // already owned; you can open a "view" modal instead
+      selSticker = {
+        id: btn.dataset.id,
+        name: btn.dataset.name,
+        cost: btn.dataset.cost
+      };
+      document.getElementById('rdmTitle').textContent = `Redeem “${selSticker.name}”`;
+      document.getElementById('rdmCost').textContent = selSticker.cost.includes('m') ? selSticker.cost.replace('m',' 🌙') : `${selSticker.cost} ☕`;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    });
+    document.getElementById('rdmCancel')?.addEventListener('click', () => {
+      modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+    });
+    document.getElementById('rdmConfirm')?.addEventListener('click', async () => {
+      if (!selSticker) return;
+      try {
+        const res = await fetch('/api/stickers/redeem', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ sticker_id: selSticker.id })
+        });
+        const js = await res.json();
+        // update wallet pills
+        if (typeof js.beans === 'number') document.getElementById('beansCount').textContent = js.beans;
+        if (typeof js.moons === 'number') document.getElementById('moonsCount').textContent = js.moons;
+        // reflect ownership on grid if server says ok
+        if (js.ok) {
+          const btn = document.querySelector(`.st[data-id="${selSticker.id}"]`);
+          btn?.classList.remove('locked');
+          btn?.setAttribute('data-owned','1');
+          btn?.querySelector('.cost')?.remove();
+          const b = document.createElement('span'); b.className='badge'; b.textContent='Owned'; btn?.appendChild(b);
+        }
+      } catch(e){ console.warn(e); }
+      modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+    });
+
+    // 4) Edit profile (placeholder)
+    document.getElementById('btnEdit')?.addEventListener('click', () => {
+      alert('Open profile edit modal or route (username, email, password change).');
+    });
+
+    loadProfile();
+  </script>
+</body>
+</html>
