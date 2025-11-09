@@ -32,12 +32,12 @@ BASE_DIR = Path(__file__).resolve().parent
 TEMPLATE_DIR = BASE_DIR / "template"   
 STATIC_DIR   = BASE_DIR / "static"   
 DATA_DIR    = STATIC_DIR / "data" 
-TASKS_PATH  = DATA_DIR / "tasks.json"
+TASKS_PATH  = DATA_DIR/ "tasks.json"
 STICKERS_DIR = DATA_DIR / "stickers"
 STICKERS_PATH = STICKERS_DIR / "stickers.json"
 
 DAILY_MOON_BONUS = 2
-app = Flask(__name__, static_folder=None)  
+app = Flask(__name__, static_folder="static")  
 app.secret_key = os.getenv("SECRET_KEY", "dev-change-me")
 
 # Load key from env (safer) or fallback for testing
@@ -477,79 +477,74 @@ def api_wallet():
         "moons": w["moons"],
         "xp": w["beans_lifetime"]
     })
+from datetime import date
+import json, pymysql
+
+from datetime import date
+import json
+from pathlib import Path
+
+BASE_DIR   = Path(__file__).resolve().parent
+TASKS_PATH = BASE_DIR / "static" / "data" / "tasks.json"
 
 @app.get("/api/tasks/today")
-@login_required
 def api_tasks_today():
-    uid = session["user_id"]
-    tasks, all_done, rules = _pick_today_tasks(uid)
-    w = _get_wallet(uid)
-    return jsonify({
-        "date": _today(),
-        "beans": w["beans"],
-        "moons": w["moons"],
-        "tasks": tasks,
-        "all_done": all_done,
-        "all_done_bonus_moons": int(rules.get("all_done_bonus_moons", 2)),
-        "max_daily_beans": int(rules.get("max_daily_beans", 25))
+    try:
+        # 1) load tasks.json
+        with open(TASKS_PATH, "r", encoding="utf-8") as f:
+            raw = json.load(f)
+    except Exception as e:
+        # show a friendly message but never 500
+        print("tasks.json load error:", e)
+        return jsonify({"tasks": [], "all_done": False, "beans_per_task": 3})
+
+    # 2) accept multiple schemas: daily | tasks | pool | items
+    pool = (raw.get("daily")
+            or raw.get("tasks")
+            or raw.get("pool")
+            or raw.get("items")
+            or [])
+
+    # beans per task + how many to show
+    rules = raw.get("rules") or {}
+    beans_per_task = int(rules.get("beans_per_task", 3))
+    count = int(rules.get("daily_count", 3))
+    pool = pool[:count] if count > 0 else pool
+
+    # 3) mark done for today (best-effort; safe with tuple cursor)
+    done_ids = set()
+    uid = session.get("user_id")
+    if uid:
+        try:
+            with db() as con, con.cursor() as cur:
+                cur.execute(
+                    "SELECT task_id FROM user_tasks_done WHERE user_id=%s AND done_date=%s",
+                    (uid, date.today())
+                )
+                done_ids = {str(r[0]) for r in cur.fetchall()}
+        except Exception as e:
+            print("tasks_today DB warn:", e)
+
+    # 4) normalize shape for the frontend (id, title, done)
+    out = []
+    for t in pool:
+     tid   = str(t.get("id") or t.get("key") or t.get("slug") or t.get("title"))
+     title = t.get("title") or t.get("label") or tid
+     beans = t.get("beans") or beans_per_task  # ✅ fallback to global rule
+     out.append({
+        "id": tid,
+        "title": title,
+        "done": (tid in done_ids),
+        "beans": beans                       # ✅ include beans explicitly
     })
 
 
-@app.post("/api/tasks/complete")
-@login_required
-
-def api_tasks_complete():
-    uid = session.get("user_id")
-    data = request.get_json(force=True) or {}
-    task_id = str(data.get("task_id") or "").strip()
-    is_done = bool(data.get("done"))          # true=mark done, false=undo
-
-    if not task_id:
-        return jsonify({"error": "bad_request"}), 400
-
-    today = _today()
-    tasks, done_set, rules = _pick_today_tasks(uid)
-    beans_per_task = int(rules.get("beans_per_task", 5))
-
-    # Only allow toggling tasks that are part of today's list
-    today_ids = {str(t["id"]) for t in tasks}
-    if task_id not in today_ids:
-        return jsonify({"error": "not_today"}), 400
-
-    with db() as con, con.cursor() as cur:
-        if is_done:
-            # insert if not exists
-            cur.execute(
-                "INSERT IGNORE INTO user_tasks_done (user_id, task_id, done_date) VALUES (%s,%s,%s)",
-                (uid, task_id, today),
-            )
-            # award beans *only if this row was newly inserted*
-            if cur.rowcount == 1:
-                cur.execute(
-                    "UPDATE user_wallet SET beans = beans + %s WHERE user_id = %s",
-                    (beans_per_task, uid),
-                )
-        else:
-            # undo: delete row, optionally remove beans (usually DON'T remove; keep earnings)
-            cur.execute(
-                "DELETE FROM user_tasks_done WHERE user_id=%s AND task_id=%s AND done_date=%s",
-                (uid, task_id, today),
-            )
-            # we won't subtract beans to keep it simple/fair
-
-        # fetch updated wallet and done-set
-        cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s", (uid,))
-        row = cur.fetchone() or (0, 0)
-        beans, moons = int(row[0]), int(row[1])
-
-        cur.execute(
-            "SELECT COUNT(*) FROM user_tasks_done WHERE user_id=%s AND done_date=%s",
-            (uid, today),
-        )
-        done_count = int(cur.fetchone()[0])
-
-    return jsonify({"ok": True, "beans": beans, "moons": moons, "done_count": done_count})
-
+    return jsonify({
+    "date": date.today().isoformat(),
+    "tasks": out,
+    "all_done": all(x["done"] for x in out) if out else False,
+    "beans_per_task": beans_per_task
+})
 
 @app.post("/api/tasks/claim_all_done_bonus")
 @login_required

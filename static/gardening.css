@@ -2,7 +2,7 @@
    DESIGN TOKENS (light)
    ========================================================= */
 :root {
-  --bg-grad: linear-gradient(135deg, #C8E6C9 0%, #FAF7F0 50%, #D4BFAA 100%);
+  --bg-grad: #f4f3ef;
   /* dark gradient used when .cbt--dark is present */
   --bg-grad-dark: linear-gradient(135deg, #1f2a22 0%, #141416 50%, #2a231f 100%);
 
@@ -241,7 +241,7 @@ h3 { text-align: center; color: #8E549A; }
   
 }
 .pill-button {
-  background-color: #4a6f9b;
+  background: linear-gradient(135deg, var(--auth-brand), #1b4431);
   color: white;
   border-radius: 25px;
   padding: 8px 16px;
@@ -883,8 +883,8 @@ body.home::before{
 }
 .task:hover{ transform: translateY(-1px); border-color: rgba(0,0,0,.1); }
 .task__left{ display:flex; align-items:center; gap: 12px; flex:1; }
-.task__title{ font-weight: 700; }
-.task__beans{ font-weight: 700; color:#6a3; }
+.task__title{ font-weight: 400; }
+.task__beans{ font-weight: 300; color:rgb(15, 107, 44); }
 
 .task input[type="radio"]{
   appearance: none; width: 22px; height: 22px; border-radius: 999px;

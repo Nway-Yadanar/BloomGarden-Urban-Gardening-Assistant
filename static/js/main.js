@@ -252,6 +252,7 @@ function renderPlantDetails(plant, container) {
 
   container.innerHTML = `
     <h3>🍁 ${plant.plant || plant.name || 'Unknown'} 🍁</h3>
+    
     <p><strong>📜 Category:</strong> ${plant.category ?? '—'}</p>
     <p><strong>✨ Benefits:</strong> ${(plant.benefits || []).join(', ') || '—'}</p>
     <p><strong>🕯️ Symbolism:</strong> ${(plant.symbolism || []).join(', ') || '—'}</p>

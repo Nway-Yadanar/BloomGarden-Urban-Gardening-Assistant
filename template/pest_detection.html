@@ -29,10 +29,10 @@
     <!-- sidebar (routes) -->
     <aside id="cbtSidebar" class="cbt__sidebar" aria-label="sidebar navigation">
       <nav>
-        <a href="chatbot.html" data-route="chat">💬 Chatbot</a>
-        <a href="notice.html" data-route="moon">🌙 Luna Recommendations</a>
-        <a href="plantfaq.html" data-route="plantfaq">🪴 plant FAQ</a>
-        <a href="pest_detection.html">🪲 Pest Detection</a>
+        <a href="chatbot.html" data-route="chat" class="active">💬 Chatbot</a>
+        <a href="notice.html" data-route="moon" class="active">🌙 Luna Recommendations</a>
+        <a href="plantfaq.html" data-route="plantfaq" class="active">🪴 plant FAQ</a>
+        <a href="pest_detection.html" class="active">🪲 Pest Detection</a>
         <a href="tasks.html" class="active">📋 Daily Tasks</a>
         <a href="stickers.html" class="active">🍀 Stickers</a>
         
@@ -68,4 +68,70 @@
 
 </body>
 <script src="/static/js/main.js"></script>
+<script>
+const uploadBox = document.getElementById("uploadBox");
+const fileInput = document.getElementById("fileInput");
+const analyzeBtn = document.getElementById("analyzeBtn");
+const resetBtn = document.getElementById("resetBtn");
+const results = document.getElementById("results");
+
+let selectedFile = null;
+
+// click or drag & drop
+uploadBox.addEventListener("click", () => fileInput.click());
+fileInput.addEventListener("change", e => {
+  selectedFile = e.target.files[0];
+  if (selectedFile) {
+    uploadBox.innerHTML = `<p>📸 ${selectedFile.name}</p>`;
+    analyzeBtn.disabled = false;
+  }
+});
+
+// drag-drop
+uploadBox.addEventListener("dragover", e => e.preventDefault());
+uploadBox.addEventListener("drop", e => {
+  e.preventDefault();
+  selectedFile = e.dataTransfer.files[0];
+  if (selectedFile) {
+    uploadBox.innerHTML = `<p>📸 ${selectedFile.name}</p>`;
+    analyzeBtn.disabled = false;
+  }
+});
+
+// send to /pest-detect
+analyzeBtn.addEventListener("click", async () => {
+  if (!selectedFile) return;
+
+  const formData = new FormData();
+  formData.append("file", selectedFile);
+
+  results.innerHTML = "🔍 Analyzing...";
+  analyzeBtn.disabled = true;
+
+  const res = await fetch("/pest-detect", {
+    method: "POST",
+    body: formData
+  });
+
+  const data = await res.json();
+  if (data.error) {
+    results.innerHTML = `<p style="color:red;">❌ ${data.error}</p>`;
+  } else {
+    results.innerHTML = `
+      <h4>✅ Detected: ${data.pests.join(", ")}</h4>
+      <ul>${data.recommendations.map(r => `<li>${r}</li>`).join("")}</ul>
+    `;
+  }
+  analyzeBtn.disabled = false;
+});
+
+resetBtn.addEventListener("click", () => {
+  selectedFile = null;
+  fileInput.value = "";
+  uploadBox.innerHTML = `<p>🌿 Drag & drop your plant photo here<br>or <span class="browse">click to browse files</span></p>`;
+  results.innerHTML = `<p>Upload a clear photo of your plant leaves. Our AI will detect pests, highlight affected areas, and provide treatment recommendations.</p>`;
+  analyzeBtn.disabled = true;
+});
+</script>
+
 </html>
