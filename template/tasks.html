@@ -24,23 +24,23 @@
       <!-- Profile chip -->
       <a href="/profile" class="cbt__chip"  id="navUserChip" title="Open profile">
         <span id="navUserName">You</span>
-        <span  id="beansPill" style="margin-left:8px">0 🫘</span>
+        <span  id="beansPill" style="margin-left:8px">0 🍃</span>
       </a>
       <button id="cbtThemeToggle" class="cbt__chip">🌓 theme</button>
     </div>
   </header>
 
-  <!-- sidebar -->
-  <aside id="cbtSidebar" class="cbt__sidebar" aria-label="sidebar navigation">
-    <nav>
-      <a href="/chatbot.html"class="active">💬 Chatbot</a>
-      <a href="notice.html"class="active">🌙 Luna Recommendations</a>
-      <a href="plantfaq.html"class="active">🪴 Plant FAQ</a>
-      <a href="pest_detection.html" class="active">🪲 Pest Detection</a>
-      <a href="/tasks" class="active">📋 Daily Tasks</a>
-      <a href="/stickers" class="active">🍀 Stickers</a>
-      <a href="home.html"class="active">🏠 Home</a>
-    </nav>
+    <!-- sidebar (routes) -->
+    <aside id="cbtSidebar" class="cbt__sidebar" aria-label="sidebar navigation">
+      <nav>
+        <a href="chatbot.html" data-route="chat" class="active">💬 Chatbot</a>
+        <a href="pest_detection.html" class="active">🪲 Pest Detection</a>  
+        <a href="plantfaq.html" data-route="plantfaq" class="active">🪴 plant FAQ</a>
+        <a href="notice.html" data-route="moon" class="active">☾𖤓 Celestial Garden</a>
+        <a href="tasks.html" class="active">📋 Daily Tasks</a>
+        <a href="stickers.html" class="active">🍀 Stickers</a>
+      </nav>
+
   </aside>
 
   <!-- main card -->
@@ -53,8 +53,8 @@
         </div>
         <div class="tasks-stats">
           <span class="glass-pill"><span id="todayDate">—</span></span>
-          <span class="glass-pill">Beans: <b id="statBeans">0</b></span>
-          <span class="glass-pill">Moons: <b id="statMoons">0</b></span>
+          <span class="glass-pill">Leafs: <b id="statBeans">0</b></span>
+          <span class="glass-pill">Plants: <b id="statMoons">0</b></span>
         </div>
       </div>
 
@@ -62,7 +62,7 @@
       <ul id="taskList" class="tasks-list" aria-live="polite"></ul>
 
       <div class="tasks-footer">
-        <button id="claimBonusBtn" class="cta" disabled>🌙 Claim All-Done Bonus</button>
+        <button id="claimBonusBtn" class="cta" disabled>🌲 Claim All-Done Bonus</button>
         <small class="tasks-hint" id="capHint"></small>
       </div>
     </section>

@@ -75,7 +75,7 @@ body {
 .wl-nav__toggle{ display:none; background:none; border:1px solid var(--wl-stroke); border-radius:10px; padding:.3rem .20rem; }
 
 /* Buttons */
-.wl-btn{ display:inline-block; padding:.7rem 1.05rem; border-radius:999px; text-decoration:none; font-weight:500; border:1px solid var(--wl-stroke); }
+.wl-btn{ display:inline-block; padding:.7rem 1.05rem; border-radius:999px; text-decoration:none; font-weight:500; border:1px solid var(--wl-stroke);  }
 .wl-btn--primary{ background: linear-gradient(135deg, var(--wl-brand) 0%, #35835e 100%); color:#fff; border: none; box-shadow: 0 8px 18px rgba(47,111,80,.25); }
 .wl-btn--ghost{ background: rgba(255,255,255,.6); color: var(--wl-ink); }
 
@@ -116,7 +116,7 @@ body {
   .wl-features__grid{ grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 680px){
-  .wl-nav__toggle{ display: inline-block; }
+  .wl-nav__toggle{ display: inline-flex; }
   .wl-nav{ position:absolute; top:64px; right:0; left:0; background: rgba(246,251,247,.98); border-bottom:1px solid var(--wl-stroke); display:none; padding:.75rem; gap:10px; justify-content:center; flex-wrap:wrap; }
   .wl-nav.open{ display:flex; }
   .wl-features__grid{ grid-template-columns: 1fr; }
@@ -564,8 +564,8 @@ body.home::before{
 }
 .cbt__iconbtn:hover{ background:rgba(0,0,0,.06); }
 .cbt__brand{ display:flex; align-items:baseline; gap:8px; font-weight:700; }
-.cbt__brandLogo{ font-size:18px; }
-.cbt__brandSub{ color:var(--text-muted); font-weight:600; font-size:.9rem; }
+.cbt__brandLogo{ font-size:18px; text-align: center; }
+.cbt__brandSub{ color:var(--text-muted); font-weight:600; font-size:.9rem; text-align: center; }
 .cbt__topbarRight{ display:flex; align-items:center; gap:8px; }
 .cbt__chip{
   border:1px solid rgba(0,0,0,0.08);
@@ -781,7 +781,7 @@ body.home::before{
 
 /* ============ Auth (login / signup) ============ */
 .auth-body{ background: var(--auth-bg); color: var(--auth-ink); }
-.auth-wrap{ min-height: 100svh; display:grid; place-items:center; padding: 32px 16px; }
+.auth-wrap{ min-height: 10svh; display:grid; place-items:center; padding: 10px 16px; }
 
 .auth-card{
   width: min(420px, 92vw);
@@ -810,7 +810,7 @@ body.home::before{
 
 .auth-card input:focus {
   outline: 0;
-  border-color: #7b53b0;        /* your purple focus */
+  border-color: #2f6f50;        /* your purple focus */
   box-shadow: 0 0 0 4px rgba(123, 83, 176, .12);
 }
 
@@ -820,23 +820,19 @@ body.home::before{
 
 .auth-form{ display:grid; gap: 10px; margin-top: 6px; }
 
-.field{ position: relative; }
-.has-icon::before{
-  content: attr(data-icon);
-  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-  font-size: 16px; opacity: .75;
-}
+.field{ position: relative; border: #004d40; }
+
 .input{
   width: 100%;
   background: var(--auth-field);
-  border: 1px solid var(--auth-field-stroke);
+  border: 1px solid #2f6f50;
   border-radius: 14px;
   padding: .8rem .8rem .8rem 40px; /* left space for icon */
   font-size: 15px;
 }
 .input:focus{
   outline: 2px solid rgba(47,111,80,.25);
-  border-color: var(--auth-brand);
+  border-color: #2f6f50;
   background: #edf6f1;
 }
 

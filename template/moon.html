@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lunar Plant Recommender 🌙</title>
   <link rel="stylesheet" href="static/gardening.css">
-  <script src="/static/js/main.js"></script>
+  
   <style>
 
     @media(max-width: 600px) {
@@ -25,8 +25,9 @@
       <!-- brand centered-ish, flexible spacing either side -->
       <div class="cbt__brand">
         <span class="cbt__brandLogo" aria-hidden="true">💬</span>
-        <strong>Bloom Garden</strong>
-        <span class="cbt__brandSub">simple • fast • pretty</span>
+        <span class="cbt__brandSub">°❀⋆.ೃ࿔*:･°❀⋆.ೃ࿔*:･</span>
+        <strong  style="text-align: center;">Bloom Garden</strong> 
+        <span class="cbt__brandSub">°❀⋆.ೃ࿔*:･°❀⋆.ೃ࿔*:･</span>
       </div>
 
       <div class="cbt__topbarRight">
@@ -38,20 +39,22 @@
     <!-- sidebar (routes) -->
     <aside id="cbtSidebar" class="cbt__sidebar" aria-label="sidebar navigation">
       <nav>
-        <a href="chatbot.html" data-route="chat">💬 Chatbot</a>
-        <a href="notice.html" data-route="moon">🌙 Luna Recommendations</a>
-        <a href="plantfaq.html" data-route="plantfaq">🪴 plant FAQ</a>
-        <a href="pest_detection.html" data-route="pest">📔 Pest Detection</a>
-        <a href="home.html" data-route="home">🏠 home</a>
+        <a href="chatbot.html" data-route="chat" class="active">💬 Chatbot</a>
+        <a href="pest_detection.html" class="active">🪲 Pest Detection</a>  
+        <a href="plantfaq.html" data-route="plantfaq" class="active">🪴 plant FAQ</a>
+        <a href="notice.html" data-route="moon" class="active">☾𖤓 Celestial Garden</a>
+        <a href="tasks.html" class="active">📋 Daily Tasks</a>
+        <a href="stickers.html" class="active">🍀 Stickers</a>
       </nav>
+
     
     </aside>
 
 
    <div class="glass-card">
   <div class="card-header">
-    <span class="moon-emoji">🌕</span>
-    <h1>Lunar Plant Recommender</h1>
+    <span class="moon-emoji">☽☾</span>
+    <h1>Celestial Garden</h1>
   </div>
   <div class="today-moon">
   <h3>Today's Moon Phase</h3>
@@ -84,13 +87,13 @@
   <div id="phaseOutput" class="lunar-phase">🌙 Moon Phase</div>
   <div id="suggestionOutput" class="results">🪴 
     <section>
-      <h3>🌱 Good for plant growing </h3>
+      <h5>🌱 Good for plant growing </h5>
       <ul id="growList"></ul>
 
-    <h3>🌾 Good for Harvesting</h3>
+    <h5>🌾 Good for Harvesting</h5>
     <ul id="harvestList"></ul>
 
-    <h3>😴 Let These Rest</h3>
+    <h5>😴 Let These Rest</h5>
     <ul id="restList"></ul>
 
     <p id="recoEmpty" style="display:none;">No matches for this date.</p>
@@ -103,5 +106,5 @@
 
   
 </body>
-<!-- <img src="/images/plant.png" alt="Plant" class="plant-icon"> -->
+<script src="/static/js/main.js"></script>
 </html>

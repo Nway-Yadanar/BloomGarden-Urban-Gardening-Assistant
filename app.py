@@ -44,6 +44,12 @@ app.secret_key = os.getenv("SECRET_KEY", "dev-change-me")
 IPGEO_KEY = os.getenv("IPGEO_KEY", "23f93f8fd38e4ba3ba47396b69dc3398")
 OPENWEATHER_KEY = os.getenv("OPENWEATHER_KEY")  # no fallback here on purpose
 
+# Define this function to retrieve the user ID from the session or JWT token
+def get_user_id():
+    # Assuming you store user_id in session during login
+    return session.get('user_id')
+
+
 # Lunar notice page
 @app.route("/notice")
 @app.route("/notice.html")
@@ -545,54 +551,44 @@ def api_tasks_today():
     "all_done": all(x["done"] for x in out) if out else False,
     "beans_per_task": beans_per_task
 })
-
-@app.post("/api/tasks/claim_all_done_bonus")
+@app.route('/api/tasks/complete', methods=['POST'])
 @login_required
+def complete_task():
+    user_id = get_user_id()  # Get the user ID (perhaps from session or token)
+    task_id = request.json['task_id']
+    
+    # Update the task as completed in user_task_log table
+    query = "UPDATE user_task_log SET status = 'completed' WHERE user_id = %s AND task_id = %s"
+    execute_query(query, (user_id, task_id))
+    
+    # Update the user's wallet (leaves/beans)
+    update_wallet_query = """
+    UPDATE user_wallet 
+    SET leaves = leaves + 3 
+    WHERE user_id = %s
+    """
+    execute_query(update_wallet_query, (user_id,))
+    
+    return jsonify({"message": "Task completed and leaves updated."}), 200
 
-def api_tasks_claim_bonus():
-    uid = session.get("user_id")
-    today = _today()
 
-    # how many should be done today?
-    tasks, done_set, rules = _pick_today_tasks(uid)
-    required = len(tasks)
-
-    with db() as con, con.cursor() as cur:
-        # count actually done today
-        cur.execute(
-            "SELECT COUNT(*) FROM user_tasks_done WHERE user_id=%s AND done_date=%s",
-            (uid, today),
-        )
-        done_count = int(cur.fetchone()[0])
-
-        if required == 0 or done_count < required:
-            return jsonify({"ok": False, "error": "not_all_done", "done": done_count, "total": required}), 400
-
-        # already claimed bonus today?
-        cur.execute(
-            "SELECT 1 FROM user_task_bonus WHERE user_id=%s AND bonus_date=%s",
-            (uid, today),
-        )
-        if cur.fetchone():
-            # idempotent: return current wallet without adding again
-            cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s", (uid,))
-            row = cur.fetchone() or (0, 0)
-            return jsonify({"ok": True, "already_claimed": True, "beans": int(row[0]), "moons": int(row[1])})
-
-        # award moons and record claim
-        cur.execute(
-            "UPDATE user_wallet SET moons = moons + %s WHERE user_id=%s",
-            (DAILY_MOON_BONUS, uid),
-        )
-        cur.execute(
-            "INSERT INTO user_task_bonus (user_id, bonus_date, moons_awarded) VALUES (%s,%s,%s)",
-            (uid, today, DAILY_MOON_BONUS),
-        )
-        cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s", (uid,))
-        row = cur.fetchone() or (0, 0)
-        beans, moons = int(row[0]), int(row[1])
-
-    return jsonify({"ok": True, "beans": beans, "moons": moons, "awarded": DAILY_MOON_BONUS})
+@app.route('/api/tasks/claim_all_done_bonus', methods=['POST'])
+@login_required
+def claim_all_done_bonus():
+    user_id = get_user_id()  # Get the user ID (perhaps from session or token)
+    
+    # Check if all tasks are completed
+    query = "SELECT COUNT(*) FROM user_task_log WHERE user_id = %s AND status != 'completed'"
+    incomplete_tasks = fetch_query(query, (user_id,))
+    
+    if incomplete_tasks[0][0] > 0:
+        return jsonify({"error": "Not all tasks are completed."}), 400
+    
+    # Add plants (or moons) to the user's wallet
+    query = "UPDATE user_wallet SET plants = plants + 5 WHERE user_id = %s"
+    execute_query(query, (user_id,))
+    
+    return jsonify({"message": "Bonus claimed, plants updated."}), 200
 
 #profile page
 @login_required
