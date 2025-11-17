@@ -364,7 +364,7 @@ def do_login():
 
     with db() as con, con.cursor() as cur:
         cur.execute(
-            "SELECT ID, Password_hashed FROM users WHERE Username=%s OR Email=%s LIMIT 1",
+            "SELECT id, password_hashed FROM users WHERE username=%s OR email=%s LIMIT 1",
             (u_or_e, u_or_e)
         )
         row = cur.fetchone()
@@ -372,8 +372,8 @@ def do_login():
     if not row:
         return "Account not found", 404
 
-    uid   = row["ID"]
-    hash_ = row["Password_hashed"]
+    uid   = row["id"]
+    hash_ = row["password_hashed"]
 
     if not check_password_hash(hash_, pw):
         return "Invalid credentials", 401

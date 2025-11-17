@@ -1,33 +1,32 @@
 {
   "version": 1,
   "rules": {
-    "beans_per_task": 3,
+    "leaves_per_task": 3,
     "daily_count": 3,
-    "max_daily_beans": 25,
-    "all_done_bonus_moons": 2,
+    "max_daily_leaves": 9,
+    "all_done_bonus_plants": 2,
     "no_repeat_within_days": 3
   },
   "pool": [
-    { "id": "soil_check",        "title": "Do the 2–3 cm soil test",                     "beans": 3 },
-    { "id": "leaf_audit",        "title": "Leaf audit (dusty / clean / yellowing)",      "beans": 3 },
-    { "id": "rotate_pot",        "title": "Rotate one pot 90°",                          "beans": 3 },
-    { "id": "dust_leaves",       "title": "Clean 2 leaves with a damp cloth",            "beans": 3 },
-    { "id": "read_note",         "title": "Read 1 plant note",                           "beans": 3 },
-    { "id": "ask_chatbot",       "title": "Ask the chatbot a care question",             "beans": 5 },
-    { "id": "micro_quiz",        "title": "Answer a 1-question micro-quiz",              "beans": 5 },
-    { "id": "pest_scan",         "title": "Run one pest detection scan",                 "beans": 5 },
-    { "id": "pest_manual_check", "title": "Manual pest check with guide",                "beans": 3 },
-    { "id": "drainage_check",    "title": "Verify pot has drainage",                     "beans": 3 },
-    { "id": "humidity_nudge",    "title": "Set a water cup / pebble tray nearby",        "beans": 3 },
-    { "id": "relocate_from_draft","title":"Move plant away from draft/AC",               "beans": 3 },
-    { "id": "lunar_tip",         "title": "Read today’s lunar tip and mark an intention","beans": 5 },
-    { "id": "phase_id",          "title": "Identify today’s moon phase",                 "beans": 3 },
-    { "id": "photo_before_after","title": "Snap a dated plant photo",                     "beans": 3 },
-    { "id": "mini_note",         "title": "Write a 1-sentence observation",              "beans": 3 }
+    { "id": "soil_check",        "title": "Do the 2–3 cm soil test",                     "leaves": 3 },
+    { "id": "leaf_audit",        "title": "Leaf audit (dusty / clean / yellowing)",      "leaves": 3 },
+    { "id": "rotate_pot",        "title": "Rotate one pot 90°",                          "leaves": 3 },
+    { "id": "dust_leaves",       "title": "Clean 2 leaves with a damp cloth",            "leaves": 3 },
+    { "id": "read_note",         "title": "Read 1 plant note",                           "leaves": 3 },
+    { "id": "ask_chatbot",       "title": "Ask the chatbot a care question",             "leaves": 3 },
+    { "id": "pest_scan",         "title": "Run one pest detection scan",                 "leaves": 3 },
+    { "id": "pest_manual_check", "title": "Manual pest check with guide",                "leaves": 3 },
+    { "id": "drainage_check",    "title": "Verify pot has drainage",                     "leaves": 3 },
+    { "id": "humidity_nudge",    "title": "Set a water cup / pebble tray nearby",        "leaves": 3 },
+    { "id": "relocate_from_draft","title":"Move plant away from draft/AC",               "leaves": 3 },
+    { "id": "lunar_tip",         "title": "Read today’s lunar tip and mark an intention","leaves": 3 },
+    { "id": "phase_id",          "title": "Identify today’s moon phase",                 "leaves": 3 },
+    { "id": "photo_before_after","title": "Snap a dated plant photo",                     "leaves": 3 },
+    { "id": "mini_note",         "title": "Write a 1-sentence observation",              "leaves": 3 }
   ],
   "phase_bonus": {
     "phases": ["New Moon", "Full Moon"],
-    "extra_beans": 2,
+    "extra_leaves": 2,
     "applies_to_task_ids": ["lunar_tip", "phase_id"]
   },
   "weekly_quests": [

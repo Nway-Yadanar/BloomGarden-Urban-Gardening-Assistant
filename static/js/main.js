@@ -641,7 +641,7 @@ if (analyzeBtn) {
   };
 
   const setPills = (beans, moons) => {
-    if (beansPill) beansPill.textContent = `${beans} 🫘`;
+    if (beansPill) beansPill.textContent = `${beans} 🍃`;
     if (statBeans) statBeans.textContent = beans;
     if (statMoons) statMoons.textContent = moons;
   };
@@ -778,42 +778,29 @@ async function loadTasks() {
     listEl.innerHTML = `<li class="task">⚠️ Couldn't load tasks (${e.message}).</li>`;
   }
 }
-function completeTask(taskId) {
-  fetch('/api/tasks/complete', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ task_id: taskId })
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.message) {
-      updateTaskStatusUI(taskId);  // Update the UI to show that the task is completed
+
+
+  async function maybeEnableBonus() {
+    // quick check: all items have .done
+    const allDone = [...listEl.querySelectorAll('.task')].every(el => el.classList.contains('done'));
+    claimBtn.disabled = !allDone;
+  }
+
+  claimBtn?.addEventListener('click', async () => {
+    claimBtn.disabled = true;
+    try {
+      const r = await fetch('/api/tasks/claim_all_done_bonus', { method: 'POST' });
+      const js = await r.json();
+      if (!r.ok) {
+        claimBtn.disabled = true; // likely already claimed
+        return;
+      }
+      const plus = Number(js.awarded_moons || 0);
+      if (plus > 0) showToast(`+${plus} 🌙`);
+      setPills(js.beans ?? 0, js.moons ?? 0);
+    } catch (e) {
+      /* ignore */
     }
-  })
-  .catch(error => console.error('Error completing task:', error));
-}
-
-
-
-function claimAllBonus() {
-  fetch('/api/tasks/claim_all_done_bonus', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.message) {
-      alert(data.message);  // Show message if bonus claimed
-      updateUserWalletUI(); // Update the UI to reflect the new plant count
-    }
-  })
-  .catch(error => console.error('Error claiming bonus:', error));
-}
-
   });
 
   // init
