@@ -398,22 +398,22 @@ TASKS_PATH = DATA_DIR / "tasks.json"
 
 def _get_wallet(user_id: int):
      with db() as con, con.cursor() as cur:
-        cur.execute("SELECT beans, moons, beans_lifetime FROM user_wallet WHERE user_id=%s", (user_id,))
+        cur.execute("SELECT leaves, plants, beans_lifetime FROM user_wallet WHERE user_id=%s", (user_id,))
         w = cur.fetchone()
         if not w:
-            return {"beans": 0, "moons": 0, "beans_lifetime": 0}
+            return {"leaves": 0, "plants": 0, "beans_lifetime": 0}
         return {k:int(w[k]) for k in w}
 
-def _add_wallet(user_id: int, beans=0, moons=0, lifetime=0):
+def _add_wallet(user_id: int, leaves=0, plants=0, lifetime=0):
     with db() as con, con.cursor() as cur:
         cur.execute("""
-        INSERT INTO user_wallet (user_id, beans, moons, beans_lifetime)
+        INSERT INTO user_wallet (user_id, leaves, plants, beans_lifetime)
           VALUES (%s,%s,%s,%s)
           ON DUPLICATE KEY UPDATE
-            beans = beans + VALUES(beans),
-            moons = moons + VALUES(moons),
+            leaves = leaves + VALUES(leaves),
+            plants = plants + VALUES(plants),
             beans_lifetime = beans_lifetime + VALUES(beans_lifetime)
-        """, (user_id, max(0,beans), max(0,moons), max(0,lifetime)))
+        """, (user_id, max(0,plants), max(0,leaves), max(0,lifetime)))
 
 def _today(): return date.today().isoformat()
 
@@ -479,8 +479,8 @@ def api_wallet():
         u = cur.fetchone() or {}
     return jsonify({
         "username": u.get("Username"),
-        "beans": w["beans"],
-        "moons": w["moons"],
+        "leaves": w["leaves"],
+        "plants": w["plants"],
         "xp": w["beans_lifetime"]
     })
 from datetime import date
@@ -502,7 +502,7 @@ def api_tasks_today():
     except Exception as e:
         # show a friendly message but never 500
         print("tasks.json load error:", e)
-        return jsonify({"tasks": [], "all_done": False, "beans_per_task": 3})
+        return jsonify({"tasks": [], "all_done": False, "leaves_per_task": 3})
 
     # 2) accept multiple schemas: daily | tasks | pool | items
     pool = (raw.get("daily")
@@ -513,7 +513,7 @@ def api_tasks_today():
 
     # beans per task + how many to show
     rules = raw.get("rules") or {}
-    beans_per_task = int(rules.get("beans_per_task", 3))
+    leaves_per_task = int(rules.get("leaves_per_task", 3))
     count = int(rules.get("daily_count", 3))
     pool = pool[:count] if count > 0 else pool
 
@@ -536,12 +536,12 @@ def api_tasks_today():
     for t in pool:
      tid   = str(t.get("id") or t.get("key") or t.get("slug") or t.get("title"))
      title = t.get("title") or t.get("label") or tid
-     beans = t.get("beans") or beans_per_task  # ✅ fallback to global rule
+     leaves = t.get("leaves") or leaves_per_task  # ✅ fallback to global rule
      out.append({
         "id": tid,
         "title": title,
         "done": (tid in done_ids),
-        "beans": beans                       # ✅ include beans explicitly
+        "leaves": leaves               # ✅ include beans explicitly
     })
 
 
@@ -549,17 +549,18 @@ def api_tasks_today():
     "date": date.today().isoformat(),
     "tasks": out,
     "all_done": all(x["done"] for x in out) if out else False,
-    "beans_per_task": beans_per_task
+    "beans_per_task": leaves_per_task
 })
 @app.route('/api/tasks/complete', methods=['POST'])
 @login_required
+
 def complete_task():
     user_id = get_user_id()  # Get the user ID (perhaps from session or token)
     task_id = request.json['task_id']
-    
+    with db() as con, con.cursor() as cur:
     # Update the task as completed in user_task_log table
-    query = "UPDATE user_task_log SET status = 'completed' WHERE user_id = %s AND task_id = %s"
-    execute_query(query, (user_id, task_id))
+        cur.execute("UPDATE user_task_log SET status = 'completed' WHERE user_id = %s AND task_id = %s",user_id, task_id)
+    
     
     # Update the user's wallet (leaves/beans)
     update_wallet_query = """
@@ -567,7 +568,7 @@ def complete_task():
     SET leaves = leaves + 3 
     WHERE user_id = %s
     """
-    execute_query(update_wallet_query, (user_id,))
+    cur.execute(update_wallet_query, (user_id,))
     
     return jsonify({"message": "Task completed and leaves updated."}), 200
 
@@ -575,8 +576,9 @@ def complete_task():
 @app.route('/api/tasks/claim_all_done_bonus', methods=['POST'])
 @login_required
 def claim_all_done_bonus():
-    user_id = get_user_id()  # Get the user ID (perhaps from session or token)
-    
+    user_id = get_user_id() 
+     # Get the user ID (perhaps from session or token)
+
     # Check if all tasks are completed
     query = "SELECT COUNT(*) FROM user_task_log WHERE user_id = %s AND status != 'completed'"
     incomplete_tasks = fetch_query(query, (user_id,))
@@ -628,26 +630,26 @@ def api_stickers_redeem():
         cur.execute("SELECT 1 FROM user_stickers WHERE user_id=%s AND sticker_id=%s LIMIT 1", (uid, sid))
         if cur.fetchone():
             # return wallet unchanged
-            cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s", (uid,))
-            w = cur.fetchone() or {"beans":0, "moons":0}
-            return jsonify({"ok":True, "already_owned":True, "beans":int(w.get("beans",0)), "moons":int(w.get("moons",0))})
+            cur.execute("SELECT leaves, plants FROM user_wallet WHERE user_id=%s", (uid,))
+            w = cur.fetchone() or {"leaves":0, "plants":0}
+            return jsonify({"ok":True, "already_owned":True, "leaves":int(w.get("leaves",0)), "plants":int(w.get("plants",0))})
 
         # check wallet
-        cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s LIMIT 1", (uid,))
-        w = cur.fetchone() or {"beans":0, "moons":0}
-        beans = int(w.get("beans", 0))
-        moons = int(w.get("moons", 0))
+        cur.execute("SELECT leaves, plants FROM user_wallet WHERE user_id=%s LIMIT 1", (uid,))
+        w = cur.fetchone() or {"leaves":0, "plants":0}
+        leaves = int(w.get("leaves", 0))
+        plants = int(w.get("plants", 0))
 
         if use_moons:
-            if moons < cost:
-                return jsonify({"ok":False, "error":"insufficient_moons", "beans":beans, "moons":moons}), 400
+            if plants < cost:
+                return jsonify({"ok":False, "error":"insufficient_plants", "leaves":leaves, "plants":plants}), 400
             # deduct moons
-            cur.execute("UPDATE user_wallet SET moons = moons - %s WHERE user_id=%s", (cost, uid))
+            cur.execute("UPDATE user_wallet SET plants = plants - %s WHERE user_id=%s", (cost, uid))
         else:
-            if beans < cost:
-                return jsonify({"ok":False, "error":"insufficient_beans", "beans":beans, "moons":moons}), 400
+            if leaves < cost:
+                return jsonify({"ok":False, "error":"insufficient_leaves", "leaves":leaves, "plants":plants}), 400
             # deduct beans
-            cur.execute("UPDATE user_wallet SET beans = beans - %s WHERE user_id=%s", (cost, uid))
+            cur.execute("UPDATE user_wallet SET leaves = leaves - %s WHERE user_id=%s", (cost, uid))
 
         # grant sticker
         cur.execute(
@@ -656,10 +658,10 @@ def api_stickers_redeem():
         )
 
         # new wallet values
-        cur.execute("SELECT beans, moons FROM user_wallet WHERE user_id=%s", (uid,))
-        w2 = cur.fetchone() or {"beans":0, "moons":0}
+        cur.execute("SELECT leaves, plants FROM user_wallet WHERE user_id=%s", (uid,))
+        w2 = cur.fetchone() or {"leaves":0, "plants":0}
 
-    return jsonify({"ok":True, "beans":int(w2.get("beans",0)), "moons":int(w2.get("moons",0))})
+    return jsonify({"ok":True, "leaves":int(w2.get("leaves",0)), "plants":int(w2.get("plants",0))})
 
 
 
