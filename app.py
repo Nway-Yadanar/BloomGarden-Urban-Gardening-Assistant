@@ -461,7 +461,7 @@ def _pick_today_tasks(user_id: int):
     items = [{
         "id": t["id"],
         "title": t.get("title",""),
-        "beans": int(t.get("beans", 0)),
+        "leaves": int(t.get("leaves", 0)),
         "done": t["id"] in done_ids
     } for t in picked]
 
@@ -492,105 +492,258 @@ from pathlib import Path
 
 BASE_DIR   = Path(__file__).resolve().parent
 TASKS_PATH = BASE_DIR / "static" / "data" / "tasks.json"
+import random
+from datetime import date
+
 
 @app.get("/api/tasks/today")
+@login_required
 def api_tasks_today():
+    uid = session["user_id"]
+
+    # ----- 1) load tasks.json -----
     try:
-        # 1) load tasks.json
         with open(TASKS_PATH, "r", encoding="utf-8") as f:
             raw = json.load(f)
     except Exception as e:
-        # show a friendly message but never 500
         print("tasks.json load error:", e)
         return jsonify({"tasks": [], "all_done": False, "leaves_per_task": 3})
 
-    # 2) accept multiple schemas: daily | tasks | pool | items
     pool = (raw.get("daily")
             or raw.get("tasks")
             or raw.get("pool")
             or raw.get("items")
             or [])
 
-    # beans per task + how many to show
-    rules = raw.get("rules") or {}
+    rules           = raw.get("rules") or {}
+    daily_count     = int(rules.get("daily_count", 3))
     leaves_per_task = int(rules.get("leaves_per_task", 3))
-    count = int(rules.get("daily_count", 3))
-    pool = pool[:count] if count > 0 else pool
+    leaves_cap      = int(rules.get("daily_leaves_cap", 10))
+    bonus_plants    = int(rules.get("all_done_bonus_plants", 1))
 
-    # 3) mark done for today (best-effort; safe with tuple cursor)
+    base_pool = list(pool)
+    if len(base_pool) > daily_count:
+        pool = random.sample(base_pool, daily_count)
+    else:
+        pool = base_pool
+
+    # ----- 2) which tasks are already done today? -----
     done_ids = set()
-    uid = session.get("user_id")
-    if uid:
-        try:
-            with db() as con, con.cursor() as cur:
-                cur.execute(
-                    "SELECT task_id FROM user_tasks_done WHERE user_id=%s AND done_date=%s",
-                    (uid, date.today())
-                )
-                done_ids = {str(r[0]) for r in cur.fetchall()}
-        except Exception as e:
-            print("tasks_today DB warn:", e)
+    today = date.today().isoformat()
+    try:
+        with db() as con, con.cursor() as cur:
+            cur.execute(
+                """
+                SELECT task_id
+                FROM user_task_log
+                WHERE user_id=%s AND task_date=%s
+                """,
+                (uid, today),
+            )
+            for r in cur.fetchall():
+                done_ids.add(str(r["task_id"]))
+    except Exception as e:
+        print("tasks_today DB warn:", e)
 
-    # 4) normalize shape for the frontend (id, title, done)
+    # ----- 3) shape for frontend -----
     out = []
     for t in pool:
-     tid   = str(t.get("id") or t.get("key") or t.get("slug") or t.get("title"))
-     title = t.get("title") or t.get("label") or tid
-     leaves = t.get("leaves") or leaves_per_task  # ✅ fallback to global rule
-     out.append({
-        "id": tid,
-        "title": title,
-        "done": (tid in done_ids),
-        "leaves": leaves               # ✅ include beans explicitly
-    })
+        tid    = str(t.get("id") or t.get("key") or t.get("slug") or t.get("title"))
+        title  = t.get("title") or t.get("label") or tid
+        leaves = int(t.get("leaves") or leaves_per_task)
+        out.append({
+            "id": tid,
+            "title": title,
+            "done": (tid in done_ids),
+            "leaves": leaves,
+        })
 
+    # ----- 4) current wallet -----
+    with db() as con, con.cursor() as cur:
+        cur.execute(
+            "SELECT leaves, plants FROM user_wallet WHERE user_id=%s",
+            (uid,),
+        )
+        w = cur.fetchone() or {"leaves": 0, "plants": 0}
+
+    all_done = bool(out) and all(x["done"] for x in out)
 
     return jsonify({
-    "date": date.today().isoformat(),
-    "tasks": out,
-    "all_done": all(x["done"] for x in out) if out else False,
-    "beans_per_task": leaves_per_task
-})
-@app.route('/api/tasks/complete', methods=['POST'])
+        "date": today,
+        "tasks": out,
+        "all_done": all_done,
+        "leaves_per_task": leaves_per_task,
+        "max_daily_leaves": leaves_cap,
+        "all_done_bonus_plants": bonus_plants,
+        "leaves": int(w["leaves"]),
+        "plants": int(w["plants"]),
+    })
+
+@app.post("/api/tasks/complete")
 @login_required
-
 def complete_task():
-    user_id = get_user_id()  # Get the user ID (perhaps from session or token)
-    task_id = request.json['task_id']
+    uid = session["user_id"]
+    payload = request.get_json(force=True) or {}
+    task_id = str(payload.get("task_id") or payload.get("id") or "").strip()
+    done    = bool(payload.get("done", True))   # front-end usually sends true
+
+    if not task_id:
+        return jsonify({"error": "missing task_id"}), 400
+
+    today = date.today().isoformat()
+
+    # read leaves_per_task from tasks.json (fallback 3)
+    try:
+        with open(TASKS_PATH, "r", encoding="utf-8") as f:
+            raw = json.load(f)
+    except Exception:
+        leaves_per_task = 3
+    else:
+        rules = raw.get("rules") or {}
+        leaves_per_task = int(rules.get("leaves_per_task", 3))
+
     with db() as con, con.cursor() as cur:
-    # Update the task as completed in user_task_log table
-        cur.execute("UPDATE user_task_log SET status = 'completed' WHERE user_id = %s AND task_id = %s",user_id, task_id)
-    
-    
-    # Update the user's wallet (leaves/beans)
-    update_wallet_query = """
-    UPDATE user_wallet 
-    SET leaves = leaves + 3 
-    WHERE user_id = %s
-    """
-    cur.execute(update_wallet_query, (user_id,))
-    
-    return jsonify({"message": "Task completed and leaves updated."}), 200
+        # is there already a log row for today?
+        cur.execute(
+            """
+            SELECT awarded_plants
+            FROM user_task_log
+            WHERE user_id=%s AND task_id=%s AND task_date=%s
+            """,
+            (uid, task_id, today),
+        )
+        row = cur.fetchone()
 
+        if done:
+            # mark as completed → insert row if not exists, add leaves
+            if not row:
+                cur.execute(
+                    """
+                    INSERT INTO user_task_log (user_id, task_id, task_date, awarded_plants)
+                    VALUES (%s, %s, %s, %s)
+                    """,
+                    (uid, task_id, today, leaves_per_task),
+                )
+                cur.execute(
+                    """
+                    UPDATE user_wallet
+                    SET leaves = leaves + %s
+                    WHERE user_id = %s
+                    """,
+                    (leaves_per_task, uid),
+                )
+                awarded = leaves_per_task
+            else:
+                # already completed earlier today → no extra reward
+                awarded = 0
+        else:
+            # un-tick: remove row if exists, subtract leaves
+            if row:
+                awarded = int(row["awarded_plants"])
+                cur.execute(
+                    """
+                    DELETE FROM user_task_log
+                    WHERE user_id=%s AND task_id=%s AND task_date=%s
+                    """,
+                    (uid, task_id, today),
+                )
+                cur.execute(
+                    """
+                    UPDATE user_wallet
+                    SET leaves = GREATEST(0, leaves - %s)
+                    WHERE user_id = %s
+                    """,
+                    (awarded, uid),
+                )
+            else:
+                awarded = 0
 
-@app.route('/api/tasks/claim_all_done_bonus', methods=['POST'])
+        # updated wallet
+        cur.execute(
+            "SELECT leaves, plants FROM user_wallet WHERE user_id=%s",
+            (uid,),
+        )
+        w = cur.fetchone() or {"leaves": 0, "plants": 0}
+
+    return jsonify({
+        "awarded_leaves": awarded,
+        "leaves": int(w["leaves"]),
+        "plants": int(w["plants"]),
+    })
+
+@app.post("/api/tasks/claim_all_done_bonus")
 @login_required
 def claim_all_done_bonus():
-    user_id = get_user_id() 
-     # Get the user ID (perhaps from session or token)
+    uid   = session["user_id"]
+    today = date.today().isoformat()
 
-    # Check if all tasks are completed
-    query = "SELECT COUNT(*) FROM user_task_log WHERE user_id = %s AND status != 'completed'"
-    incomplete_tasks = fetch_query(query, (user_id,))
-    
-    if incomplete_tasks[0][0] > 0:
-        return jsonify({"error": "Not all tasks are completed."}), 400
-    
-    # Add plants (or moons) to the user's wallet
-    query = "UPDATE user_wallet SET plants = plants + 5 WHERE user_id = %s"
-    execute_query(query, (user_id,))
-    
-    return jsonify({"message": "Bonus claimed, plants updated."}), 200
+    # read rules from tasks.json
+    try:
+        with open(TASKS_PATH, "r", encoding="utf-8") as f:
+            raw = json.load(f)
+    except Exception:
+        raw = {}
+
+    rules        = raw.get("rules") or {}
+    daily_count  = int(rules.get("daily_count", 3))
+    bonus_plants = int(rules.get("all_done_bonus_plants", 1))
+
+    with db() as con, con.cursor() as cur:
+        # already claimed today?
+        cur.execute(
+            """
+            SELECT 1
+            FROM user_daily_bonus
+            WHERE user_id=%s AND bonus_date=%s
+            LIMIT 1
+            """,
+            (uid, today),
+        )
+        if cur.fetchone():
+            return jsonify({"error": "already_claimed"}), 400
+
+        # number of completed tasks today
+        cur.execute(
+            """
+            SELECT COUNT(*) AS c
+            FROM user_task_log
+            WHERE user_id=%s AND task_date=%s
+            """,
+            (uid, today),
+        )
+        row = cur.fetchone() or {"c": 0}
+        if int(row["c"]) < daily_count:
+            return jsonify({"error": "not_all_done"}), 400
+
+        # award plants
+        cur.execute(
+            """
+            UPDATE user_wallet
+            SET plants = plants + %s
+            WHERE user_id = %s
+            """,
+            (bonus_plants, uid),
+        )
+
+        cur.execute(
+            """
+            INSERT INTO user_daily_bonus (user_id, bonus_date, awarded_plants)
+            VALUES (%s, %s, %s)
+            """,
+            (uid, today, bonus_plants),
+        )
+
+        cur.execute(
+            "SELECT leaves, plants FROM user_wallet WHERE user_id=%s",
+            (uid,),
+        )
+        w = cur.fetchone() or {"leaves": 0, "plants": 0}
+
+    return jsonify({
+        "awarded_plants": bonus_plants,
+        "leaves": int(w["leaves"]),
+        "plants": int(w["plants"]),
+    })
 
 #profile page
 @login_required

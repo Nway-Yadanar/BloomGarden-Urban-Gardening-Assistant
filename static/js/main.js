@@ -620,8 +620,8 @@ if (analyzeBtn) {
   if (!listEl) return; // only on tasks.html
 
   const beansPill = document.getElementById('beansPill');
-  const statBeans = document.getElementById('statBeans');
-  const statMoons = document.getElementById('statMoons');
+  const statLeaves = document.getElementById('statLeaves');
+  const statPlants = document.getElementById('statPlants');
   const capHint   = document.getElementById('capHint');
   const toast     = document.getElementById('toast');
   const claimBtn  = document.getElementById('claimBonusBtn');
@@ -640,10 +640,10 @@ if (analyzeBtn) {
     setTimeout(() => (toast.hidden = true), 1600);
   };
 
-  const setPills = (beans, moons) => {
-    if (beansPill) beansPill.textContent = `${beans} 🍃`;
-    if (statBeans) statBeans.textContent = beans;
-    if (statMoons) statMoons.textContent = moons;
+  const setPills = (leaves, plants) => {
+    if (beansPill) beansPill.textContent = `${leaves} 🍃`;
+    if (statLeaves) statLeaves.textContent = leaves;
+    if (statPlants) statPlants.textContent = plants;
   };
 
   // Load username + wallet
@@ -651,7 +651,7 @@ if (analyzeBtn) {
     try {
       // If you have an endpoint for profile name, use it. Otherwise read from a data-* on the page or fallback.
       const profile = await (await fetch('/api/wallet')).json();
-      setPills(profile.beans ?? 0, profile.moons ?? 0);
+      setPills(profile.leaves?? 0, profile.plants ?? 0);
       if (userName && profile.username) userName.textContent = profile.username;
     } catch (e) {
       /* not fatal */
@@ -673,7 +673,7 @@ async function redeemSticker(stickerId) {
     if (!res.ok) {
       alert('Error: ' + data.error);
     } else {
-      alert('Sticker Redeemed! Remaining Beans: ' + data.beans + ' Moons: ' + data.moons);
+      alert('Sticker Redeemed! Remaining Leaves: ' + data.leaves + ' Plants: ' + data.plants);
       loadStickers(); // refresh the stickers after redeeming
     }
   } catch (err) {
@@ -721,10 +721,10 @@ async function loadTasks() {
     const data = await r.json();
 
     // header stats
-    setPills(data.beans ?? 0, data.moons ?? 0);
+    setPills(data.leaves ?? 0, data.plants ?? 0);
     if (capHint) {
-      const cap = Number(data.max_daily_beans ?? 25);
-      capHint.textContent = `Daily bean cap: ${cap}`;
+      const cap = Number(data.max_daily_leaves ?? 10);
+      capHint.textContent = `Daily leaves cap: ${cap}`;
     }
 
     // render list
@@ -739,7 +739,7 @@ async function loadTasks() {
           <input type="radio" ${t.done ? 'checked' : ''} aria-label="mark complete">
           <div>
             <div class="task__title">${t.title}</div>
-            <div class="task__meta"><span class="task__beans">+${t.beans} beans</span></div>
+            <div class="task__meta"><span class="task__beans">+${t.leaves} leaves</span></div>
           </div>
         </label>
       `;
@@ -759,8 +759,8 @@ async function loadTasks() {
 
           li.classList.add('done');
           const add = Number(js.awarded_beans || 0);
-          if (add > 0) showToast(`+${add} beans`);
-          setPills(js.beans ?? 0, js.moons ?? 0);
+          if (add > 0) showToast(`+${add} leaves`);
+          setPills(js.leaves ?? 0, js.plants ?? 0);
           await maybeEnableBonus();
         } finally {
           radio.disabled = false;
@@ -772,7 +772,7 @@ async function loadTasks() {
 
     // bonus state
     claimBtn.disabled = !data.all_done;
-    claimBtn.dataset.bonus = data.all_done_bonus_moons || 0;
+    claimBtn.dataset.bonus = data.all_done_bonus_plants || 0;
 
   } catch (e) {
     listEl.innerHTML = `<li class="task">⚠️ Couldn't load tasks (${e.message}).</li>`;
@@ -797,7 +797,7 @@ async function loadTasks() {
       }
       const plus = Number(js.awarded_moons || 0);
       if (plus > 0) showToast(`+${plus} 🌙`);
-      setPills(js.beans ?? 0, js.moons ?? 0);
+      setPills(js.leaves ?? 0, js.plants ?? 0);
     } catch (e) {
       /* ignore */
     }
